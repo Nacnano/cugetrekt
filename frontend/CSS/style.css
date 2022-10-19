@@ -35,10 +35,6 @@ nav {
     color: black !important;
 }
 
-.bg-white {
-    background-color: whitesmoke;
-}
-
 .nav-link:hover {
     text-decoration: underline;
 }
@@ -126,6 +122,10 @@ nav {
 
 .color-sd {
     color: var(--sd)
+}
+
+.bg-white {
+    background-color: whitesmoke;
 }
 
 .bg-pm {
