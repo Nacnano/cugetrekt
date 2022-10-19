@@ -4,21 +4,49 @@
 }
 
 @font-face {
-    font-family: 'poppins';
+    font-family: 'Poppins';
     src: url('Poppins-Regular.otf');
     font-weight: normal;
     font-style: normal;
 }
 
-/* use poppins as default font */
+@font-face {
+    font-family: 'Prompt';
+    src: url('PromptRegular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* set default font */
 body {
-    font-family: poppins !important;
+    font-family: Poppins, Prompt, sans-serif !important;
+    line-height: 80% !important;
+}
+
+nav {
+    box-shadow: 0 3px 10px 0 #000000;
+}
+
+.ul-on-hover:hover {
+    text-decoration: underline;
+}
+
+.text-white {
+    color: black !important;
+}
+
+.bg-white {
+    background-color: whitesmoke;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
 }
 
 .loader-wrapper {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: var(--sd);
@@ -29,10 +57,10 @@ body {
 
 .loader {
     display: inline-block;
-    width: 50px;
-    height: 300px;
+    width: 69px;
+    height: 69px;
     position: relative;
-    border: 4px solid #Fff;
+    border: 7px solid #fff;
     animation: loader 2s infinite ease;
 }
 
@@ -86,80 +114,6 @@ body {
     100% {
         height: 0%;
     }
-}
-
-.loader-inner {
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    background-color: #fff;
-    animation: loader-inner 2s infinite ease-in;
-}
-
-@keyframes loader {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(180deg);
-    }
-
-    50% {
-        transform: rotate(180deg);
-    }
-
-    75% {
-        transform: rotate(360deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes loader-inner {
-    0% {
-        height: 0%;
-    }
-
-    25% {
-        height: 0%;
-    }
-
-    50% {
-        height: 100%;
-    }
-
-    75% {
-        height: 100%;
-    }
-
-    100% {
-        height: 0%;
-    }
-}
-
-
-.loader-wrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #242f3f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    border: 4px solid #Fff;
-    animation: loader 2s infinite ease;
 }
 
 .color-white {
