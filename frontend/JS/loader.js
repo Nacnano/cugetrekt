@@ -1,6 +1,5 @@
 $(window).on('load', function () {
     setTimeout(function () {
-        //your code to be executed after 1 second
         $("#loader").fadeOut("slow");
         window.scrollTo({
             top: 0,
