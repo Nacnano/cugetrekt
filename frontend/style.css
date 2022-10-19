@@ -1,15 +1,21 @@
 body{
-    background-color: #151515;
+    background-color: #FF1515 !important;
 }
-.color{
-    color: whitesmoke;
+.color-white{
+    color: whitesmoke !important;
 }
 .color-pm{
-    color : #e20d0d;
+    color : #e20d0d !important;
+}
+.color-sd{
+
 }
 .bg-pm{
-    background-color : #e20d0d;
+    background-color : #e20d0d !important;
 }
 .bg-sd{
-    background-color : #2a2d48;
+    background-color : #2a2d48 !important;
+}
+.f-mono{
+    font-family: monospace;
 }
