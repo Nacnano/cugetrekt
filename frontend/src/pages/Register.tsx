@@ -27,7 +27,7 @@ const RegisterPage = () => {
         </div>
         <div className="row justify-content-center mt-3">
           <div className="col-3 text-center">
-            <Link className="text-dark" to="/LoginPage">เข้าสู่ระบบ</Link>
+            <Link className="text-dark" to="/Login">เข้าสู่ระบบ</Link>
             <h5 className="mt-5">" ปุ่มถอนอยู่ใกล้เพียงแค่เอื้อมมือ "</h5>
           </div>
         </div>
