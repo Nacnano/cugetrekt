@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
@@ -32,3 +33,12 @@ function App() {
 }
 
 export default App
+=======
+function App() {
+  return (
+    <h1>Hello</h1>
+  );
+}
+
+export default App;
+>>>>>>> 9ad56a542a5b7967b2fff2aff651a4451016d42f
