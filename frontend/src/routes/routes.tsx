@@ -22,6 +22,6 @@ const MyRoutes = () => {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default MyRoutes;
