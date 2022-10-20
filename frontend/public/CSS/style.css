@@ -17,10 +17,62 @@
     font-style: normal;
 }
 
+#landing a span {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: -12px;
+    border-left: 1px solid var(--sd);
+    border-bottom: 1px solid var(--sd);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: scrollDown 1.5s infinite;
+    animation: scrollDown 1.5s infinite;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes scrollDown {
+    0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
+}
+
 /* set default font */
 body {
     font-family: Poppins, Prompt, sans-serif !important;
     line-height: 80% !important;
+}
+
+.sTopic {
+    scroll-margin-top: 48px;
 }
 
 nav {
@@ -142,4 +194,52 @@ nav {
 
 .f-mono {
     font-family: monospace;
+}
+
+#landing a span {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: -12px;
+    border-left: 1px solid var(--sd);
+    border-bottom: 1px solid var(--sd);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: scrollDown 1.5s infinite;
+    animation: scrollDown 1.5s infinite;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes scrollDown {
+    0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
 }
