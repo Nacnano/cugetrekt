@@ -1,7 +1,9 @@
 const MyInfoPage = () => {
   return (
-    <h1>My Info!</h1>
+    <main style={{ marginTop: "5em" }}>
+      <h1>ข้อมูลส่วนตัว</h1>
+    </main>
   );
-}
+};
 
 export default MyInfoPage;
