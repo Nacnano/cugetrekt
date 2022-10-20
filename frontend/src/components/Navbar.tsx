@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-sd fixed-top">
+      <nav className="shadowdrop navbar navbar-expand-lg bg-sd fixed-top">
         <div className="container">
           <a className="navbar-brand text-white" href="/">CU Get Rekt</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
