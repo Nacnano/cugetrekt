@@ -68,14 +68,27 @@
 /* set default font */
 body {
     font-family: Poppins, Prompt, sans-serif !important;
-    line-height: 80% !important;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: var(--pm) !important;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open>.dropdown-toggle.btn-danger {
+    color: #fff;
+    background-color: #b00d0d !important;
 }
 
 .sTopic {
     scroll-margin-top: 48px;
 }
 
-nav {
+.shadowdrop {
     box-shadow: 0 3px 10px 0 #000000;
 }
 
