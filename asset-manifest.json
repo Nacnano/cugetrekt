@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/cugetrekt/static/css/main.31d6cfe0.css",
+    "main.js": "/cugetrekt/static/js/main.205cdb27.js",
+    "index.html": "/cugetrekt/index.html",
+    "main.205cdb27.js.map": "/cugetrekt/static/js/main.205cdb27.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.205cdb27.js"
+  ]
+}
