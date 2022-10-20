@@ -1,3 +1,3 @@
-export default function DocCardGrid () {
-    return (<></>);
+export default function DocCardGrid() {
+  return (<></>);
 }
