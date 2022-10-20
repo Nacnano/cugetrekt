@@ -1,0 +1,193 @@
+:root {
+    --pm: #e20d0d;
+    --sd: #2a2d48;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('Poppins-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prompt';
+    src: url('PromptRegular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* set default font */
+body {
+    font-family: Poppins, Prompt, sans-serif !important;
+    line-height: 80% !important;
+}
+
+nav {
+    box-shadow: 0 3px 10px 0 #000000;
+}
+
+.bg-dark-on-hover:hover {
+    background-color: #1b1d2f !important;
+}
+
+.ul-on-hover:hover {
+    text-decoration: underline;
+}
+
+.text-white {
+    color: black !important;
+}
+
+.bg-white {
+    background-color: whitesmoke;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--sd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    display: inline-block;
+    width: 69px;
+    height: 69px;
+    position: relative;
+    border: 7px solid #fff;
+    animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+
+    25% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+
+    75% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+.color-white {
+    color: whitesmoke !important;
+}
+
+.color-pm {
+    color: var(--pm) !important;
+}
+
+.color-sd {
+    color: var(--sd)
+}
+
+.bg-pm {
+    background-color: var(--pm) !important;
+}
+
+.bg-sd {
+    background-color: var(--sd) !important;
+}
+
+.f-mono {
+    font-family: monospace;
+}
+
+#landing a span {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: -12px;
+    border-left: 1px solid var(--sd);
+    border-bottom: 1px solid var(--sd);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: scrollDown 1.5s infinite;
+    animation: scrollDown 1.5s infinite;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes scrollDown {
+    0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: rotate(-45deg) translate(0, 0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(-20px, 20px);
+        opacity: 0;
+    }
+}
