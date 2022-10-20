@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nacnano.github.io/cugetrekt/",
+  "homepage": "https://nacnano.github.io/cugetrekt/frontend",
   "dependencies": {
     "-": "^0.0.1",
     "@emotion/react": "^11.10.4",
