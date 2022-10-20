@@ -1,6 +1,12 @@
+import React from "react";
 import DocumentCard from "../components/DocumentCard";
 
 import Row from 'react-bootstrap/Row';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+
+import Modal from "../components/Modal";
+import Backdrop from "../components/Backdrop";
 
 const MyDocumentsPage = () => {
     let arr = [
@@ -12,12 +18,21 @@ const MyDocumentsPage = () => {
     ];
 
     let docCards = null;
-
     docCards = arr.map((a, key) => {
         return (
             <DocumentCard id={a.id} name={a.name} day={a.day} month={a.month} year={a.year}/>
         );
     });
+
+    const [modalIsOpen, setModalIsOpen] = React.useState(false);
+    function addDocument() {
+        setModalIsOpen(true);
+        console.log("Open");
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
 
     return (
         <>
@@ -25,6 +40,10 @@ const MyDocumentsPage = () => {
             <Row xs={1} md={2} lg={4} className="g-4">
                 {docCards}
             </Row>
+            <Fab color="primary" aria-labe="add" onClick={addDocument}>
+                <AddIcon />
+            </Fab>
+            {modalIsOpen ? <Modal /> : null}
         </>
     );
 }
