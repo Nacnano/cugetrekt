@@ -6,6 +6,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
+  const [regStatus, setRegStatus] = useState("");
 
   // backend url
   const registerUrl = "http://localhost:3001/register";
@@ -17,7 +18,9 @@ const RegisterPage = () => {
       password: password,
       conPassword: conPassword,
     }).then((res) => {
-      console.log(res);
+      if (res.data.message) {
+        setRegStatus(res.data.message);
+      }
     });
   }
 
@@ -26,7 +29,7 @@ const RegisterPage = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-3">
-            <form>
+            <form onSubmit={register}>
               <h1 className="h3 mb-3 fw-normal text-center">สมัครใช้บริการ</h1>
               <div className="form-floating my-3">
                 <input type="email" className="form-control" id="floatingInput" name="email" placeholder="name@example.com" 
@@ -59,6 +62,9 @@ const RegisterPage = () => {
             <h5 className="mt-5">" ปุ่มถอนอยู่ใกล้เพียงแค่เอื้อมมือ "</h5>
           </div>
         </div>
+        {/* <h1>
+          {regStatus}
+        </h1> */}
       </div>
     </main >
   );
