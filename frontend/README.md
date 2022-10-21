@@ -1,3 +1,6 @@
+In Login.tsx and Register.tsx, urls are required to be changed into the valid ones.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
