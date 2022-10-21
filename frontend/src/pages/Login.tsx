@@ -16,7 +16,7 @@ const LoginPage = () => {
                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
-              <button className="w-100 btn btn-lg btn-primary" type="submit">เข้าสู่ระบบ</button>
+              <button className="w-100 btn btn-lg btn-danger" type="submit">เข้าสู่ระบบ</button>
             </form>
           </div>
         </div>
