@@ -6,7 +6,8 @@ import MyDocumentsPage from "../pages/MyDocuments";
 import MyInfoPage from "../pages/MyInfo";
 import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/Register";
-
+import WithdrawInfoPage from "../pages/WithdrawalInfo";
+import ResignationInfoPage from "../pages/Resignationinfo";
 const MyRoutes = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ const MyRoutes = () => {
           <Route path="MyInfo" element={<MyInfoPage />} />
           <Route path="Login" element={<LoginPage />} />
           <Route path="Register" element={<RegisterPage />} />
+          <Route path="WithdrawalInfo" element={<WithdrawInfoPage />} />
+          <Route path="ResignationInfo" element={<ResignationInfoPage />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
