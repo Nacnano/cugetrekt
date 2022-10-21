@@ -20,12 +20,12 @@ const HomePage = () => {
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="px-4 btn btn-danger fs-5 fw-bold">
                 <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกใบถอนเลย!</a>
               <a href="#section1"
-                className="text-dark ul-on-hover px-4 fs-5 text-dark">ไม่มั่นใจ?</a>
+                className="text-dark text-decoration-none ul-on-hover px-4 fs-5 text-dark muted">ไม่มั่นใจ?</a>
               <a className="text-dark text-center" href="#section1"><span></span></a>
             </div>
           </div>
         </div>
-        <div id="section1" className="shadowdrop sTopic container-fluid bg-dark mt-5 py-4">
+        <div id="section1" className="fadeIn shadowdrop sTopic container-fluid bg-dark mt-5 py-4">
           <div className="container text-white py-5" >
             <div className="row justify-content-center align-items-center">
               <div className="row align-items-top lh-base">
@@ -57,7 +57,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="px-4 pb-3 pt-5 my-5 text-center container-fluid align-items-center justify-content-center ">
+        <div className="fadeIn px-4 pb-3 pt-5 my-5 text-center container-fluid align-items-center justify-content-center ">
           <div className="row">
             <div className="col">
               <h1 className="display-4 fw-bold">ยังตัดสินใจไม่ได้?</h1>

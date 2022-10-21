@@ -21,7 +21,7 @@ const RegisterPage = () => {
                 <input type="password" className="form-control" id="cPassword" placeholder="password" />
                 <label htmlFor="floatingPassword">Confirm Password</label>
               </div>
-              <button className="w-100 btn btn-lg btn-primary" type="submit">สมัครใช้บริการ</button>
+              <button className="w-100 btn btn-lg btn-danger" type="submit">สมัครใช้บริการ</button>
             </form>
           </div>
         </div>
