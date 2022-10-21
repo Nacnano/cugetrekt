@@ -28,13 +28,13 @@ export class UserController {
   @Get()
   async findAll(): Promise<User[]> {
     console.log('Findall');
-    return this.userService.findAll();
+    return this.userService.findAll(); 
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<any> {
     const foundUser = await this.userService.findOne(id);
-    return foundUser ? foundUser : 'User not found';
+    return foundUser ? foundUser : 'User not found!!!!!!!!';
   }
 
   @Delete(':id')
