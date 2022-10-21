@@ -4,7 +4,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './index.css';
 import MyRoutes from './routes/routes';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './Providers/AuthProvider';
