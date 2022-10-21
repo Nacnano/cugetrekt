@@ -1,34 +1,130 @@
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
-const LoginPage = () => {
+import { Link } from 'react-router-dom'
+import { login } from '../services/auth.service'
+
+type Props = {}
+
+const Login: React.FC<Props> = () => {
+  let navigate: NavigateFunction = useNavigate()
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
+
+  const initialValues: {
+    email: string
+    password: string
+  } = {
+    email: '',
+    password: '',
+  }
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('This is not a valid email.')
+      .required('This field is required!'),
+    password: Yup.string().required('This field is required!'),
+  })
+
+  const handleLogin = (formValue: { email: string; password: string }) => {
+    const { email, password } = formValue
+
+    setMessage('')
+    setLoading(true)
+
+    login(email, password).then(
+      () => {
+        navigate('/MyDocuments')
+        // window.location.reload()
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString()
+
+        setLoading(false)
+        setMessage(resMessage)
+      },
+    )
+  }
+
   return (
-    <main style={{ marginTop: "5em" }}>
+    <main style={{ marginTop: '5em' }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-3">
-            <form>
-              <h1 className="h3 mb-3 fw-normal text-center">เข้าสู่ระบบ</h1>
-              <div className="form-floating my-3">
-                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                <label htmlFor="floatingInput">Email </label>
-              </div>
-              <div className="form-floating my-3">
-                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-                <label htmlFor="floatingPassword">Password</label>
-              </div>
-              <button className="w-100 btn btn-lg btn-primary" type="submit">เข้าสู่ระบบ</button>
-            </form>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleLogin}
+            >
+              <Form>
+                <h1 className="h3 mb-3 fw-normal text-center form-group">
+                  เข้าสู่ระบบ
+                </h1>
+                <div className="form-floating my-3">
+                  <Field
+                    type="email"
+                    className="form-control"
+                    id="floatingInput"
+                    name="email"
+                    placeholder="name@example.com"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="alert alert-danger"
+                  />
+                  <label htmlFor="floatingInput">Email </label>
+                </div>
+
+                <div className="form-floating my-3">
+                  <Field
+                    name="password"
+                    type="password"
+                    className="form-control"
+                    id="floatingPassword"
+                    placeholder="Password"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="alert alert-danger"
+                  />
+                  <label htmlFor="floatingPassword">Password</label>
+                </div>
+                <button className="w-100 btn btn-lg btn-danger" type="submit">
+                  เข้าสู่ระบบ
+                </button>
+
+                {message && (
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                )}
+              </Form>
+            </Formik>
           </div>
         </div>
         <div className="row justify-content-center mt-3">
           <div className="col-3 text-center">
-            <Link className="text-dark" to="/Register">สมัครใช้บริการ</Link>
+            <Link className="text-dark" to="/Register">
+              สมัครใช้บริการ
+            </Link>
             <h5 className="mt-5">" ปุ่มถอนอยู่ใกล้เพียงแค่เอื้อมมือ "</h5>
           </div>
         </div>
       </div>
-    </main >
-  );
+    </main>
+  )
 }
 
-export default LoginPage;
+export default Login

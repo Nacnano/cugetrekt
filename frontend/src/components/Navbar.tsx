@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-sd fixed-top">
+      <nav className="shadowdrop navbar navbar-expand-lg bg-sd fixed-top">
         <div className="container">
-          <Link className="navbar-brand text-white" to="/">CU Get Rekt</Link>
+          <a className="navbar-brand text-white" href="/">CU Get Rekt</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-togglear-icon"></span>
@@ -25,12 +25,14 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown-menu bg-sd">
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Blog</Link></li>
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyDocuments">My documents</Link></li>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyInfo">My info</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li><Link className="dropdown-item text-white" to="/">สายด่วนสุขภาพจิต</Link></li>
+                  <li><Link className="bg-dark-on-hover dropdown-item text-white" to="/">สายด่วนสุขภาพจิต</Link></li>
                 </ul>
               </li>
             </ul>
