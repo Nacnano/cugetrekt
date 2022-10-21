@@ -97,7 +97,7 @@ body {
 }
 
 .ul-on-hover:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 .text-white {
@@ -255,4 +255,15 @@ body {
         transform: rotate(-45deg) translate(-20px, 20px);
         opacity: 0;
     }
+}
+
+.fadeIn {
+    opacity: 0;
+    transform: translate(0, 10vh);
+    transition: all 1s;
+}
+
+.fadeIn.visible {
+    opacity: 1;
+    transform: translate(0, 0);
 }
