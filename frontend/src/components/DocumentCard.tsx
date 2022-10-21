@@ -17,17 +17,20 @@ export default function DocCard(props: DocumentProps) {
 
   return (
     <Col>
-      <Card border="dark" style={{ width: "16rem" }}>
-        <Link to={`/${id}`}>
-          <Card.Img variant="top" src='./ChulaLogo.png' width='100' height='160' />
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            Opened {day} {month} {year}
-          </Card.Text>
-          <Button>Rename</Button>
-          <Button>Delete</Button>
-        </Link>
+      <Card className="shadowdrop-l border-0 rounded-0 p-3" >
+        <h4 className="card-title">{name}</h4>
+        <Card.Text className="text-muted">
+          แก้ไขล่าสุด: {day}/{month}/{year}
+        </Card.Text>
+        <div className="container">
+          <div className="row">
+            <div className="col d-flex align-text-center text-center">
+              <a className="btn btn-danger">แก้ไข</a>
+              <a className="btn ms-auto pe-0 del text-end">ลบเอกสาร</a>
+            </div>
+          </div>
+        </div>
       </Card>
-    </Col>
+    </Col >
   );
 }

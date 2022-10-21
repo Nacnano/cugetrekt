@@ -6,7 +6,6 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
 import Modal from "../components/Modal";
-import Backdrop from "../components/Backdrop";
 
 const MyDocumentsPage = () => {
   let arr = [
@@ -24,26 +23,18 @@ const MyDocumentsPage = () => {
     );
   });
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  function addDocument() {
-    setModalIsOpen(true);
-    console.log("Open");
-  }
-
-  function closeModal() {
-    setModalIsOpen(false);
-  }
-
   return (
     <div className="container" style={{ marginTop: "5em" }}>
+      <Modal />
       <h1 className="fw-bold">My Documents</h1>
+      <hr className="line" />
       <Row xs={1} md={2} lg={4} className="g-4">
         {docCards}
       </Row>
-      <Fab style={{ position: "fixed", bottom: 20, right: 20 }} color="primary" aria-labe="add" onClick={addDocument}>
+      <Fab className="bg-pm" data-bs-toggle="modal" data-bs-target="#docSelector" style={{ position: "fixed", bottom: 20, right: 20 }} color="primary" aria-label="add">
         <AddIcon />
       </Fab>
-      {modalIsOpen ? <Modal /> : null}
+
     </div>
   );
 }
