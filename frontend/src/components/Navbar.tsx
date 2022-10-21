@@ -25,7 +25,9 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown-menu bg-sd">
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Blog</Link></li>
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyDocuments">My documents</Link></li>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyInfo">My info</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

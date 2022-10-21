@@ -221,6 +221,13 @@ body {
     }
 }
 
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 .color-white {
     color: whitesmoke !important;
 }
