@@ -1,3 +1,8 @@
+# For deployment
+<ul>
+    <li>Change urls in frontend/service/auth.service.ts and user.service.ts</li>
+</ul>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
