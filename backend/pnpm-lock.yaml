@@ -21,6 +21,7 @@ specifiers:
   jest: 28.1.2
   mysql2: ^2.3.3
   prettier: ^2.3.2
+  prisma: ^4.5.0
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
   rxjs: ^7.2.0
@@ -62,6 +63,7 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_hvbqyfstm4urdpm6ffpwfka4e4
   jest: 28.1.2_fwey3z3jsgb2yijslavnjizbny
   prettier: 2.7.1
+  prisma: 4.5.0
   source-map-support: 0.5.21
   supertest: 6.3.0
   ts-jest: 28.0.5_bilcnjbzqxjas6i363fl2r3xmq
@@ -1033,6 +1035,11 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
+
+  /@prisma/engines/4.5.0:
+    resolution: {integrity: sha512-4t9ir2SbQQr/wMCNU4YpHWp5hU14J2m3wHUZnGJPpmBF8YtkisxyVyQsKd1e6FyLTaGq8LOLhm6VLYHKqKNm+g==}
+    requiresBuild: true
+    dev: true
 
   /@sinclair/typebox/0.24.47:
     resolution: {integrity: sha512-J4Xw0xYK4h7eC34MNOPQi6IkNxGRck6n4VJpWDzXIFVTW8I/D43Gf+NfWz/v/7NHlzWOPd3+T4PJ4OqklQ2u7A==}
@@ -4007,6 +4014,15 @@ packages:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
       react-is: 18.2.0
+    dev: true
+
+  /prisma/4.5.0:
+    resolution: {integrity: sha512-9Aeg4qiKlv9Wsjz4NO8k2CzRzlvS3A4FYVJ5+28sBBZ0eEwbiVOE/Jj7v6rZC1tFW2s4GSICQOAyuOjc6WsNew==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.5.0
     dev: true
 
   /process-nextick-args/2.0.1:
