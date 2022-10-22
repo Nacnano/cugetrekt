@@ -2,17 +2,9 @@ import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+import { DocumentDto } from '../types/dto';
 
-interface DocumentProps {
-  id: number,
-  name: string,
-  day: number,
-  month: number,
-  year: number,
-}
-
-export default function DocCard(props: DocumentProps) {
+export default function DocumentCard(props: DocumentDto) {
   const { id, name, day, month, year } = props;
 
   return (
