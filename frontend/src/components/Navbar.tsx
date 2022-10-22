@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth();
+
   return (
     <div>
       <nav className="shadowdrop navbar navbar-expand-lg bg-sd fixed-top">
@@ -39,13 +42,17 @@ const Navbar = () => {
             <div className="d-none d-lg-block">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li className="nav-item me-auto">
-                  <Link className="nav-link text-white" to="/Login"> <i className="fa-solid fa-user"></i>&nbsp; เข้าสู่ระบบ</Link>
+                  {!isLoggedIn ? (
+                    <Link className="nav-link text-white" to="/Login"> <i className="fa-solid fa-user"></i>&nbsp; เข้าสู่ระบบ</Link>
+                    ) : (
+                    <a className="nav-link text-white" onClick={logout}> <i className="fa-solid fa-user"></i>&nbsp; ออกจากระบบ</a>
+                  )}
                 </li>
               </ul>
             </div>
             <div className="d-grid gap-1 mb-auto d-block d-lg-none">
-              <Link className="btn btn-danger bg-pm nav-link text-white" to="/Login">
-                เข้าสู่ระบบ </Link>
+                <Link className="btn btn-danger bg-pm nav-link text-white" to="/Login">
+                  เข้าสู่ระบบ </Link>
             </div>
           </div>
         </div>

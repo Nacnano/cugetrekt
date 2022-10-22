@@ -4,14 +4,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './index.css';
 import MyRoutes from './routes/routes';
+import { Toaster } from 'react-hot-toast';
+import AuthProvider from './Providers/AuthProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <MyRoutes />
+    <AuthProvider>
+      <Toaster position="top-center" />
+      <MyRoutes />
+    </AuthProvider>
   </React.StrictMode>
 );
