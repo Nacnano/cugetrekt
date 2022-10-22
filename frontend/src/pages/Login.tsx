@@ -30,7 +30,7 @@ const Login: React.FC<Props> = () => {
     try {
       await login(email, password)
       toast.success('Log in successfully!')
-      navigate('/')
+      navigate('/MyDocuments')
     } catch (err) {
       if (err instanceof Error) {
         toast.error(err.message)
@@ -42,7 +42,7 @@ const Login: React.FC<Props> = () => {
     }
   }
 
-  if (isLoggedIn) return <Navigate to="/" />;
+  if (isLoggedIn) return <Navigate to="/MyDocuments" />;
   return (
     <main style={{ marginTop: '5em' }}>
       <div className="container">
