@@ -1,0 +1,17 @@
+.error {
+    padding: 16px 24px;
+    background-color: #ffc4c4;
+    color: #d2001a;
+    border-radius: 12px;
+    margin: 32px auto;
+    max-width: 600px;
+    font-size: 18px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .error {
+        font-size: 16px;
+        border-radius: 0px;
+    }
+}
