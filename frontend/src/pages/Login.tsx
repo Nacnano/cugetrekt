@@ -1,117 +1,84 @@
-import React, { useState } from 'react'
-import { NavigateFunction, useNavigate } from 'react-router-dom'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+import { FormEvent, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { Link } from 'react-router-dom'
-import { login } from '../services/auth.service'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Providers/AuthProvider';
 
 type Props = {}
 
 const Login: React.FC<Props> = () => {
-  let navigate: NavigateFunction = useNavigate()
+  const navigate = useNavigate()
+  const { isLoggedIn, login } = useAuth()
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const [isSubmitting, setSubmitting] = useState(false)
 
-  const [loading, setLoading] = useState<boolean>(false)
-  const [message, setMessage] = useState<string>('')
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (isSubmitting) return
+    setSubmitting(true)
 
-  const initialValues: {
-    email: string
-    password: string
-  } = {
-    email: '',
-    password: '',
+    const email = emailRef.current?.value
+    const password = passwordRef.current?.value
+
+    if (!email || !password) {
+      toast.error('Please enter email and password')
+      setSubmitting(false)
+      return
+    }
+
+    try {
+      await login(email, password)
+      toast.success('Log in successfully!')
+      navigate('/MyDocuments')
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error(err.message)
+        return
+      }
+      toast.error('Something went wrong')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('This is not a valid email.')
-      .required('This field is required!'),
-    password: Yup.string().required('This field is required!'),
-  })
-
-  const handleLogin = (formValue: { email: string; password: string }) => {
-    const { email, password } = formValue
-
-    setMessage('')
-    setLoading(true)
-
-    login(email, password).then(
-      () => {
-        navigate('/MyDocuments')
-        // window.location.reload()
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString()
-
-        setLoading(false)
-        setMessage(resMessage)
-      },
-    )
-  }
-
+  if (isLoggedIn) return <Navigate to="/MyDocuments" />;
   return (
     <main style={{ marginTop: '5em' }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-3">
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleLogin}
-            >
-              <Form>
+              <form onSubmit={handleSubmit}>
                 <h1 className="h3 mb-3 fw-normal text-center form-group">
                   เข้าสู่ระบบ
                 </h1>
                 <div className="form-floating my-3">
-                  <Field
+                  <input
                     type="email"
                     className="form-control"
                     id="floatingInput"
                     name="email"
                     placeholder="name@example.com"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="alert alert-danger"
+                    ref={emailRef}
                   />
                   <label htmlFor="floatingInput">Email </label>
                 </div>
 
                 <div className="form-floating my-3">
-                  <Field
+                  <input
                     name="password"
                     type="password"
                     className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="alert alert-danger"
+                    ref={passwordRef}
                   />
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
                 <button className="w-100 btn btn-lg btn-danger" type="submit">
                   เข้าสู่ระบบ
                 </button>
-
-                {message && (
-                  <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
-                      {message}
-                    </div>
-                  </div>
-                )}
-              </Form>
-            </Formik>
+              </form>
           </div>
         </div>
         <div className="row justify-content-center mt-3">
@@ -127,4 +94,4 @@ const Login: React.FC<Props> = () => {
   )
 }
 
-export default Login
+export default Login;

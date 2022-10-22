@@ -1,94 +1,78 @@
-import React, { useState } from 'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-
-import { Link } from 'react-router-dom'
-import IUser from '../types/user.type'
-import { register } from '../services/auth.service'
+import { FormEvent, useRef, useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import axios, { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
+import { useAuth } from '../Providers/AuthProvider';
+import { ErrorDto } from '../types/dto';
+import { API_BASE_URL } from '../env';
 
 const Register: React.FC = () => {
-  const [successful, setSuccessful] = useState<boolean>(false)
-  const [message, setMessage] = useState<string>('')
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfirmRef = useRef<HTMLInputElement>(null);
+  const [isSubmitting, setSubmitting] = useState(false);
 
-  const initialValues: IUser = {
-    email: '',
-    password: '',
-    conPassword: '',
-  }
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    setSubmitting(true);
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('This is not a valid email.')
-      .required('This field is required!'),
-    password: Yup.string()
-      .test(
-        'len',
-        'The password must be between 6 and 40 characters.',
-        (val: any) =>
-          val && val.toString().length >= 6 && val.toString().length <= 40,
-      )
-      .required('This field is required!'),
-    conPassword: Yup.string()
-      .test('passwords-match', 'Password must match.', function (val: any) {
-        return (
-          val && this.parent.password && val.toString() == this.parent.password
-        )
-      })
-      .required('This field is required!'),
-  })
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    const passwordConfirm = passwordConfirmRef.current?.value;
 
-  const handleRegister = (formValue: IUser) => {
-    const { email, password } = formValue
+    if (!email || !password || !passwordConfirm) {
+      toast.error('Please complete the form');
+      setSubmitting(false);
+      return;
+    }
 
-    register(email, password).then(
-      (response) => {
-        setMessage(response.data.message)
-        setSuccessful(true)
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString()
+    if (password !== passwordConfirm) {
+      toast.error('Passwords do not match');
+      setSubmitting(false);
+      return;
+    }
 
-        setMessage(resMessage)
-        setSuccessful(false)
-      },
-    )
-  }
+    try {
+      await axios.post(`${API_BASE_URL}/user`, {
+        email,
+        password,
+      });
+      toast.success('Account created!');
+      navigate('/login');
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        const { response } = err as AxiosError<ErrorDto>;
+        const message = response?.data.message;
+        toast.error(message || 'Something went wrong');
+        return;
+      }
+      toast.error('Something went wrong');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
+  if (isLoggedIn) return <Navigate to="/" />;
   return (
     <main style={{ marginTop: '5em' }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-3">
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleRegister}
-            >
-              <Form>
+              <form onSubmit={handleSubmit}>
                 <h1 className="h3 mb-3 fw-normal text-center">
                   สมัครใช้บริการ
                 </h1>
-
-                {!successful && (
-                  <>
-                    {/* Email Form */}
                     <div className="form-floating my-3 form-group">
-                      <Field
+                      <input
                         type="email"
                         className="form-control"
-                        id="floatingInput"
-                        name="email"
+                        id="email"
                         placeholder="name@example.com"
-                      />
-                      <ErrorMessage
-                        name="email"
-                        component="div"
-                        className="alert alert-danger"
+                        ref={emailRef}
                       />
                       {/* Label must be below Field and Error Message */}
                       <label htmlFor="email">Email </label>
@@ -96,61 +80,35 @@ const Register: React.FC = () => {
 
                     {/* Password Form */}
                     <div className="form-floating my-3 form-group">
-                      <Field
+                      <input
                         type="password"
                         className="form-control"
-                        name="password"
                         placeholder="password"
                         id="password"
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component="div"
-                        className="alert alert-danger"
+                        ref={passwordRef}
                       />
                       <label htmlFor="password">Password</label>
                     </div>
 
                     {/* Confirmation Password Form */}
                     <div className="form-floating my-3 form-group">
-                      <Field
+                      <input
                         type="password"
                         className="form-control"
                         id="conPassword"
                         placeholder="password"
-                        name="conPassword"
-                      />
-                      <ErrorMessage
-                        name="conPassword"
-                        component="div"
-                        className="alert alert-danger"
+                        ref={passwordConfirmRef}
                       />
                       <label htmlFor="conPassword">Confirm Password</label>
                     </div>
                     <button
                       className="w-100 btn btn-lg btn-danger"
                       type="submit"
+                      disabled={isSubmitting}
                     >
                       สมัครใช้บริการ
                     </button>
-                  </>
-                )}
-                {message && (
-                  <div className="form-group">
-                    <div
-                      className={
-                        successful
-                          ? 'alert alert-success'
-                          : 'alert alert-danger'
-                      }
-                      role="alert"
-                    >
-                      {message}
-                    </div>
-                  </div>
-                )}
-              </Form>
-            </Formik>
+              </form>
           </div>
         </div>
         <div className="row justify-content-center mt-3">
@@ -166,4 +124,4 @@ const Register: React.FC = () => {
   )
 }
 
-export default Register
+export default Register;
