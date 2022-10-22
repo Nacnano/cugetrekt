@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 
 import { CredentialDto, ErrorDto } from '../types/dto';
 import { API_BASE_URL } from '../env';
+import { FORDEV } from '../env'
 
 interface IAuthContext {
   isLoggedIn: boolean;
@@ -36,14 +37,16 @@ const AuthProvider = (props: AuthProviderProps) => {
   const [email, setEmail] = useState(localEmail);
 
   const login = async (email: string, password: string) => {
-    email = email.trim().toLowerCase();
+    email = email.trim();
 
-    // For dev
-    localStorage.setItem('token', "abc");
-    localStorage.setItem('email', email);
-    setEmail("abc@email.com");
-    setLoggedIn(true);
-
+    // For dev must remove for deployment
+    if (FORDEV) {
+      localStorage.setItem('token', "abc");
+      localStorage.setItem('email', email);
+      setEmail("abc@email.com");
+      setLoggedIn(true);
+    }
+    
     // try {
     //   const res = await axios.post<CredentialDto>(
     //     `${API_BASE_URL}/auth/login`,

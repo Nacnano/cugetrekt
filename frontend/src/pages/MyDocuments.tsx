@@ -1,6 +1,7 @@
 import React from "react";
-import DocumentCard from "../components/DocumentCard";
+import { useAuth } from "../Providers/AuthProvider";
 
+import DocumentCard from "../components/DocumentCard";
 import Row from 'react-bootstrap/Row';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
