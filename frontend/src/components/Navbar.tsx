@@ -62,10 +62,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-            <div className="d-grid gap-1 mb-auto d-block d-lg-none">
-              <Link className="btn btn-danger bg-pm nav-link text-white" to="/Login">
-                เข้าสู่ระบบ </Link>
-            </div>
           </div >
         </div >
       </nav >

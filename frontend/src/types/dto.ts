@@ -14,10 +14,13 @@
 
 export interface DocumentDto {
   id: number,
+  docType: number,
   name: string,
   day: number,
   month: number,
   year: number,
+  subject_1: string,
+  subject_2: string
 }
 
 
