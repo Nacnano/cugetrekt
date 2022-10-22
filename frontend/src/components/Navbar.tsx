@@ -29,35 +29,47 @@ const Navbar = () => {
                 <ul className="dropdown-menu bg-sd">
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Blog</Link></li>
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyDocuments">My documents</Link></li>
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyInfo">My info</Link>
-                  </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li><Link className="bg-dark-on-hover dropdown-item text-white" to="/">สายด่วนสุขภาพจิต</Link></li>
                 </ul>
-              </li>
-            </ul>
+              </li >
+            </ul >
             <div className="d-none d-lg-block">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li className="nav-item me-auto">
                   {!isLoggedIn ? (
-                    <Link className="nav-link text-white" to="/Login"> <i className="fa-solid fa-user"></i>&nbsp; เข้าสู่ระบบ</Link>
-                    ) : (
-                    <a className="nav-link text-white" onClick={logout}> <i className="fa-solid fa-user"></i>&nbsp; ออกจากระบบ</a>
+                    <Link className="nav-link text-white" to="/Login"> <i className="fa-solid fa-user me-2"></i>เข้าสู่ระบบ</Link>
+                  ) : (
+                    <li className="nav-item text-white dropdown">
+                      <Link className="nav-link dropdown-toggle text-white" to="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i className="fa-solid fa-user me-2"></i>โปรไฟล์
+                      </Link>
+                      <ul className="dropdown-menu dropdown-menu-end bg-sd">
+                        <div>
+                          <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyDocuments"><i className="fa-solid fa-file me-2"></i>เอกสาร</Link></li>
+                          <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/MyInfo"><i className="fa-solid fa-circle-info me-2"></i>ข้อมูลส่วนตัว</Link></li>
+                        </div>
+                        <li>
+                          <hr className="dropdown-divider" />
+                        </li>
+                        <li className="py-1"><a href="/" className="color-pm bg-dark-on-hover dropdown-item pointer-on-hover" onClick={logout}><i className="fa-solid fa-right-from-bracket me-2"></i>ออกจากระบบ</a></li>
+                      </ul>
+                    </li >
                   )}
                 </li>
               </ul>
             </div>
             <div className="d-grid gap-1 mb-auto d-block d-lg-none">
-                <Link className="btn btn-danger bg-pm nav-link text-white" to="/Login">
-                  เข้าสู่ระบบ </Link>
+              <Link className="btn btn-danger bg-pm nav-link text-white" to="/Login">
+                เข้าสู่ระบบ </Link>
             </div>
-          </div>
-        </div>
-      </nav>
-    </div>
+          </div >
+        </div >
+      </nav >
+    </div >
   );
 }
 
