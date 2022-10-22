@@ -13,10 +13,10 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link text-white" aria-current="page" to="#">ถอน</Link>
+                <Link className="nav-link text-white" aria-current="page" to="/Withdrawal">ถอน</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="#">ลาออก</Link>
+                <Link className="nav-link text-white" to="/Resignation">ลาออก</Link>
               </li>
               <li className="nav-item text-white dropdown">
                 <Link className="nav-link dropdown-toggle text-white" to="#" role="button" data-bs-toggle="dropdown"
