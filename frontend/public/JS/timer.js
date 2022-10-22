@@ -20,11 +20,13 @@ var x = setInterval(function () {
         seconds = '0' + seconds;
     }
 
-    document.getElementById("timer1").innerHTML = days + " วัน " + hours + " ชั่วโมง"
-    document.getElementById("timer2").innerHTML = minutes + " นาที " + seconds + " วินาที ";
-
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("timer").innerHTML = "EXPIRED";
+        document.getElementById("timer1").innerHTML = "EXPIRED";
     }
+    else {
+        document.getElementById("timer1").innerHTML = days + " วัน " + hours + " ชั่วโมง"
+        document.getElementById("timer2").innerHTML = minutes + " นาที " + seconds + " วินาที ";
+    }
+
 }, 1000);

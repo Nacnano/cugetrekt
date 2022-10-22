@@ -12,36 +12,38 @@ export default function Modal() {
             <div className="modal-body">
               <div className="row">
                 <div className="col">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="row d-flex flex-wrap align-items-center">
-                        <div className="col-3">
-                          <img height={100} src="/down.png" alt="..." />
-                        </div>
-                        <div className="col">
-                          <h3 className="card-title fw-bold">ใบถอน</h3>
-                          <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ทำคะแนนได้ไม่ดี แล้วคิดว่าจะลงใหม่ในเทอมถัดไปเพื่อแก้ไขคะแนนให้ดีขึ้น</p>
-                          <a href="#" className="btn btn-primary">สร้างใบถอน</a>
+                  <a href="#" className="text-decoration-none text-dark" >
+                    <div className="card btn-to-sd" style={{ borderColor: "var(--sd)", borderWidth: 2 }}>
+                      <div className="card-body">
+                        <div className="row d-flex flex-wrap align-items-center">
+                          <div className="col-3 text-center">
+                            <i className="display-1 fa-regular fa-circle-down"></i>
+                          </div>
+                          <div className="col">
+                            <h1 className="card-title fw-bold">ใบถอน</h1>
+                            <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ทำคะแนนได้ไม่ดี แล้วคิดว่าจะลงใหม่ในเทอมถัดไปเพื่อแก้ไขคะแนนให้ดีขึ้น</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div className="col">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="row d-flex flex-wrap align-items-center">
-                        <div className="col-3  text-center">
-                          <img height={90} src="/exit.png" alt="..." />
-                        </div>
-                        <div className="col">
-                          <h3 className="card-title fw-bold">ลาออก</h3>
-                          <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ต้องการจะลาออก เพื่อซิ่ว หรือต้องการเริ่มต้นชีวิตมหาวิทยาลัยใหม่อีกครั้ง</p>
-                          <a href="#" className="btn btn-danger">สร้างใบลาออก</a>
+                  <a href="#" className="text-decoration-none text-dark" >
+                    <div className="card btn-to-pm" style={{ borderColor: "var(--pm)", borderWidth: 2 }}>
+                      <div className="card-body">
+                        <div className="row d-flex flex-wrap align-items-center">
+                          <div className="col-3  text-center">
+                            <i className="display-1 fa-solid fa-person-running"></i>
+                          </div>
+                          <div className="col">
+                            <h1 className="card-title fw-bold">ลาออก</h1>
+                            <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ต้องการจะลาออก เพื่อซิ่ว หรือต้องการเริ่มต้นชีวิตมหาวิทยาลัยใหม่อีกครั้ง</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
