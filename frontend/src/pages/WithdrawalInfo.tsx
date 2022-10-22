@@ -259,9 +259,11 @@ const WithdrawInfoPage = () => {
               </Form.Group>
             </Row>
           </Container>
-          <Button className="mb-3" type="submit">
-            Download PDF
-          </Button>
+          <div className="d-flex justify-content-end mb-3">
+            <Button type="submit" size="lg">
+              Download PDF
+            </Button>
+          </div>
         </Form>
       </Container>
     </main>
