@@ -10,9 +10,9 @@ datasource db {
 model User {
   id          Int      @id @default(autoincrement())
   studentId   String   @unique
+  title       String
   firstName   String  
-  sirName     String   
-  meeFan      Boolean  @default(false)
+  sirName     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
