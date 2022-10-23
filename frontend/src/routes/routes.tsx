@@ -19,6 +19,10 @@ const MyRoutes = () => {
           <Route path="Login" element={<LoginPage />} />
           <Route path="Register" element={<RegisterPage />} />
           <Route path="Withdrawal" element={<WithdrawInfoPage />} />
+          <Route
+            path="mydocuments/Withdrawal/:id"
+            element={<WithdrawInfoPage />}
+          />
           <Route path="Resignation" element={<ResignationInfoPage />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
