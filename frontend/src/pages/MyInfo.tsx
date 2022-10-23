@@ -1,32 +1,50 @@
-import { useForm } from 'react-hook-form'
-import DropdownList from 'react-widgets/DropdownList'
 import 'react-widgets/styles.css'
 import Form from 'react-bootstrap/Form'
 import { Button, FormControl } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import React, { useState } from 'react'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
+
+import { FormEvent, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { useAuth } from '../Providers/AuthProvider'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
-import useDocumentList from '../hooks/useDocumentList'
+import useInfo from '../hooks/useInfo'
+
+import { sendInfo } from '../Providers/DataProvider'
 
 const MyInfoPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
-  const onSubmit = (data: any) => console.log(data)
-  console.log(errors)
-
   const { isLoggedIn } = useAuth()
-  const { loading, error, documents } = useDocumentList()
+  const { loading, error, info } = useInfo()
+  const { name, surname } = info
+  const nameRef = useRef<HTMLInputElement>(null)
+  const surnameRef = useRef<HTMLInputElement>(null)
+  const [isSubmitting, setSubmitting] = useState(false)
+  // let name = "tonton"
+  // let surname = "gaingain"
 
-    return (
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (isSubmitting) return
+    setSubmitting(true)
+
+    const name = nameRef.current?.value
+    const surname = surnameRef.current?.value
+
+    try {
+      await sendInfo({name, surname})
+      toast.success('Save Succesfully!')
+    } catch (err) {
+      toast.error('Something went wrong')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
     <main style={{ marginTop: '5em' }}>
       {!isLoggedIn ? (
         <Error message="Please Login First" />
@@ -36,7 +54,7 @@ const MyInfoPage = () => {
         <Error />
       ) : (
         <Container>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit}>
             <h1 className="d-flex justify-content-center mb-3 ">
               ข้อมูลส่วนตัว
             </h1>
@@ -54,15 +72,19 @@ const MyInfoPage = () => {
                 </Col>
                 <Col>
                   <Form.Group className="mb-3" controlId="formName">
-                    <FloatingLabel label="ชื่อ" className="mb-3">
-                      <Form.Control placeholder="ชื่อ" />
+                    <FloatingLabel label="ชื่อ" className="mb-3" >
+                      <Form.Control placeholder="ชื่อ" defaultValue={name} ref={nameRef}/>
                     </FloatingLabel>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group className="mb-3" controlId="formName">
-                    <FloatingLabel label="นามสกุล" className="mb-3">
-                      <Form.Control placeholder="นามสกุล" />
+                    <FloatingLabel label="นามสกุล" className="mb-3" >
+                      <Form.Control
+                        placeholder="นามสกุล"
+                        defaultValue={surname}
+                        ref={surnameRef}
+                      />
                     </FloatingLabel>
                   </Form.Group>
                 </Col>
