@@ -90,7 +90,7 @@ const MyDocumentsPage = () => {
           <h1 className="display-5 fw-bold">เอกสารของฉัน</h1>
           <br />
           <Row xs={1} md={2} lg={5} className="g-4 px-auto mx-auto">
-            <Col className="d-flex px-4">
+            <Col className="d-flex px-4" style={{ height: 250 }}>
               <Card className="w-100 shadowdrop-l border-0 rounded-0 p-3 d-flex">
                 <a
                   className="pointer-on-hover w-100 text-decoration-none text-dark justify-content-center "
@@ -116,8 +116,9 @@ const MyDocumentsPage = () => {
             </>
           </Row>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }
 
