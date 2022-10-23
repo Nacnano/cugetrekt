@@ -2,32 +2,46 @@ import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+import { DocumentDto } from '../types/dto';
 
-interface DocumentProps {
-  id: number,
-  name: string,
-  day: number,
-  month: number,
-  year: number,
-}
+export default function DocumentCard(props: DocumentDto) {
+  const { id, docType, name, day, month, year, subject_1, subject_2 } = props;
 
-export default function DocCard(props: DocumentProps) {
-  const { id, name, day, month, year } = props;
+  function checkType() {
+    if (docType === 0) {
+      return "ใบถอน";
+    }
+    else if (docType === 1) {
+      return "ใบลาออก";
+    }
+    else {
+      return "เกิดข้อผิดพลาด"
+    }
+  }
 
   return (
-    <Col>
-      <Card border="dark" style={{ width: "16rem" }}>
-        <Link to={`/${id}`}>
-          <Card.Img variant="top" src='./ChulaLogo.png' width='100' height='160' />
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            Opened {day} {month} {year}
-          </Card.Text>
-          <Button>Rename</Button>
-          <Button>Delete</Button>
-        </Link>
+    <Col className="px-4">
+      <Card className="shadowdrop-l border-0 rounded-0 p-3" >
+        <h4 className="card-title fw-bold">{name}</h4>
+        <Card.Text className="text-muted mb-1">
+          <p className="text-truncate">
+            ประเภท : {checkType()}<br />
+            วิชาแรก: {subject_1}<br />
+            วิชาที่สอง : {subject_2}
+          </p>
+          <p style={{ fontSize: 13, marginBottom: 0 }}>
+            แก้ไขล่าสุด: {day}/{month}/{year}<br />
+          </p>
+        </Card.Text>
+        <div className="container">
+          <div className="row">
+            <div className="col px-0 d-flex align-text-center text-center">
+              <a className="btn btn-danger">แก้ไข</a>
+              <a className="btn ms-auto pe-0 del text-end">ลบเอกสาร</a>
+            </div>
+          </div>
+        </div>
       </Card>
-    </Col>
+    </Col >
   );
 }

@@ -1,50 +1,33 @@
-import React from "react";
-import DocumentCard from "../components/DocumentCard";
-
 import Row from 'react-bootstrap/Row';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col'
 
 import Modal from "../components/Modal";
-import Backdrop from "../components/Backdrop";
+import DocumentList from "../components/DocumentList";
 
 const MyDocumentsPage = () => {
-  let arr = [
-    { "id": 1, "name": "Withdraw01", "day": 20, "month": 10, "year": 2022 },
-    { "id": 2, "name": "Resign01", "day": 2, "month": 10, "year": 2022 },
-    { "id": 3, "name": "WithWithEz", "day": 1, "month": 8, "year": 2022 },
-    { "id": 4, "name": "JustGetOut", "day": 20, "month": 10, "year": 1980 },
-    { "id": 5, "name": "ByeBye", "day": 20, "month": 10, "year": 1999 },
-  ];
-
-  let docCards = null;
-  docCards = arr.map((a, key) => {
-    return (
-      <DocumentCard id={a.id} name={a.name} day={a.day} month={a.month} year={a.year} />
-    );
-  });
-
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  function addDocument() {
-    setModalIsOpen(true);
-    console.log("Open");
-  }
-
-  function closeModal() {
-    setModalIsOpen(false);
-  }
-
   return (
-    <>
-      <h1>My Documents!</h1>
-      <Row xs={1} md={2} lg={4} className="g-4">
-        {docCards}
+    <div className="container" style={{ marginTop: "5em" }}>
+      <Modal />
+      <h1 className="display-5 fw-bold">เอกสารของฉัน</h1>
+      <br />
+      <Row xs={1} md={2} lg={5} className="g-4 px-auto mx-auto">
+        <Col className="d-flex px-4">
+          <Card className="w-100 shadowdrop-l border-0 rounded-0 p-3 d-flex">
+            <a className="w-100 text-decoration-none text-dark justify-content-center " aria-label="add" data-bs-toggle="modal" data-bs-target="#docSelector" href="">
+              <h4 className="card-title text-center fw-bold mb-3">สร้างเอกสาร</h4>
+              <Card.Text className="mb-1 d-flex h-100 justify-content-center align-items-center text-center">
+                <i className="fa-solid fa-plus fw-light" style={{ fontSize: 69, width: "30%" }}></i>
+              </Card.Text>
+            </a>
+          </Card>
+        </Col >
+        <DocumentList />
       </Row>
-      <Fab color="primary" aria-labe="add" onClick={addDocument}>
-        <AddIcon />
-      </Fab>
-      {modalIsOpen ? <Modal /> : null}
-    </>
+
+    </div>
   );
 }
 
