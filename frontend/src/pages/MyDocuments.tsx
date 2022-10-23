@@ -1,11 +1,9 @@
+import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
-import Fab from '@mui/material/Fab'
-import AddIcon from '@mui/icons-material/Add'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
-
-import Modal from '../components/Modal'
-
+import { Modal } from 'react-bootstrap'
+import { useState } from 'react';
 import { useAuth } from '../Providers/AuthProvider'
 import useDocumentList from '../hooks/useDocumentList'
 import DocumentCard from '../components/DocumentCard'
@@ -13,6 +11,9 @@ import Loading from '../components/Loading'
 import Error from '../components/Error'
 
 const MyDocumentsPage = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { isLoggedIn } = useAuth()
   // const { loading, error, documents } = useDocumentList()
   let { loading, error, documents } = useDocumentList()
@@ -31,6 +32,7 @@ const MyDocumentsPage = () => {
 
   return (
     <div className="container" style={{ marginTop: '5em' }}>
+      <script src="https://kit.fontawesome.com/cf824f24b5.js" crossOrigin="anonymous"></script>
       {!isLoggedIn ? (
         <Error message="Please Login First" />
       ) : loading ? (
@@ -39,18 +41,61 @@ const MyDocumentsPage = () => {
         <Error />
       ) : (
         <>
-          <Modal />
+          <Modal className="fade modal-xl" id="docSelector" show={show} centered>
+            <div className="modal-content">
+              <Modal.Header className="mb-3">
+                <button type="button" className="btn-close" onClick={handleClose}></button>
+              </Modal.Header>
+              <h1 className="text-center">เลือกเอกสารที่ต้องการกรอก</h1>
+              <div className="modal-body">
+                <div className="row">
+                  <div className="col">
+                    <Link to="/Withdrawal" className="text-decoration-none text-dark" onClick={handleClose}>
+                      <div className="card btn-to-sd" style={{ borderColor: "var(--sd)", borderWidth: 2 }}>
+                        <div className="card-body">
+                          <div className="row d-flex flex-wrap align-items-center">
+                            <div className="col-3 text-center">
+                              <i className="display-1 fa-regular fa-circle-down"></i>
+                            </div>
+                            <div className="col">
+                              <h1 className="card-title fw-bold">ใบถอน</h1>
+                              <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ทำคะแนนได้ไม่ดี แล้วคิดว่าจะลงใหม่ในเทอมถัดไปเพื่อแก้ไขคะแนนให้ดีขึ้น</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="col">
+                    <Link to="/Resignation" className="text-decoration-none text-dark" onClick={handleClose} >
+                      <div className="card btn-to-pm" style={{ borderColor: "var(--pm)", borderWidth: 2 }}>
+                        <div className="card-body">
+                          <div className="row d-flex flex-wrap align-items-center">
+                            <div className="col-3  text-center">
+                              <i className="display-1 fa-solid fa-person-running"></i>
+                            </div>
+                            <div className="col">
+                              <h1 className="card-title fw-bold">ลาออก</h1>
+                              <p className="card-text" style={{ fontSize: 18 }}>เหมาะสำหรับนิสิตที่ต้องการจะลาออก เพื่อซิ่ว หรือต้องการเริ่มต้นชีวิตมหาวิทยาลัยใหม่อีกครั้ง</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal >
           <h1 className="display-5 fw-bold">เอกสารของฉัน</h1>
           <br />
           <Row xs={1} md={2} lg={5} className="g-4 px-auto mx-auto">
             <Col className="d-flex px-4">
               <Card className="w-100 shadowdrop-l border-0 rounded-0 p-3 d-flex">
                 <a
-                  className="w-100 text-decoration-none text-dark justify-content-center "
+                  className="pointer-on-hover w-100 text-decoration-none text-dark justify-content-center "
                   aria-label="add"
-                  data-bs-toggle="modal"
-                  data-bs-target="#docSelector"
-                  href=""
+                  onClick={handleShow}
                 >
                   <h4 className="card-title text-center fw-bold mb-3">
                     สร้างเอกสาร
