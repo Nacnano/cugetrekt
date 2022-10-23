@@ -18,13 +18,20 @@ import { sendInfo } from '../Providers/DataProvider'
 
 const MyInfoPage = () => {
   const { isLoggedIn } = useAuth()
-  const { loading, error, info } = useInfo()
-  const { name, surname } = info
   const nameRef = useRef<HTMLInputElement>(null)
   const surnameRef = useRef<HTMLInputElement>(null)
   const [isSubmitting, setSubmitting] = useState(false)
-  // let name = "tonton"
-  // let surname = "gaingain"
+
+  // const { loading, error, info } = useInfo()
+  // const { name, surname } = info
+  
+  // FORDEV
+  let { loading, error, info } = useInfo()
+  loading = false
+  error = false
+  let { name, surname } = info
+  name = "tonton"
+  surname = "gaingain"
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
