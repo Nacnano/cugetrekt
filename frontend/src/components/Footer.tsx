@@ -7,11 +7,11 @@ const Footer = () => {
         <footer className="py-3 mt-4">
           <h3 className="text-center">Cu Get Rekt</h3>
           <ul className="nav justify-content-center pb-3 border-top">
-            <li className="nav-item"><a href="#" className="text-white nav-link px-2">Home</a></li>
-            <li className="nav-item"><a href="#" className="text-white nav-link px-2">Features</a></li>
-            <li className="nav-item"><a href="#" className="text-white nav-link px-2">Pricing</a></li>
-            <li className="nav-item"><a href="#" className="text-white nav-link px-2">FAQs</a></li>
-            <li className="nav-item"><a href="#" className="text-white nav-link px-2">About</a></li>
+            <li className="nav-item"><a href="/" className="text-white nav-link px-2">หน้าแรก</a></li>
+            <li className="nav-item"><Link to="/Withdrawal" className="text-white nav-link px-2">ถอน</Link></li>
+            <li className="nav-item"><Link to="/Resignation" className="text-white nav-link px-2">ลาออก</Link></li>
+            <li className="nav-item"><Link to="#" className="text-white nav-link px-2">สถิติคาดเดาคะแนน</Link></li>
+            <li className="nav-item"><Link to="#" className="text-white nav-link px-2">รีวิว</Link></li>
           </ul>
         </footer>
       </div>

@@ -55,6 +55,7 @@ const AuthProvider = (props: AuthProviderProps) => {
     //       password,
     //     }
     //   );
+
     //   localStorage.setItem('token', res.data.accessToken);
     //   localStorage.setItem('email', email);
     //   setEmail(email);

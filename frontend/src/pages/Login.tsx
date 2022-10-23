@@ -75,7 +75,7 @@ const Login: React.FC<Props> = () => {
                   />
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
-                <button className="w-100 btn btn-lg btn-danger" type="submit">
+                <button className="w-100 btn btn-lg btn-danger" type="submit" disabled={isSubmitting}>
                   เข้าสู่ระบบ
                 </button>
               </form>

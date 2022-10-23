@@ -6,7 +6,7 @@ const HomePage = () => {
       <main>
         <div id="loader" className="loader-wrapper fixed-top" style={{ zIndex: 2000 }}>
           <h1 className="display-5 text-white text-center d-none d-lg-block">วันนี้...
-            คุณได้เตรียมตัวถอนหรือยัง&nbsp;</h1>
+            คุณได้เตรียมตัวถอนหรือยัง&nbsp;&nbsp;</h1>
           <span className="loader"><span className="loader-inner"></span></span>
         </div>
         <div id="landing" className="container text-dark">

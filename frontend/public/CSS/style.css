@@ -33,6 +33,10 @@
     box-sizing: border-box;
 }
 
+.pointer-on-hover:hover {
+    cursor: pointer;
+}
+
 @-webkit-keyframes scrollDown {
     0% {
         -webkit-transform: rotate(-45deg) translate(0, 0);
@@ -106,12 +110,16 @@ body {
     background-color: #151623 !important;
 }
 
+.card a p:hover {
+    animation: rgb 5.0s infinite ease;
+}
+
 .sTopic {
     scroll-margin-top: 48px;
 }
 
 .shadowdrop {
-    box-shadow: 0 3px 10px 0 #000000;
+    box-shadow: 0 3px 10px 0 #1a1d20;
 }
 
 .shadowdrop-l {
@@ -175,6 +183,40 @@ body {
     width: 100%;
     background-color: #fff;
     animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes rgb {
+    0% {
+        color: red;
+    }
+
+    14% {
+        color: purple;
+    }
+
+    28% {
+        color: navy;
+    }
+
+    43% {
+        color: rgb(2, 174, 174);
+    }
+
+    57% {
+        color: green;
+    }
+
+    71% {
+        color: rgb(190, 190, 0);
+    }
+
+    86% {
+        color: orange;
+    }
+
+    100% {
+        color: red;
+    }
 }
 
 @keyframes loader {
@@ -309,4 +351,16 @@ body {
 .fadeIn.visible {
     opacity: 1;
     transform: translate(0, 0);
+}
+
+.btn-to-sd:hover {
+    background: var(--sd);
+    color: white;
+    transition: 0.2s ease-in-out;
+}
+
+.btn-to-pm:hover {
+    background: var(--pm);
+    color: white;
+    transition: 0.2s ease-in-out;
 }
