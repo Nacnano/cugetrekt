@@ -22,7 +22,19 @@ const MyInfoPage = () => {
     <main style={{ marginTop: "5em" }}>
       <Container>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="d-flex justify-content-center mb-3 ">ข้อมูลส่วนตัว</h1>
+          <Row className="d-flex justify-content-start">
+            <Col>
+              <Button size="lg">
+                {/* // add type later */}
+                Back
+              </Button>
+
+              <h1 className="d-flex justify-content-center mb-3 ">
+                ข้อมูลส่วนตัว
+              </h1>
+            </Col>
+          </Row>
+
           <Container>
             <Row className="mb-2">
               <Col xs={2}>
@@ -67,22 +79,24 @@ const MyInfoPage = () => {
               </Col>
               <Col>
                 <FloatingLabel label="คณะ">
-                  <Form.Select>
+                  <FormControl placeholder="คณะ" type="text" />
+                  {/* <Form.Select>
                     <option value="">กรุณาเลือกคณะที่กำลังศึกษา</option>
                     <option value="1">วิศวกรรมศาสตร์</option>
                     <option value="2">วิทยา</option>
                     <option value="3">ฟสกด่่ืเฟหด่ิยวฟ</option>
-                  </Form.Select>
+                  </Form.Select> */}
                 </FloatingLabel>
               </Col>
               <Col>
                 <FloatingLabel label="สาขา">
-                  <Form.Select>
+                  <FormControl placeholder="สาขา" type="text" />
+                  {/* <Form.Select>
                     <option>กรุณาเลือกสาขาที่กำลังศึกษา</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                  </Form.Select>
+                  </Form.Select> */}
                 </FloatingLabel>
               </Col>
             </Row>
