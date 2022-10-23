@@ -6,5 +6,5 @@ $(window).on('load', function () {
             left: 0,
             behavior: 'instant',
         });
-    }, 2000);
+    }, 1000);
 });
