@@ -10,7 +10,7 @@ const Footer = () => {
             <li className="nav-item"><a href="/" className="text-white nav-link px-2">หน้าแรก</a></li>
             <li className="nav-item"><Link to="/Withdrawal" className="text-white nav-link px-2">ถอน</Link></li>
             <li className="nav-item"><Link to="/Resignation" className="text-white nav-link px-2">ลาออก</Link></li>
-            <li className="nav-item"><Link to="#" className="text-white nav-link px-2">สถิติคาดเดาคะแนน</Link></li>
+            <li className="nav-item"><Link to="/ScorePrediction" className="text-white nav-link px-2">ทำนายคะแนน</Link></li>
             <li className="nav-item"><Link to="#" className="text-white nav-link px-2">รีวิว</Link></li>
           </ul>
         </footer>

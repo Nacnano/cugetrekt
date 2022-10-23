@@ -1,6 +1,6 @@
 :root {
     --pm: #e20d0d;
-    --sd: #2a2d48;
+    --sd: #2a2c47;
 }
 
 @font-face {
@@ -33,6 +33,10 @@
     box-sizing: border-box;
 }
 
+.border-score {
+    border-right: 4px solid var(--sd);
+}
+
 .pointer-on-hover:hover {
     cursor: pointer;
 }
@@ -51,6 +55,22 @@
         -webkit-transform: rotate(-45deg) translate(-20px, 20px);
         opacity: 0;
     }
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.bg-gray {
+    background-color: rgb(234, 234, 234);
+}
+
+.bg-lgreen {
+    background-color: rgb(114, 199, 48);
+}
+
+.rounded-4 {
+    border-radius: 20px;
 }
 
 @keyframes scrollDown {
@@ -110,8 +130,9 @@ body {
     background-color: #151623 !important;
 }
 
-.card a p:hover {
-    animation: rgb 5.0s infinite ease;
+.card a:hover>p,
+.card a:hover>h4 {
+    animation: rgb 5.0s infinite ease !important;
 }
 
 .sTopic {
