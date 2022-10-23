@@ -11,7 +11,7 @@ const HomePage = () => {
         </div>
         <div id="landing" className="container text-dark">
           <div className="row min-vh-100 align-items-center">
-            <div className="col">
+            <div className="col-6">
               <p className="display-3" style={{ fontWeight: "bold" }}>วันนี้...<br />คุณได้เตรียมตัวถอนหรือยัง</p>
               <p className="display-1 color-pm" id="timer1"></p>
               <p className="display-5 color-pm" id="timer2"></p>
@@ -22,6 +22,9 @@ const HomePage = () => {
               <a href="#section1"
                 className="text-dark text-decoration-none ul-on-hover px-4 fs-5 text-dark muted">ไม่มั่นใจ?</a>
               <a className="text-dark text-center" href="#section1"><span></span></a>
+            </div>
+            <div className="col-6 ms-auto">
+              <img className="float-end overflow-visible" src="./GetRekt.png" style={{ height: 550, opacity: "100%" }}></img>
             </div>
           </div>
         </div>
