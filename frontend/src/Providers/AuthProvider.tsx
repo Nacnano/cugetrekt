@@ -39,9 +39,6 @@ const AuthProvider = (props: AuthProviderProps) => {
   const login = async (email: string, password: string) => {
     email = email.trim();
 
-    console.log(email)
-    console.log(password)
-
     // For dev must remove for deployment
     // if (FORDEV) {
     //   localStorage.setItem('token', "abc");
@@ -59,8 +56,6 @@ const AuthProvider = (props: AuthProviderProps) => {
         }
       );
 
-      console.log(res.data);
-      
       localStorage.setItem('token', res.data.accessToken);
       localStorage.setItem('email', email);
       setEmail(email);
