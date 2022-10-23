@@ -16,6 +16,8 @@ const MyDocumentsPage = () => {
   const { isLoggedIn } = useAuth()
   // const { loading, error, documents } = useDocumentList()
   let { loading, error, documents } = useDocumentList()
+  loading = false
+  error = false
 
   documents = [
     { "id": 1, "docType": 0, "name": "Withdraw01", "day": 20, "month": 10, "year": 2022, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
