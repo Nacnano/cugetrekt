@@ -40,34 +40,34 @@ const AuthProvider = (props: AuthProviderProps) => {
     email = email.trim();
 
     // For dev must remove for deployment
-    // if (FORDEV) {
-    //   localStorage.setItem('token', "abc");
-    //   localStorage.setItem('email', email);
-    //   setEmail("abc@email.com");
-    //   setLoggedIn(true);
-    // }
-    
-    try {
-      const res = await axios.post<CredentialDto>(
-        `${API_BASE_URL}/auth/login`,
-        {
-          email,
-          password,
-        }
-      );
-
-      localStorage.setItem('token', res.data.accessToken);
+    if (FORDEV) {
+      localStorage.setItem('token', "abc");
       localStorage.setItem('email', email);
-      setEmail(email);
+      setEmail("abc@email.com");
       setLoggedIn(true);
-    } catch (err) {
-      if (err instanceof AxiosError) {
-        const { response } = err as AxiosError<ErrorDto>;
-        const message = response?.data.message;
-        if (message) throw new Error(message);
-      }
-      throw new Error('Unknown error');
     }
+    
+    // try {
+    //   const res = await axios.post<CredentialDto>(
+    //     `${API_BASE_URL}/auth/login`,
+    //     {
+    //       email,
+    //       password,
+    //     }
+    //   );
+
+    //   localStorage.setItem('token', res.data.accessToken);
+    //   localStorage.setItem('email', email);
+    //   setEmail(email);
+    //   setLoggedIn(true);
+    // } catch (err) {
+    //   if (err instanceof AxiosError) {
+    //     const { response } = err as AxiosError<ErrorDto>;
+    //     const message = response?.data.message;
+    //     if (message) throw new Error(message);
+    //   }
+    //   throw new Error('Unknown error');
+    // }
   };
 
   const logout = () => {
