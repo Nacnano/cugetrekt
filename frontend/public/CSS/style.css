@@ -110,8 +110,9 @@ body {
     background-color: #151623 !important;
 }
 
-.card a p:hover {
-    animation: rgb 5.0s infinite ease;
+.card a:hover>p,
+.card a:hover>h4 {
+    animation: rgb 5.0s infinite ease !important;
 }
 
 .sTopic {

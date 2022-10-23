@@ -10,7 +10,6 @@ async function main() {
       studentId: '00001',
       firstName: 'Miyuki',
       sirName: 'Shirogane',
-      meeFan: true,
     },
   });
 
@@ -21,7 +20,6 @@ async function main() {
       studentId: '00002',
       firstName: 'Shinomiya',
       sirName: 'Kaguya',
-      meeFan: true,
     },
   });
 
