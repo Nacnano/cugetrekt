@@ -5,6 +5,9 @@ export class CreateUserDto {
   studentId: string;
 
   @ApiProperty()
+  password: string;
+
+  @ApiProperty()
   title: string;
 
   @ApiProperty()
