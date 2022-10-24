@@ -71,7 +71,7 @@ const HomePage = () => {
                   คะแนนมิดเทอมของวิชานี้ ได้เท่านี้ มีโอกาสจะได้เกรดอะไรเท่าไหร่
                   ให้เราช่วยคุณตัดสินใจว่าควรถอนหรือไม่ ด้วยสถิติจากนิสิตนับพันคน และความแม่นยำสูงถึง 90%!! </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                  <Link type="button" to="/ScorePrediction" className="btn btn-danger btn-lg px-4 me-sm-3">ลองใช้งานระบบสถิติ</Link>
+                  <a type="button" href="/ScorePrediction" className="btn btn-danger btn-lg px-4 me-sm-3">ลองใช้งานระบบสถิติ</a>
                 </div>
               </div>
             </div>

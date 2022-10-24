@@ -27,7 +27,7 @@ const Navbar = () => {
                   ข้อมูลประกอบการตัดสินใจ
                 </Link>
                 <ul className="dropdown-menu bg-sd">
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/ScorePrediction">ทำนายคะแนน</Link></li>
+                  <li className="py-1"><a className="bg-dark-on-hover dropdown-item text-white" href="/ScorePrediction">ทำนายคะแนน</a></li>
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
                   <li>
                     <hr className="dropdown-divider" />
