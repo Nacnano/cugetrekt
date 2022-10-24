@@ -8,6 +8,7 @@ async function main() {
     update: {},
     create: {
       studentId: '00001',
+      title: 'Mister',
       firstName: 'Miyuki',
       sirName: 'Shirogane',
     },
@@ -18,6 +19,7 @@ async function main() {
     update: {},
     create: {
       studentId: '00002',
+      title: 'Miss',
       firstName: 'Shinomiya',
       sirName: 'Kaguya',
     },
