@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@nestjs/cli': ^9.0.0
   '@nestjs/common': ^9.0.0
+  '@nestjs/config': ^2.2.0
   '@nestjs/core': ^9.0.0
   '@nestjs/platform-express': ^9.0.0
   '@nestjs/schematics': ^9.0.0
@@ -47,6 +48,7 @@ specifiers:
 
 dependencies:
   '@nestjs/common': 9.1.4_upcmjahfwlai3vw7b2ah62xipi
+  '@nestjs/config': 2.2.0_6fl4rox5ofo3yz2h7ukpny327a
   '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
   '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
   '@nestjs/swagger': 6.1.2_x24uj5xxqossh6p5nviuqcu5tq
@@ -62,7 +64,7 @@ dependencies:
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.5.7
-  swagger-ui-express: 4.5.0
+  swagger-ui-express: 4.5.0_express@4.18.2
   typeorm: 0.3.10_pa4ea3wjef6s4gsskhbyci3cte
   webpack: 5.74.0
 
@@ -909,6 +911,22 @@ packages:
       rxjs: 7.5.7
       tslib: 2.4.0
       uuid: 9.0.0
+
+  /@nestjs/config/2.2.0_6fl4rox5ofo3yz2h7ukpny327a:
+    resolution: {integrity: sha512-78Eg6oMbCy3D/YvqeiGBTOWei1Jwi3f2pSIZcZ1QxY67kYsJzTRTkwRT8Iv30DbK0sGKc1mcloDLD5UXgZAZtg==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      reflect-metadata: ^0.1.13
+      rxjs: ^6.0.0 || ^7.2.0
+    dependencies:
+      '@nestjs/common': 9.1.4_upcmjahfwlai3vw7b2ah62xipi
+      dotenv: 16.0.1
+      dotenv-expand: 8.0.3
+      lodash: 4.17.21
+      reflect-metadata: 0.1.13
+      rxjs: 7.5.7
+      uuid: 8.3.2
+    dev: false
 
   /@nestjs/core/9.1.4_os3bpar6zvfsuh6rrdsifrg6hi:
     resolution: {integrity: sha512-S6KpGeKotPYh126hhRqYLhvg9lxSbAmGfEbK8m09crIK7CYP05t32KtT6n12xl5/iva1G4Ch87Z/3rYP76etUg==}
@@ -6344,12 +6362,13 @@ packages:
     resolution: {integrity: sha512-vAsIdNHraLuBRm1vrxcMaLk/y/PGBTvHLf4lQGQ3LaEXkORtIxw11sBMpYJL3keOLaFJ1OqNXuURd6eShoFLZQ==}
     dev: false
 
-  /swagger-ui-express/4.5.0:
+  /swagger-ui-express/4.5.0_express@4.18.2:
     resolution: {integrity: sha512-DHk3zFvsxrkcnurGvQlAcLuTDacAVN1JHKDgcba/gr2NFRE4HGwP1YeHIXMiGznkWR4AeS7X5vEblNn4QljuNA==}
     engines: {node: '>= v0.10.32'}
     peerDependencies:
       express: '>=4.0.0'
     dependencies:
+      express: 4.18.2
       swagger-ui-dist: 4.15.0
     dev: false
 

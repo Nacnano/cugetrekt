@@ -1,1 +1,0 @@
-{"version":3,"file":"pdf-config.service.js","sourceRoot":"","sources":["../../src/pdf-config.service.ts"],"names":[],"mappings":";;;;;;;;;AAIA,2CAA4C;AAGrC,IAAM,gBAAgB,GAAtB,MAAM,gBAAgB;IACzB,gBAAgB;QACZ,OAAO;YACH,IAAI,EAAE;gBACF,IAAI,EAAE,kBAAkB;gBACxB,MAAM,EAAE,KAAK;aAChB;SACJ,CAAC;IACN,CAAC;CACJ,CAAA;AATY,gBAAgB;IAD5B,IAAA,mBAAU,GAAE;GACA,gBAAgB,CAS5B;AATY,4CAAgB"}

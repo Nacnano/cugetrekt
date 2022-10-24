@@ -23,6 +23,13 @@ export interface DocumentDto {
   subject_2: string
 }
 
+export interface InfoDto {
+  title: number,
+  name: string,
+  surname: string,
+
+}
+
 
 export interface UserDto {
   username: string;

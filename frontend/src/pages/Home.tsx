@@ -11,17 +11,21 @@ const HomePage = () => {
         </div>
         <div id="landing" className="container text-dark">
           <div className="row min-vh-100 align-items-center">
-            <div className="col">
+            <div className="col-6">
               <p className="display-3" style={{ fontWeight: "bold" }}>วันนี้...<br />คุณได้เตรียมตัวถอนหรือยัง</p>
               <p className="display-1 color-pm" id="timer1"></p>
               <p className="display-5 color-pm" id="timer2"></p>
               <p style={{ fontSize: 30, lineHeight: 1.5 }}> ก่อนที่จะหมดสิทธิในการถอน
               </p>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="px-4 btn btn-danger fs-5 fw-bold">
-                <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกใบถอนเลย!</a>
-              <a href="#section1"
-                className="text-dark text-decoration-none ul-on-hover px-4 fs-5 text-dark muted">ไม่มั่นใจ?</a>
-              <a className="text-dark text-center" href="#section1"><span></span></a>
+              <div className="d-flex">
+                <Link to="/Withdrawal" className="px-4 btn btn-danger fs-5 fw-bold">
+                  <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกใบถอนเลย!</Link>
+                <a href="#section1"
+                  className="text-dark align-self-center text-decoration-none ul-on-hover px-4 fs-5 text-dark muted">ไม่มั่นใจ?</a>
+              </div>
+            </div>
+            <div className="col-6 ms-auto">
+              <img className="float-end overflow-visible" src="./GetRekt.png" style={{ height: 550, opacity: "100%" }}></img>
             </div>
           </div>
         </div>
@@ -67,8 +71,7 @@ const HomePage = () => {
                   คะแนนมิดเทอมของวิชานี้ ได้เท่านี้ มีโอกาสจะได้เกรดอะไรเท่าไหร่
                   ให้เราช่วยคุณตัดสินใจว่าควรถอนหรือไม่ ด้วยสถิติจากนิสิตนับพันคน และความแม่นยำสูงถึง 90%!! </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                  <button type="button" className="btn btn-danger btn-lg px-4 me-sm-3">ลองใช้งานระบบสถิติ</button>
-                  <button type="button" className="btn btn-outline-secondary btn-lg px-4">ขอผ่านก่อนดีกว่า</button>
+                  <Link type="button" to="/ScorePrediction" className="btn btn-danger btn-lg px-4 me-sm-3">ลองใช้งานระบบสถิติ</Link>
                 </div>
               </div>
             </div>
