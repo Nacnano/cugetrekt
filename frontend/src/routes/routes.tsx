@@ -18,12 +18,15 @@ const MyRoutes = () => {
           <Route path="MyInfo" element={<MyInfoPage />} />
           <Route path="Login" element={<LoginPage />} />
           <Route path="Register" element={<RegisterPage />} />
-          <Route path="Withdrawal" element={<WithdrawInfoPage />} />
+          {/* <Route path="Withdrawal" element={<WithdrawInfoPage />} /> */}
           <Route
             path="mydocuments/Withdrawal/:id"
             element={<WithdrawInfoPage />}
           />
-          <Route path="Resignation" element={<ResignationInfoPage />} />
+          <Route
+            path="mydocuments/Resignation/:id"
+            element={<ResignationInfoPage />}
+          />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>

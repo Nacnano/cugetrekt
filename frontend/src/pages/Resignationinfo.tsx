@@ -12,8 +12,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FormEvent, useRef } from "react";
 import { sendresignationInfo } from "../Providers/DataProvider";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 const ResignationInfoPage = () => {
+  const { id } = useParams();
+  console.log(id);
+  const docNameRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
@@ -29,6 +33,7 @@ const ResignationInfoPage = () => {
   const [isSubmitting, setSubmitting] = useState(false);
 
   let Info = {
+    docName: "tempdocname",
     title: 1,
     name: "tempname",
     surname: "tempsurname",
@@ -47,6 +52,7 @@ const ResignationInfoPage = () => {
     event.preventDefault();
     if (isSubmitting) return;
     setSubmitting(true);
+    const docName = docNameRef.current?.value;
     const title = titleRef.current?.value;
     const name = nameRef.current?.value;
     const surname = surnameRef.current?.value;
@@ -62,6 +68,7 @@ const ResignationInfoPage = () => {
 
     try {
       await sendresignationInfo({
+        docName,
         title,
         name,
         surname,
@@ -90,6 +97,19 @@ const ResignationInfoPage = () => {
           <h1 className="heading d-flex justify-content-center mb-3">
             ข้อมูลในใบลาออก
           </h1>
+          <Container>
+            <Col xs={2}>
+              <Form.Group className="mb-3">
+                <FloatingLabel label="ชื่อเอกสาร">
+                  <Form.Control
+                    placeholder="ชื่อเอกสาร"
+                    defaultValue={Info["docName"]}
+                    ref={docNameRef}
+                  />
+                </FloatingLabel>
+              </Form.Group>
+            </Col>
+          </Container>
           <Container>
             <h3 className="mb-3">ข้อมูลส่วนตัว</h3>
             <Row className="mb-2">

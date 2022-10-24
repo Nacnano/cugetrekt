@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 const WithdrawInfoPage = () => {
   const { id } = useParams();
   console.log(id);
-
+  const docNameRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
@@ -42,6 +42,7 @@ const WithdrawInfoPage = () => {
   const [isSubmitting, setSubmitting] = useState(false);
 
   let Info = {
+    docName: "tempdocname",
     title: 1,
     name: "tempname",
     surname: "tempsurname",
@@ -68,6 +69,7 @@ const WithdrawInfoPage = () => {
     event.preventDefault();
     if (isSubmitting) return;
     setSubmitting(true);
+    const docName = docNameRef.current?.value;
     const title = titleRef.current?.value;
     const name = nameRef.current?.value;
     const surname = surnameRef.current?.value;
@@ -91,6 +93,7 @@ const WithdrawInfoPage = () => {
 
     try {
       await sendwithdrawalInfo({
+        docName,
         title,
         name,
         surname,
@@ -133,7 +136,8 @@ const WithdrawInfoPage = () => {
                 <FloatingLabel label="ชื่อเอกสาร">
                   <Form.Control
                     placeholder="ชื่อเอกสาร"
-                    defaultValue="Untitle"
+                    defaultValue={Info["docName"]}
+                    ref={docNameRef}
                   />
                 </FloatingLabel>
               </Form.Group>
