@@ -4,6 +4,6 @@ import { GenpdfService } from './genpdf.service';
 
 @Module({
   controllers: [GenpdfController],
-  providers: [GenpdfService]
+  providers: [GenpdfService],
 })
 export class GenpdfModule {}

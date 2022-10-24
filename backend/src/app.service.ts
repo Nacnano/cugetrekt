@@ -8,5 +8,5 @@ export class AppService {
 
   sayJomnoi(id: string): string {
     return `I want to say ${id}.`;
-  }  
+  }
 }
