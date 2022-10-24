@@ -8,6 +8,7 @@ import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/Register";
 import WithdrawInfoPage from "../pages/WithdrawalInfo";
 import ResignationInfoPage from "../pages/Resignationinfo";
+import ScorePrediction from "../pages/ScorePrediction"
 const MyRoutes = () => {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ const MyRoutes = () => {
             path="mydocuments/Resignation/:id"
             element={<ResignationInfoPage />}
           />
+          <Route path="ScorePrediction" element={<ScorePrediction />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>

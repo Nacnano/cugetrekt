@@ -27,12 +27,12 @@ const Navbar = () => {
                   ข้อมูลประกอบการตัดสินใจ
                 </Link>
                 <ul className="dropdown-menu bg-sd">
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Blog</Link></li>
+                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="/ScorePrediction">ทำนายคะแนน</Link></li>
                   <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li><Link className="bg-dark-on-hover dropdown-item text-white" to="/">สายด่วนสุขภาพจิต</Link></li>
+                  <li><a className="bg-dark-on-hover dropdown-item text-white" href="https://chula.wellness.in.th">สายด่วนสุขภาพจิต</a></li>
                 </ul>
               </li >
             </ul >
