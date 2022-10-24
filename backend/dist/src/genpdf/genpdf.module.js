@@ -6,18 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.GenpdfModule = void 0;
 const common_1 = require("@nestjs/common");
-let AppService = class AppService {
-    getHello() {
-        return 'Hello JomnoiZ';
-    }
-    sayJomnoi(id) {
-        return `I want to say ${id}.`;
-    }
+const genpdf_controller_1 = require("./genpdf.controller");
+const genpdf_service_1 = require("./genpdf.service");
+let GenpdfModule = class GenpdfModule {
 };
-AppService = __decorate([
-    (0, common_1.Injectable)()
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+GenpdfModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [genpdf_controller_1.GenpdfController],
+        providers: [genpdf_service_1.GenpdfService]
+    })
+], GenpdfModule);
+exports.GenpdfModule = GenpdfModule;
+//# sourceMappingURL=genpdf.module.js.map

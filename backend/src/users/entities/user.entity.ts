@@ -6,23 +6,35 @@ export class UserEntity implements User {
   id: number;
 
   @ApiProperty()
-  studentId: string;
+  email: string;
 
   @ApiProperty()
   password: string;
 
   @ApiProperty()
-  title: string;
+  title: number;
 
   @ApiProperty()
-  firstName: string;
+  name: string;
 
   @ApiProperty()
-  sirName: string;
+  surname: string;
 
   @ApiProperty()
-  createdAt: Date;
+  studentId: string;
 
   @ApiProperty()
-  updatedAt: Date;
+  faculty: string;
+
+  @ApiProperty()
+  department: string;
+
+  @ApiProperty()
+  studySystem: number;
+
+  @ApiProperty()
+  tel: string;
+
+  @ApiProperty()
+  infoEmail: string;
 }

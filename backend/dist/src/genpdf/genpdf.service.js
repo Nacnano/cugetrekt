@@ -6,18 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.GenpdfService = void 0;
 const common_1 = require("@nestjs/common");
-let AppService = class AppService {
-    getHello() {
-        return 'Hello JomnoiZ';
-    }
-    sayJomnoi(id) {
-        return `I want to say ${id}.`;
+let GenpdfService = class GenpdfService {
+    generatePdf(fileName) {
+        const FPDF = require('node-fpdf');
+        const pdf = new FPDF('P', 'mm', 'A4');
+        pdf.AddPage();
+        pdf.SetFont('Arial', 'B', 12);
+        pdf.Text(75, 150, "JomnoiZ");
+        pdf.Image('cannonbolt.jpg', 0, 0, 60, 0, '', '');
+        pdf.Output('F', 'src/keeppdf/' + fileName + '.pdf');
+        return 'Done!';
     }
 };
-AppService = __decorate([
+GenpdfService = __decorate([
     (0, common_1.Injectable)()
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+], GenpdfService);
+exports.GenpdfService = GenpdfService;
+//# sourceMappingURL=genpdf.service.js.map

@@ -10,17 +10,20 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const user_service_1 = require("./user.service");
 const prisma_module_1 = require("./prisma/prisma.module");
-const prisma_service_1 = require("./prisma.service");
 const users_module_1 = require("./users/users.module");
+const genpdf_module_1 = require("./genpdf/genpdf.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, users_module_1.UsersModule],
+        imports: [
+            prisma_module_1.PrismaModule,
+            users_module_1.UsersModule,
+            genpdf_module_1.GenpdfModule,
+        ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, prisma_service_1.PrismaService, user_service_1.UserService],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 exports.AppModule = AppModule;

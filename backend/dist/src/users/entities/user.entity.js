@@ -20,26 +20,46 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], UserEntity.prototype, "studentId", void 0);
+], UserEntity.prototype, "email", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
+], UserEntity.prototype, "password", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
 ], UserEntity.prototype, "title", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], UserEntity.prototype, "firstName", void 0);
+], UserEntity.prototype, "name", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], UserEntity.prototype, "sirName", void 0);
+], UserEntity.prototype, "surname", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Date)
-], UserEntity.prototype, "createdAt", void 0);
+    __metadata("design:type", String)
+], UserEntity.prototype, "studentId", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Date)
-], UserEntity.prototype, "updatedAt", void 0);
+    __metadata("design:type", String)
+], UserEntity.prototype, "faculty", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "department", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
+], UserEntity.prototype, "studySystem", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "tel", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "infoEmail", void 0);
 exports.UserEntity = UserEntity;
 //# sourceMappingURL=user.entity.js.map
