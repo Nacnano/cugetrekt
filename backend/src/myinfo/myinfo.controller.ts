@@ -11,8 +11,8 @@ export class MyInfoController {
 
   @Post()
   @ApiCreatedResponse({ type: MyInfoEntity })
-  create(@Body() createUserDto: MyInfoDto) {
-    return this.myinfoService.create(createUserDto);
+  create(@Body() myinfoDto: MyInfoDto) {
+    return this.myinfoService.create(myinfoDto);
   }
 
   @Get(':id')
