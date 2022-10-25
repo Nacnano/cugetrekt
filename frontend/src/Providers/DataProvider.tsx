@@ -17,14 +17,6 @@ export async function sendwithdrawalInfo(e: any) {
   }
 }
 
-export async function postwithdrawalInfo(e: number) {
-  try {
-    const res = await api.post(`/mydocument/withdrawalinfo/${e}`);
-  } catch (err) {
-    throw new Error("Unknown error");
-  }
-}
-
 export async function sendresignationInfo(e: any) {
   // need to be fix
   try {
@@ -34,17 +26,18 @@ export async function sendresignationInfo(e: any) {
   }
 }
 
-export async function postresignation(e: number) {
+export async function createWithdrawalDoc() {
   try {
-    const res = await api.post(`/mydocument/resignationinfo/${e}`);
+    const res = await api.post("/mydocuments/withdrawal");
+    return res.data.id;
   } catch (err) {
     throw new Error("Unknown error");
   }
 }
 
-export async function createWithdrawalDoc(e: any) {
+export async function createResignationDoc() {
   try {
-    const res = await api.post("/mydocuments");
+    const res = await api.post("/mydocuments/resignation");
     return res.data.id;
   } catch (err) {
     throw new Error("Unknown error");
