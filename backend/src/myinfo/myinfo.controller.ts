@@ -11,25 +11,31 @@ export class MyInfoController {
 
   @Post()
   @ApiCreatedResponse({ type: MyInfoEntity })
-  create(@Body() createUserDto: MyInfoDto) {
-    return this.myinfoService.create(createUserDto);
+  create(@Body() myinfoDto: MyInfoDto) {
+    return this.myinfoService.create(myinfoDto);
+  }
+
+  @Get()
+  @ApiOkResponse({ type: MyInfoEntity })
+  findAll() {
+    return this.myinfoService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: MyInfoEntity })
-  findOne(@Param('id') id: string) {
+  findOne( @Param('id') id: string) {
     return this.myinfoService.findOne(+id);
   }
 
   @Put(':id')
   @ApiOkResponse({ type: MyInfoEntity })
-  update(@Param('id') id: string, @Body() MyInfoDto: MyInfoDto) {
+  update( @Param('id') id: string, @Body() MyInfoDto: MyInfoDto) {
     return this.myinfoService.update(+id, MyInfoDto);
   }
 
   @Delete(':id')
   @ApiOkResponse({ type: MyInfoEntity })
-  remove(@Param('id') id: string) {
+  remove( @Param('id') id: string) {
     return this.myinfoService.remove(+id);
   }
 }
