@@ -18,16 +18,16 @@ const ResignationInfoPage = () => {
   const { id } = useParams();
   console.log(id);
   const docNameRef = useRef<HTMLInputElement>(null);
-  const titleRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLSelectElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
   const studentIDRef = useRef<HTMLInputElement>(null);
   const facultyRef = useRef<HTMLInputElement>(null);
   const departmentRef = useRef<HTMLInputElement>(null);
-  const studySystemRef = useRef<HTMLInputElement>(null);
+  const studySystemRef = useRef<HTMLSelectElement>(null);
   const telRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const semesterRef = useRef<HTMLInputElement>(null);
+  const semesterRef = useRef<HTMLSelectElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
   const reasonRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
@@ -114,8 +114,8 @@ const ResignationInfoPage = () => {
             <h3 className="mb-3">ข้อมูลส่วนตัว</h3>
             <Row className="mb-2">
               <Col xs={2}>
-                <FloatingLabel label="คำนำหน้า" ref={titleRef}>
-                  <Form.Select required defaultValue="1">
+                <FloatingLabel label="คำนำหน้า">
+                  <Form.Select required defaultValue="1" ref={titleRef}>
                     <option>กรุณาเลือกคำนำหน้า</option>
                     <option value="1">นาย</option>
                     <option value="2">นาง</option>
@@ -192,8 +192,12 @@ const ResignationInfoPage = () => {
           <Container>
             <Row className="mb-2">
               <Col>
-                <FloatingLabel label="ระบบการศึกษา" ref={studySystemRef}>
-                  <Form.Select required defaultValue={Info["studySystem"]}>
+                <FloatingLabel label="ระบบการศึกษา">
+                  <Form.Select
+                    required
+                    defaultValue={Info["studySystem"]}
+                    ref={studySystemRef}
+                  >
                     <option>กรุณาเลือกระบบการศึกษา</option>
                     <option value="1">ทวิภาค</option>
                     <option value="2">ทวิภาค-นานาชาติ</option>
@@ -238,8 +242,12 @@ const ResignationInfoPage = () => {
             <Row className="mb-2">
               <Col>
                 <Form.Group className="mb-3">
-                  <FloatingLabel label="ภาคการศึกษา" ref={semesterRef}>
-                    <Form.Select required defaultValue={Info["semester"]}>
+                  <FloatingLabel label="ภาคการศึกษา">
+                    <Form.Select
+                      required
+                      defaultValue={Info["semester"]}
+                      ref={semesterRef}
+                    >
                       <option value="">กรุณาเลือกภาคการศึกษาปัจจุบัน</option>
                       <option value="1">ต้น</option>
                       <option value="2">ปลาย</option>
