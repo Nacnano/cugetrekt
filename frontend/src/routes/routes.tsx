@@ -8,7 +8,9 @@ import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/Register";
 import WithdrawInfoPage from "../pages/WithdrawalInfo";
 import ResignationInfoPage from "../pages/Resignationinfo";
-import ScorePrediction from "../pages/ScorePrediction"
+import ScorePrediction from "../pages/ScorePrediction";
+import NoPage from "../pages/NoPage";
+
 const MyRoutes = () => {
   return (
     <BrowserRouter>
@@ -19,7 +21,6 @@ const MyRoutes = () => {
           <Route path="MyInfo" element={<MyInfoPage />} />
           <Route path="Login" element={<LoginPage />} />
           <Route path="Register" element={<RegisterPage />} />
-          {/* <Route path="Withdrawal" element={<WithdrawInfoPage />} /> */}
           <Route
             path="mydocuments/Withdrawal/:id"
             element={<WithdrawInfoPage />}
@@ -29,7 +30,7 @@ const MyRoutes = () => {
             element={<ResignationInfoPage />}
           />
           <Route path="ScorePrediction" element={<ScorePrediction />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
