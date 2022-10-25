@@ -11,6 +11,7 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 async function getID(doctype: any) {
   const res = await api.get("/mydocuments", doctype);
@@ -28,21 +29,32 @@ const MyDocumentsPage = () => {
   loading = false;
   error = false;
   let navigate = useNavigate();
-  function postwithdrawal() {
+
+  async function postwithdrawal() {
     // in progress
 
     let e = 8; //getID(1) //(1 : withdrawal)
-    setShow(false);
-    const res = api.post(`/mydocuments/withdrawal/${e}`);
-    navigate(`/mydocuments/withdrawal/${e}`);
+    try {
+      const res = await api.post(`/mydocuments/withdrawal/${e}`);
+      setShow(false);
+      navigate(`/mydocuments/withdrawal/${e}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   }
-  function postresignation() {
+  async function postresignation() {
     // in progress
     let e = 69; //getID(1) //(1 : withdrawal)
-    setShow(false);
-    const res = api.post(`/mydocuments/resignation/${e}`);
-    navigate(`/mydocuments/resignation/${e}`);
+    try {
+      const res = api.post(`/mydocuments/resignation/${e}`);
+      setShow(false);
+      navigate(`/mydocuments/resignation/${e}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   }
+
+  
   //assume id from api
   let id = (documents = [
     {
