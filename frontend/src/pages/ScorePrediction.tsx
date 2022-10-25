@@ -1,34 +1,7 @@
-import { Link } from 'react-router-dom'
-import Row from 'react-bootstrap/Row'
-import Card from 'react-bootstrap/Card'
-import Col from 'react-bootstrap/Col'
-import { Modal } from 'react-bootstrap'
 import { useState } from 'react';
-import { useAuth } from '../Providers/AuthProvider'
-import useDocumentList from '../hooks/useDocumentList'
-import DocumentCard from '../components/DocumentCard'
-import Loading from '../components/Loading'
-import Error from '../components/Error'
 
 const ScorePrediction = () => {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const { isLoggedIn } = useAuth()
-  // const { loading, error, documents } = useDocumentList()
-  let { loading, error, documents } = useDocumentList()
-  loading = false
-  error = false
-
-  documents = [
-    { "id": 1, "docType": 0, "name": "Withdraw01", "day": 20, "month": 10, "year": 2022, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 2, "docType": 1, "name": "Resign01", "day": 2, "month": 10, "year": 2022, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 3, "docType": 0, "name": "WithWithEz", "day": 1, "month": 8, "year": 2022, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 4, "docType": 1, "name": "JustGetOut", "day": 20, "month": 10, "year": 1980, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 5, "docType": 1, "name": "ByeBye", "day": 20, "month": 10, "year": 1999, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 6, "docType": 0, "name": "GetRekt", "day": 20, "month": 10, "year": 1999, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-    { "id": 7, "docType": 1, "name": "CULater", "day": 20, "month": 10, "year": 1999, "subject_1": "Calculus 1", "subject_2": "Calculus 2" },
-  ];
 
   return (
     <>
@@ -51,8 +24,8 @@ const ScorePrediction = () => {
           </div>
           <div className="col">
             <div className="form-floating">
-              <input className="form-control bg-dark text-white" id="floatingPassword" placeholder="Password" />
-              <label className="text-white" htmlFor="floatingPassword">คะแนนมิดเทอมของวิชานี้</label>
+              <input className="form-control bg-dark text-white" id="midtermScore" placeholder="Password" />
+              <label className="text-white" htmlFor="midtermScore">คะแนนมิดเทอมของวิชานี้</label>
             </div>
           </div>
         </div>
@@ -62,7 +35,7 @@ const ScorePrediction = () => {
           <div className="col-7 d-flex justify-content-center align-items-center text-center">
             <div className="row border-score">
               <h1 className="color-sd display-3 mb-0">คุณมีโอกาสได้ <span className="fw-bold">F</span>...</h1>
-              <h1 className="color-pm fw-bold mb-0" style={{ fontSize: 169 }}>99%</h1>
+              <h1 className="color-pm fw-bold mb-0" style={{ fontSize: 169 }} id="getting0Probability">99%</h1>
               <h1 className="color-sd display-3 fw-bold mb-0">ลาออกเลยเหอะ!!</h1>
             </div>
           </div>
@@ -74,7 +47,7 @@ const ScorePrediction = () => {
                     <h1 className="my-1">A</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1">0 %</h1>
+                    <h1 className="my-1" id="getting4Probability">0 %</h1>
                   </div>
                 </div>
               </div>
@@ -86,7 +59,7 @@ const ScorePrediction = () => {
                     <h1 className="my-1">B</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1">69 %</h1>
+                    <h1 className="my-1" id="getting3Probability">0 %</h1>
                   </div>
                 </div>
               </div>
@@ -98,7 +71,7 @@ const ScorePrediction = () => {
                     <h1 className="my-1">C</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1">0 %</h1>
+                    <h1 className="my-1" id="getting2Probability">0 %</h1>
                   </div>
                 </div>
               </div>
@@ -110,7 +83,7 @@ const ScorePrediction = () => {
                     <h1 className="my-1">D</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1">1 %</h1>
+                    <h1 className="my-1" id="getting1Probability">1 %</h1>
                   </div>
                 </div>
               </div>
