@@ -4,6 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 const FPDF = require('node-fpdf');
 const utf8 = require('utf8');
 const iconv = require('iconv-lite');
+import pdfMake from "pdfmake/build/pdfmake";
 
 @Injectable()
 export class WithdrawalService {
@@ -37,8 +38,8 @@ export class WithdrawalService {
     pdf.SetFont('Arial', 'B', 10);
     // pdf.Image('keepimg/withdrawal.jpg', 0, 0, 210, 0);
     pdf.Text(10, 10, utf8.encode('ศ.ดร.สุพจน์ เตชวรสินสกุล'));
-    pdf.Text(10, 20, iconv.encode("จอม", "tis-620"));
-    pdf.Text(10, 30, iconv.decode("จอม", "tis-620"));
+    // pdf.Text(10, 20, iconv.encode("จอม", "tis-620"));
+    // pdf.Text(10, 30, iconv.decode("จอม", "tis-620"));
     pdf.Text(10, 40, 'JomnoiZ');
     pdf.Text(10, 50, 'Nacnano');
     pdf.Text(10, 60, 'Jo');
@@ -46,6 +47,13 @@ export class WithdrawalService {
     pdf.Text(10, 80, 'Gain');
     pdf.Text(10, 90, data['studentId']);
     pdf.Output('F', 'src/withdrawal/' + id + '.pdf');
+
+    var docDefinition = {
+      content: [
+        { text: 'สร้าง PDF ภาษาไทยด้วย pdfmake ', fontSize: 15 },
+       ],
+     };
+    pdfMake.createPdf(docDefinition).open()
     return data;
   }
 }
