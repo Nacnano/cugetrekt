@@ -211,10 +211,10 @@ const WithdrawInfoPage = () => {
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <FloatingLabel label="คณะ">
+                  <FloatingLabel label="สาขา">
                     <Form.Control
                       type="text"
-                      placeholder="คณะ"
+                      placeholder="สาขา"
                       defaultValue={Info["department"]}
                       ref={departmentRef}
                     />
