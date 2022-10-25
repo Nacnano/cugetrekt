@@ -8,6 +8,7 @@ export class ResignationService {
   constructor(private prisma: PrismaService) {}
 
   createResignationData(resignationDto: ResignationDto) {
+    resignationDto['userId'] = 1; // Demo
     return this.prisma.resignation.create({ data: resignationDto });
   }
 

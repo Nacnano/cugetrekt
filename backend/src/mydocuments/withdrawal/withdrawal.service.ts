@@ -11,6 +11,7 @@ export class WithdrawalService {
   constructor(private prisma: PrismaService) {}
 
   createWithdrawalData(withdrawalDto: WithdrawalDto) {
+    withdrawalDto['userId'] = 1; // Demo
     return this.prisma.withdrawal.create({ data: withdrawalDto });
   }
 

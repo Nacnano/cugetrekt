@@ -5,7 +5,7 @@ export class WithdrawalDto {
   id: number;
 
   @ApiProperty()
-  userId: number
+  userId: number;
 
   @ApiProperty()
   docsName: string;
@@ -38,38 +38,38 @@ export class WithdrawalDto {
   email: string;
 
   @ApiProperty()
-  gpax: string
+  gpax: string;
 
   @ApiProperty()
-  status: number
+  status: number;
 
   @ApiProperty()
-  credit: number
+  credit: number;
 
   @ApiProperty()
-  semester: number
+  semester: number;
 
   @ApiProperty()
-  year: string
+  year: string;
 
   @ApiProperty()
-  studySystem: number
+  studySystem: number;
 
   @ApiProperty()
-  course1: string
+  course1: string;
 
   @ApiProperty()
-  course2: string
+  course2: string;
 
   @ApiProperty()
-  course3: string
+  course3: string;
 
   @ApiProperty()
-  reason1: string
+  reason1: string;
 
   @ApiProperty()
-  reason2: string
+  reason2: string;
 
   @ApiProperty()
-  reason3: string
+  reason3: string;
 }
