@@ -19,19 +19,19 @@ const WithdrawInfoPage = () => {
   const { id } = useParams();
   console.log(id);
   const docNameRef = useRef<HTMLInputElement>(null);
-  const titleRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLSelectElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
   const studentIDRef = useRef<HTMLInputElement>(null);
   const facultyRef = useRef<HTMLInputElement>(null);
   const departmentRef = useRef<HTMLInputElement>(null);
-  const studySystemRef = useRef<HTMLInputElement>(null);
+  const studySystemRef = useRef<HTMLSelectElement>(null);
   const telRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const semesterRef = useRef<HTMLInputElement>(null);
+  const semesterRef = useRef<HTMLSelectElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
   const gpaxRef = useRef<HTMLInputElement>(null);
-  const statusRef = useRef<HTMLInputElement>(null);
+  const statusRef = useRef<HTMLSelectElement>(null);
   const creditRef = useRef<HTMLInputElement>(null);
   const course1Ref = useRef<HTMLInputElement>(null);
   const course2Ref = useRef<HTMLInputElement>(null);
@@ -65,10 +65,7 @@ const WithdrawInfoPage = () => {
     reason3: "kuay",
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (isSubmitting) return;
-    setSubmitting(true);
+  const saveDocs = async function () {
     const docName = docNameRef.current?.value;
     const title = titleRef.current?.value;
     const name = nameRef.current?.value;
@@ -91,30 +88,59 @@ const WithdrawInfoPage = () => {
     const reason2 = reason2Ref.current?.value;
     const reason3 = reason3Ref.current?.value;
 
+    console.log(docName,
+      title,
+      name,
+      surname,
+      studentID,
+      faculty,
+      department,
+      studySystem,
+      tel,
+      email,
+      semester,
+      year,
+      gpax,
+      status,
+      credit,
+      course1,
+      course2,
+      course3,
+      reason1,
+      reason2,
+      reason3,)
+    await sendwithdrawalInfo({
+      docName,
+      title,
+      name,
+      surname,
+      studentID,
+      faculty,
+      department,
+      studySystem,
+      tel,
+      email,
+      semester,
+      year,
+      gpax,
+      status,
+      credit,
+      course1,
+      course2,
+      course3,
+      reason1,
+      reason2,
+      reason3,
+    });
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    setSubmitting(true);
+
     try {
-      await sendwithdrawalInfo({
-        docName,
-        title,
-        name,
-        surname,
-        studentID,
-        faculty,
-        department,
-        studySystem,
-        tel,
-        email,
-        semester,
-        year,
-        gpax,
-        status,
-        credit,
-        course1,
-        course2,
-        course3,
-        reason1,
-        reason2,
-        reason3,
-      });
+      await saveDocs();
       toast.success("Save Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
@@ -123,10 +149,21 @@ const WithdrawInfoPage = () => {
     }
   };
 
+  const handlePrint = async function() {
+    try {
+      // await saveDocs();
+      toast.success("Print Succesfully!");
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <main style={{ marginTop: "5em" }}>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1 className="heading d-flex justify-content-center mb-3">
             ข้อมูลในใบถอนรายวิชา
           </h1>
@@ -148,8 +185,8 @@ const WithdrawInfoPage = () => {
             <h3 className="mb-3">ข้อมูลส่วนตัว</h3>
             <Row className="mb-2">
               <Col xs={2}>
-                <FloatingLabel label="คำนำหน้า" ref={titleRef}>
-                  <Form.Select required defaultValue="1">
+                <FloatingLabel label="คำนำหน้า">
+                  <Form.Select required defaultValue="1" ref={titleRef}>
                     <option>กรุณาเลือกคำนำหน้า</option>
                     <option value="1">นาย</option>
                     <option value="2">นาง</option>
@@ -226,8 +263,12 @@ const WithdrawInfoPage = () => {
           <Container>
             <Row className="mb-2">
               <Col>
-                <FloatingLabel label="ระบบการศึกษา" ref={studySystemRef}>
-                  <Form.Select required defaultValue={Info["studySystem"]}>
+                <FloatingLabel label="ระบบการศึกษา">
+                  <Form.Select
+                    required
+                    defaultValue={Info["studySystem"]}
+                    ref={studySystemRef}
+                  >
                     <option>กรุณาเลือกระบบการศึกษา</option>
                     <option value="1">ทวิภาค</option>
                     <option value="2">ทวิภาค-นานาชาติ</option>
@@ -272,8 +313,12 @@ const WithdrawInfoPage = () => {
             <Row className="mb-2">
               <Col>
                 <Form.Group className="mb-3">
-                  <FloatingLabel label="ภาคการศึกษา" ref={semesterRef}>
-                    <Form.Select required defaultValue={Info["semester"]}>
+                  <FloatingLabel label="ภาคการศึกษา">
+                    <Form.Select
+                      required
+                      defaultValue={Info["semester"]}
+                      ref={semesterRef}
+                    >
                       <option value="">กรุณาเลือกภาคการศึกษาปัจจุบัน</option>
                       <option value="1">ต้น</option>
                       <option value="2">ปลาย</option>
@@ -315,8 +360,12 @@ const WithdrawInfoPage = () => {
           <Container>
             <Row className="mb-2">
               <Col>
-                <FloatingLabel label="สถานภาพการเป็นนิสิต" ref={statusRef}>
-                  <Form.Select required defaultValue={Info["status"]}>
+                <FloatingLabel label="สถานภาพการเป็นนิสิต">
+                  <Form.Select
+                    required
+                    defaultValue={Info["status"]}
+                    ref={statusRef}
+                  >
                     <option value="1">ปกติ</option>
                     <option value="2">วิทยาทัณฑ์ครั้งที่ 1</option>
                     <option value="2">วิทยาทัณฑ์ครั้งที่ 2</option>
@@ -447,7 +496,7 @@ const WithdrawInfoPage = () => {
             <Button type="submit" size="lg" className="me-3">
               Save
             </Button>
-            <Button type="submit" size="lg">
+            <Button onClick={handlePrint} size="lg">
               Download PDF
             </Button>
           </Container>
