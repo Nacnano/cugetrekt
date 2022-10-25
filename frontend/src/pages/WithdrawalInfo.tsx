@@ -65,10 +65,7 @@ const WithdrawInfoPage = () => {
     reason3: "kuay",
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (isSubmitting) return;
-    setSubmitting(true);
+  const saveDocs = async function () {
     const docName = docNameRef.current?.value;
     const title = titleRef.current?.value;
     const name = nameRef.current?.value;
@@ -91,30 +88,59 @@ const WithdrawInfoPage = () => {
     const reason2 = reason2Ref.current?.value;
     const reason3 = reason3Ref.current?.value;
 
+    console.log(docName,
+      title,
+      name,
+      surname,
+      studentID,
+      faculty,
+      department,
+      studySystem,
+      tel,
+      email,
+      semester,
+      year,
+      gpax,
+      status,
+      credit,
+      course1,
+      course2,
+      course3,
+      reason1,
+      reason2,
+      reason3,)
+    await sendwithdrawalInfo({
+      docName,
+      title,
+      name,
+      surname,
+      studentID,
+      faculty,
+      department,
+      studySystem,
+      tel,
+      email,
+      semester,
+      year,
+      gpax,
+      status,
+      credit,
+      course1,
+      course2,
+      course3,
+      reason1,
+      reason2,
+      reason3,
+    });
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    setSubmitting(true);
+
     try {
-      await sendwithdrawalInfo({
-        docName,
-        title,
-        name,
-        surname,
-        studentID,
-        faculty,
-        department,
-        studySystem,
-        tel,
-        email,
-        semester,
-        year,
-        gpax,
-        status,
-        credit,
-        course1,
-        course2,
-        course3,
-        reason1,
-        reason2,
-        reason3,
-      });
+      await saveDocs();
       toast.success("Save Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
@@ -123,10 +149,21 @@ const WithdrawInfoPage = () => {
     }
   };
 
+  const handlePrint = async function() {
+    try {
+      // await saveDocs();
+      toast.success("Print Succesfully!");
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <main style={{ marginTop: "5em" }}>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1 className="heading d-flex justify-content-center mb-3">
             ข้อมูลในใบถอนรายวิชา
           </h1>
@@ -447,7 +484,7 @@ const WithdrawInfoPage = () => {
             <Button type="submit" size="lg" className="me-3">
               Save
             </Button>
-            <Button type="submit" size="lg">
+            <Button onClick={handlePrint} size="lg">
               Download PDF
             </Button>
           </Container>

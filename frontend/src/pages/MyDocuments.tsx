@@ -12,6 +12,7 @@ import Error from "../components/Error";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
+import { createWithdrawalDoc, createResignationDoc } from '../Providers/DataProvider';
 
 async function getID(doctype: any) {
   const res = await api.get("/mydocuments", doctype);
@@ -30,19 +31,19 @@ const MyDocumentsPage = () => {
   error = false;
   let navigate = useNavigate();
 
-  async function postwithdrawal() {
+  async function postWithdrawal() {
     // in progress
 
     let e = 8; //getID(1) //(1 : withdrawal)
     try {
-      const res = await api.post(`/mydocuments/withdrawal/${e}`);
+      const id = await createWithdrawalDoc();
       setShow(false);
       navigate(`/mydocuments/withdrawal/${e}`);
     } catch (err) {
       toast.error("Something went wrong");
     }
   }
-  async function postresignation() {
+  async function postResignation() {
     // in progress
     let e = 69; //getID(1) //(1 : withdrawal)
     try {
@@ -165,7 +166,7 @@ const MyDocumentsPage = () => {
                       // to="/mydocuments/Withdrawal/:id"
                       className="text-decoration-none text-dark"
                       // onClick={handleClose}
-                      onClick={postwithdrawal}
+                      onClick={postWithdrawal}
                     >
                       <div
                         className="card btn-to-sd"
@@ -193,7 +194,7 @@ const MyDocumentsPage = () => {
                       // to="/mydocuments/Resignation/:id"
                       className="text-decoration-none text-dark"
                       // onClick={handleClose}
-                      onClick={postresignation}
+                      onClick={postResignation}
                     >
                       <div
                         className="card btn-to-pm"
