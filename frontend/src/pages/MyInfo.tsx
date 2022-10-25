@@ -18,13 +18,13 @@ import { sendInfo } from "../Providers/DataProvider";
 
 const MyInfoPage = () => {
   const { isLoggedIn } = useAuth();
-  const titleRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLSelectElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
   const studentIDRef = useRef<HTMLInputElement>(null);
   const facultyRef = useRef<HTMLInputElement>(null);
   const departmentRef = useRef<HTMLInputElement>(null);
-  const studySystemRef = useRef<HTMLInputElement>(null);
+  const studySystemRef = useRef<HTMLSelectElement>(null);
   const telRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
@@ -113,8 +113,8 @@ const MyInfoPage = () => {
             <Container>
               <Row className="mb-2">
                 <Col xs={2}>
-                  <FloatingLabel label="คำนำหน้า" ref={titleRef}>
-                    <Form.Select defaultValue={Info["title"]}>
+                  <FloatingLabel label="คำนำหน้า">
+                    <Form.Select defaultValue={Info["title"]} ref={titleRef}>
                       <option>กรุณาเลือกคำนำหน้า</option>
                       <option value="1">นาย</option>
                       <option value="2">นาง</option>
@@ -185,8 +185,11 @@ const MyInfoPage = () => {
             <Container>
               <Row className="mb-2">
                 <Col>
-                  <FloatingLabel label="ระบบการศึกษา" ref={studySystemRef}>
-                    <Form.Select defaultValue={Info["studySystem"]}>
+                  <FloatingLabel label="ระบบการศึกษา">
+                    <Form.Select
+                      defaultValue={Info["studySystem"]}
+                      ref={studySystemRef}
+                    >
                       <option>กรุณาเลือกระบบการศึกษา</option>
                       <option value="1">ทวิภาค</option>
                       <option value="2">ทวิภาค-นานาชาติ</option>
