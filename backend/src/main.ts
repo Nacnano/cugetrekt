@@ -6,6 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Cugetrekt')
     .setDescription('Cugetrekt API description')
