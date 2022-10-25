@@ -1,14 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Resignation } from '@prisma/client';
 
-export class CreateUserDto {
+export class ResignationEntity implements Resignation {
   @ApiProperty()
   id: number;
 
   @ApiProperty()
-  email: string;
+  userId: number
 
   @ApiProperty()
-  password: string;
+  docsName: string;
+
+  @ApiProperty()
+  lastEdit: string;
 
   @ApiProperty()
   title: number;
@@ -29,11 +33,20 @@ export class CreateUserDto {
   department: string;
 
   @ApiProperty()
-  studySystem: number;
-
-  @ApiProperty()
   tel: string;
 
   @ApiProperty()
-  infoEmail: string;
+  email: string;
+
+  @ApiProperty()
+  semester: number
+
+  @ApiProperty()
+  year: string
+
+  @ApiProperty()
+  studySystem: number
+
+  @ApiProperty()
+  reason: string
 }

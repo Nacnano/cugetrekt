@@ -60,7 +60,7 @@ model Withdrawal {
   email       String
   gpax        String
   status      Int
-  credit      String
+  credit      Float
   semester    Int
   year        String
   studySystem Int
@@ -72,11 +72,14 @@ model Withdrawal {
   reason3     String?
 }
 
+model DocumentType {
+  id          Int       @id @default(autoincrement())
+  docName     String
+}
+
 model Course {
   id          Int       @id @default(autoincrement())
   courseId    String    @unique
   courseName  String
   courseAbbr  String
-  mean        Float
-  sd          Float
 }
