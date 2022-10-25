@@ -7,6 +7,7 @@ import MyInfoPage from "../pages/MyInfo";
 import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/Register";
 import WithdrawInfoPage from "../pages/WithdrawalInfo";
+import WithdrawDone from "../pages/WithdrawDone"
 import ResignationInfoPage from "../pages/Resignationinfo";
 import ScorePrediction from "../pages/ScorePrediction"
 const MyRoutes = () => {
@@ -29,6 +30,7 @@ const MyRoutes = () => {
             element={<ResignationInfoPage />}
           />
           <Route path="ScorePrediction" element={<ScorePrediction />} />
+          <Route path="WithdrawDone" element={<WithdrawDone />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
