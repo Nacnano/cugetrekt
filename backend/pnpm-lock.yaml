@@ -25,6 +25,7 @@ specifiers:
   express: ^4.18.2
   fastify-swagger: ^5.2.0
   html-pdf: ^3.0.1
+  iconv-lite: ^0.6.3
   jest: 28.1.2
   mysql2: ^2.3.3
   nestjs-pdf: ^1.0.4
@@ -45,6 +46,7 @@ specifiers:
   tsconfig-paths: 4.0.0
   typeorm: ^0.3.10
   typescript: ^4.8.4
+  utf8: ^3.0.0
   webpack: ^5.74.0
 
 dependencies:
@@ -58,6 +60,7 @@ dependencies:
   class-validator: 0.13.2
   fastify-swagger: 5.2.0
   html-pdf: 3.0.1
+  iconv-lite: 0.6.3
   mysql2: 2.3.3
   nestjs-pdf: 1.0.4_6fl4rox5ofo3yz2h7ukpny327a
   node-fpdf: 1.0.41
@@ -65,8 +68,9 @@ dependencies:
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.5.7
-  swagger-ui-express: 4.5.0_express@4.18.2
+  swagger-ui-express: 4.5.0
   typeorm: 0.3.10_pa4ea3wjef6s4gsskhbyci3cte
+  utf8: 3.0.0
   webpack: 5.74.0
 
 devDependencies:
@@ -6430,13 +6434,12 @@ packages:
     resolution: {integrity: sha512-vAsIdNHraLuBRm1vrxcMaLk/y/PGBTvHLf4lQGQ3LaEXkORtIxw11sBMpYJL3keOLaFJ1OqNXuURd6eShoFLZQ==}
     dev: false
 
-  /swagger-ui-express/4.5.0_express@4.18.2:
+  /swagger-ui-express/4.5.0:
     resolution: {integrity: sha512-DHk3zFvsxrkcnurGvQlAcLuTDacAVN1JHKDgcba/gr2NFRE4HGwP1YeHIXMiGznkWR4AeS7X5vEblNn4QljuNA==}
     engines: {node: '>= v0.10.32'}
     peerDependencies:
       express: '>=4.0.0'
     dependencies:
-      express: 4.18.2
       swagger-ui-dist: 4.15.0
     dev: false
 
@@ -6870,6 +6873,10 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.1.1
+
+  /utf8/3.0.0:
+    resolution: {integrity: sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ==}
+    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
