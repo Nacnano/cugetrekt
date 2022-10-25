@@ -10,13 +10,7 @@ export class MydocumentsController {
 
   @Get(':id')
   @ApiOkResponse({ type: DocumentsEntity })
-  returnDocuments( @Param('id') id: number ) {
-    return this.mydocumentsService.returnDocuments(id);
-  }
-
-  @Post(':docsType')
-  @ApiCreatedResponse({ type: DocumentsEntity })
-  createDocuments( @Body() id: number, docsType: string) {
-    return this.mydocumentsService.createDocuments(id, docsType);
+  returnDocuments( @Param('id') id: string ) {
+    return this.mydocumentsService.returnDocuments(+id);
   }
 }

@@ -1,6 +1,8 @@
 var countDownDate = new Date("Oct 28, 2022 16:00:00").getTime();
 
 var x = setInterval(function () {
+    var check = document.getElementById("timer1");
+    if (!check) return;
     var now = new Date().getTime();
     var distance = countDownDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));

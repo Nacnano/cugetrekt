@@ -6,11 +6,26 @@ const FPDF = require('node-fpdf');
 export class MydocumentsService {
   constructor(private prisma: PrismaService) {}
 
-  returnDocuments(id: number) {
-    return this.prisma.resignation.findMany({ where: {id: id} });
-  }
-
-  createDocuments(id: number, docsType: string) {
-    return
+  async returnDocuments(id: number) {
+    const result1 = await this.prisma.withdrawal.findMany({ 
+      where: {userId: id}, 
+      select: {
+        id: true,
+        docsName: true,
+        course1: true,
+        course2: true,
+        course3: true,
+        lastEdit: true,
+      } 
+    })
+    const result2 = await this.prisma.resignation.findMany({ 
+      where: {userId: id}, 
+      select: {
+        id: true,
+        docsName: true,
+        lastEdit: true,
+      } 
+    });
+    return [...result1, ...result2];
   }
 }

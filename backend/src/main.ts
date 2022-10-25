@@ -3,9 +3,10 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    logger: ['error', 'warn', 'log', 'debug', 'verbose'],
-  });
+  const app = await NestFactory.create(AppModule);
+  app.enableCors();
+
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('Cugetrekt')
