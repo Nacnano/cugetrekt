@@ -11,8 +11,11 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast';
-import { createWithdrawalDoc, createResignationDoc } from '../Providers/DataProvider';
+import toast from "react-hot-toast";
+import {
+  createWithdrawalDoc,
+  createResignationDoc,
+} from "../Providers/DataProvider";
 
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);
@@ -49,9 +52,8 @@ const MyDocumentsPage = () => {
     }
   }
 
-  
   //assume id from api
-  let id = (documents = [
+  documents = [
     {
       id: 1,
       docType: 0,
@@ -122,7 +124,7 @@ const MyDocumentsPage = () => {
       subject_1: "Calculus 1",
       subject_2: "Calculus 2",
     },
-  ]);
+  ];
 
   return (
     <div className="container" style={{ marginTop: "5em" }}>
@@ -166,7 +168,7 @@ const MyDocumentsPage = () => {
                         className="card btn-to-sd"
                         style={{ borderColor: "var(--sd)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3 text-center">
                               <i className="display-1 fa-regular fa-circle-down"></i>
@@ -194,7 +196,7 @@ const MyDocumentsPage = () => {
                         className="card btn-to-pm"
                         style={{ borderColor: "var(--pm)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3  text-center">
                               <i className="display-1 fa-solid fa-person-running"></i>
