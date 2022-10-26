@@ -27,6 +27,10 @@ export class MyInfoService {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
+  findOnebyEmail(email: string) {
+    return this.prisma.user.findFirst({ where: { email: email } });
+  }
+
   update(id: number, myinfoDto: MyInfoDto) {
     return this.prisma.user.update({ where: { id }, data: myinfoDto });
   }
@@ -62,7 +66,3 @@ export class MyInfoService {
     });
   }
 }
-function compare(password: string, password1: any) {
-  throw new Error('Function not implemented.');
-}
-

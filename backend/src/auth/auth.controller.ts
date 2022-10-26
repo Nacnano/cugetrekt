@@ -38,13 +38,12 @@ export class AuthController {
   async login(@Body() loginDto: MyInfoDto) {
     return this.authService.login(loginDto);
   }
-
+  
   @Get('me')
-  @UseGuards(JwtAuthGuard)
   @ApiSecurity('bearer')
   @ApiOkResponse({ type: MyInfoDto, description: 'OK' })
   @ApiUnauthorizedResponse({ type: ErrorDto, description: 'Unauthorized' })
   async me(@Req() req: AuthGuardRequest) {
-    return req.user;
+    return this.authService.getEmail(req);
   }
 }

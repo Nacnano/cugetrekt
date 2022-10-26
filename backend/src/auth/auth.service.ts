@@ -1,9 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Req, UseGuards } from '@nestjs/common';
 import { MyInfoService } from 'src/myinfo/myinfo.service';
 import { JwtService } from '@nestjs/jwt';
 import { MyInfoDto } from 'src/myinfo/dto/myinfo.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from '@prisma/client';
+import { AuthGuardRequest } from 'src/common/dto/guard.dto';
+import { JwtAuthGuard } from 'src/common/guards/auth.guard';
 
 @Injectable()
 export class AuthService {
@@ -55,6 +57,11 @@ export class AuthService {
       throw new HttpException('INVALID_TOKEN', HttpStatus.UNAUTHORIZED);
     }
     return user;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  async getEmail(@Req() req: AuthGuardRequest) {
+    return req.user;
   }
 }
 
