@@ -1,20 +1,20 @@
-import { useForm } from 'react-hook-form'
-import DropdownList from 'react-widgets/DropdownList'
-import 'react-widgets/styles.css'
-import Form from 'react-bootstrap/Form'
-import { Button } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import React, { useEffect, useState } from 'react'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import { FormEvent, useRef } from 'react'
-import { sendWithdrawalInfo } from '../Providers/DataProvider'
-import toast from 'react-hot-toast'
-import { useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-
+import { useForm } from "react-hook-form";
+import DropdownList from "react-widgets/DropdownList";
+import "react-widgets/styles.css";
+import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import React, { useEffect, useState } from "react";
+import InputGroup from "react-bootstrap/InputGroup";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { FormEvent, useRef } from "react";
+import { sendWithdrawalInfo } from "../Providers/DataProvider";
+import toast from "react-hot-toast";
+import { Navigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { api } from "../utils/axios";
 import useWithdrawal from "../hooks/useWithdrawal";
 
 const WithdrawInfoPage = () => {
@@ -44,30 +44,31 @@ const WithdrawInfoPage = () => {
   const reason3Ref = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
 
+  let navigate = useNavigate();
+
   const saveDocs = async function () {
-    const docsName = docNameRef.current?.value
+    const docsName = docNameRef.current?.value;
 
     let tmp = titleRef.current?.value;
     const title = tmp ? parseInt(tmp) : tmp;
 
-    const name = nameRef.current?.value
-    const surname = surnameRef.current?.value
-    const studentId = studentIDRef.current?.value
-    const faculty = facultyRef.current?.value
-    const department = departmentRef.current?.value
+    const name = nameRef.current?.value;
+    const surname = surnameRef.current?.value;
+    const studentId = studentIDRef.current?.value;
+    const faculty = facultyRef.current?.value;
+    const department = departmentRef.current?.value;
 
     tmp = studySystemRef.current?.value;
     const studySystem = tmp ? parseInt(tmp) : tmp;
 
-    const tel = telRef.current?.value
-    const email = emailRef.current?.value
-
+    const tel = telRef.current?.value;
+    const email = emailRef.current?.value;
 
     tmp = semesterRef.current?.value;
     const semester = tmp ? parseInt(tmp) : tmp;
 
-    const year = yearRef.current?.value
-    const gpax = gpaxRef.current?.value
+    const year = yearRef.current?.value;
+    const gpax = gpaxRef.current?.value;
 
     tmp = statusRef.current?.value;
     const status = tmp ? parseInt(tmp) : tmp;
@@ -75,12 +76,12 @@ const WithdrawInfoPage = () => {
     tmp = creditRef.current?.value;
     const credit = tmp ? parseInt(tmp) : tmp;
 
-    const course1 = course1Ref.current?.value
-    const course2 = course2Ref.current?.value
-    const course3 = course3Ref.current?.value
-    const reason1 = reason1Ref.current?.value
-    const reason2 = reason2Ref.current?.value
-    const reason3 = reason3Ref.current?.value
+    const course1 = course1Ref.current?.value;
+    const course2 = course2Ref.current?.value;
+    const course3 = course3Ref.current?.value;
+    const reason1 = reason1Ref.current?.value;
+    const reason2 = reason2Ref.current?.value;
+    const reason3 = reason3Ref.current?.value;
 
     await sendWithdrawalInfo(
       {
@@ -112,34 +113,41 @@ const WithdrawInfoPage = () => {
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (isSubmitting) return
-    setSubmitting(true)
+    event.preventDefault();
+    if (isSubmitting) return;
+    setSubmitting(true);
 
     try {
-      await saveDocs()
-      toast.success('Save Succesfully!')
+      await saveDocs();
+      toast.success("Save Succesfully!");
     } catch (err) {
-      toast.error('Something went wrong')
+      toast.error("Something went wrong");
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
+  };
+
+  async function geturl() {
+    const res = await api.get(`/mydocuments/withdrawal/${id}/print`);
+    return res.data["url"];
   }
 
   const handlePrint = async function () {
     try {
       await saveDocs();
-      window.open("https://google.com");
+      const printlink = await geturl();
+      window.open(printlink);
+      navigate("/withdrawdone");
       toast.success("Print Succesfully!");
     } catch (err) {
-      toast.error('Something went wrong')
+      toast.error("Something went wrong");
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
   };
 
   return (
-    <main style={{ marginTop: '5em' }}>
+    <main style={{ marginTop: "5em" }}>
       <Container>
         <Form onSubmit={handleSubmit}>
           <h1 className="heading d-flex justify-content-center mb-3">
@@ -221,7 +229,7 @@ const WithdrawInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="คณะ"
-                      defaultValue={info['faculty']}
+                      defaultValue={info["faculty"]}
                       ref={facultyRef}
                       required
                     />
@@ -234,7 +242,7 @@ const WithdrawInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="สาขา"
-                      defaultValue={info['department']}
+                      defaultValue={info["department"]}
                       ref={departmentRef}
                       required
                     />
@@ -368,7 +376,7 @@ const WithdrawInfoPage = () => {
                   </FloatingLabel>
                   <InputGroup.Text
                     className="d-flex justify-content-center"
-                    style={{ width: '5em' }}
+                    style={{ width: "5em" }}
                   >
                     หน่วยกิต
                   </InputGroup.Text>
@@ -398,13 +406,13 @@ const WithdrawInfoPage = () => {
             <Row className="mb-2">
               <Col>
                 <InputGroup className="mb-3">
-                  <InputGroup.Text style={{ width: '5em' }}>
+                  <InputGroup.Text style={{ width: "5em" }}>
                     วิชาที่ 1
                   </InputGroup.Text>
                   <FloatingLabel label="รหัสวิชา">
                     <Form.Control
                       ref={course1Ref}
-                      defaultValue={info['course1']}
+                      defaultValue={info["course1"]}
                       type="text"
                       placeholder="รหัสวิชา"
                       required
@@ -412,7 +420,7 @@ const WithdrawInfoPage = () => {
                   </FloatingLabel>
                 </InputGroup>
                 <InputGroup className="mb-3">
-                  <InputGroup.Text style={{ width: '5em' }}>
+                  <InputGroup.Text style={{ width: "5em" }}>
                     วิชาที่ 2
                   </InputGroup.Text>
                   <FloatingLabel label="รหัสวิชา">
@@ -420,12 +428,12 @@ const WithdrawInfoPage = () => {
                       type="text"
                       placeholder="รหัสวิชา"
                       ref={course2Ref}
-                      defaultValue={info['course2']}
+                      defaultValue={info["course2"]}
                     />
                   </FloatingLabel>
                 </InputGroup>
                 <InputGroup className="mb-3">
-                  <InputGroup.Text style={{ width: '5em' }}>
+                  <InputGroup.Text style={{ width: "5em" }}>
                     วิชาที่ 3
                   </InputGroup.Text>
                   <FloatingLabel label="รหัสวิชา">
@@ -433,7 +441,7 @@ const WithdrawInfoPage = () => {
                       type="text"
                       placeholder="รหัสวิชา"
                       ref={course3Ref}
-                      defaultValue={info['course3']}
+                      defaultValue={info["course3"]}
                     />
                   </FloatingLabel>
                 </InputGroup>
@@ -456,7 +464,7 @@ const WithdrawInfoPage = () => {
                       type="text"
                       placeholder="เหตุผลวิชาที่ 2"
                       ref={reason2Ref}
-                      defaultValue={info['reason2']}
+                      defaultValue={info["reason2"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -466,7 +474,7 @@ const WithdrawInfoPage = () => {
                       type="text"
                       placeholder="เหตุผลวิชาที่ 3"
                       ref={reason3Ref}
-                      defaultValue={info['reason3']}
+                      defaultValue={info["reason3"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -484,7 +492,7 @@ const WithdrawInfoPage = () => {
         </Form>
       </Container>
     </main>
-  )
-}
+  );
+};
 
-export default WithdrawInfoPage
+export default WithdrawInfoPage;
