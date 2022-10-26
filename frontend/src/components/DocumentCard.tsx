@@ -5,15 +5,14 @@ import Col from "react-bootstrap/Col";
 import { DocumentDto } from "../types/dto";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
-import { AxiosRequestConfig } from "axios";
 
 export default function DocumentCard(props: DocumentDto) {
-  const { docType, name, day, month, year, subject_1, subject_2, id } = props;
+  const { docsType, docsName, day, month, year, course1, course2, course3, id } = props;
 
   let navigate = useNavigate();
 
   async function deletedoc() {
-    if (docType == 0) {
+    if (docsType == 0) {
       const res = await api.delete(`/mydocuments/withdrawal/${id}`);
     } else {
       const res = await api.delete(`/mydocuments/resignation/${id}`);
@@ -21,24 +20,26 @@ export default function DocumentCard(props: DocumentDto) {
   }
 
   async function editdoc() {
-    if (docType == 0) {
+    if (docsType == 0) {
       navigate(`/mydocuments/withdrawal/${id}`);
     } else {
       navigate(`/mydocuments/resignation/${id}`);
     }
   }
   function checkType() {
-    if (docType === 0) {
+    if (docsType === 0) {
       return (
         <p className="text-truncate">
           ประเภท : ใบถอน
           <br />
-          วิชาแรก: {subject_1}
+          วิชาแรก: {course1}
           <br />
-          วิชาที่สอง : {subject_2}
+          วิชาที่สอง : {course2}
+          <br />
+          วิชาที่สอง : {course3}
         </p>
       );
-    } else if (docType === 1) {
+    } else if (docsType === 1) {
       return <p className="text-truncate">ประเภท : ใบลาออก</p>;
     } else {
       return "เกิดข้อผิดพลาด";
@@ -51,7 +52,7 @@ export default function DocumentCard(props: DocumentDto) {
         className="shadowdrop-l border-0 rounded-0 p-3"
         style={{ height: 250 }}
       >
-        <h4 className="card-title fw-bold">{name}</h4>
+        <h4 className="card-title fw-bold">{(docsName ? docsName : "Untitled")} </h4>
         <Card.Text className="text-muted mb-1">{checkType()}</Card.Text>
         <div className="container mt-auto">
           <div className="row">

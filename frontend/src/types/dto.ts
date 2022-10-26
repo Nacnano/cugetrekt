@@ -14,13 +14,14 @@
 
 export interface DocumentDto {
   id: number,
-  docType: number,
-  name: string,
+  docsType: number,
+  docsName: string,
   day: number,
   month: number,
   year: number,
-  subject_1: string,
-  subject_2: string
+  course1: string,
+  course2: string,
+  course3: string,
 }
 
 export interface InfoDto {
