@@ -81,6 +81,13 @@ const WithdrawDone = () => {
                 <h1 className="color-sd fw-bold mb">แล้วเจอกันใหม่เทอมหน้า!!</h1>
               </div>
             </div>
+            <div className="row pt-0 mt-0">
+              <div className="col d-flex ps-0 align-items-center justify-content-center">
+                <p className="d-flex align-items-center justify-content-center">
+                  <Link to="/" className="my-auto py-2 btn btn-danger btn-lg me-2">กลับไปหน้าหลัก</Link> <p className="my-auto text-muted fs-5">หรือ</p> <Link to="/MyDocuments" className="my-auto ms-2 py-2 btn btn-primary btn-lg">สร้างเอกสารเพิ่ม</Link>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
