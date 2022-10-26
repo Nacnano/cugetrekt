@@ -9,10 +9,16 @@ export default function DocumentCard(props: DocumentDto) {
 
   function checkType() {
     if (docType === 0) {
-      return "ใบถอน";
+      return <p className="text-truncate">
+        ประเภท : ใบถอน<br />
+        วิชาแรก: {subject_1}<br />
+        วิชาที่สอง : {subject_2}
+      </p>;
     }
     else if (docType === 1) {
-      return "ใบลาออก";
+      return <p className="text-truncate">
+        ประเภท : ใบลาออก
+      </p>;
     }
     else {
       return "เกิดข้อผิดพลาด"
@@ -24,11 +30,7 @@ export default function DocumentCard(props: DocumentDto) {
       <Card className="shadowdrop-l border-0 rounded-0 p-3" style={{ height: 250 }}>
         <h4 className="card-title fw-bold">{name}</h4>
         <Card.Text className="text-muted mb-1">
-          <p className="text-truncate">
-            ประเภท : {checkType()}<br />
-            วิชาแรก: {subject_1}<br />
-            วิชาที่สอง : {subject_2}
-          </p>
+          {checkType()}
         </Card.Text>
         <div className="container mt-auto">
           <div className="row">
