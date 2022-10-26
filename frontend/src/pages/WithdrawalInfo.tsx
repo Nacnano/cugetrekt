@@ -136,7 +136,7 @@ const WithdrawInfoPage = () => {
     try {
       await saveDocs();
       const printlink = await geturl();
-      window.open(printlink);
+      window.open('http://' + printlink);
       navigate("/withdrawdone");
       toast.success("Print Succesfully!");
     } catch (err) {
