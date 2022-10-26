@@ -37,6 +37,19 @@ body {
     box-sizing: border-box;
 }
 
+.loader-show {
+    display: block;
+}
+
+.loader-hidden {
+    opacity: 0;
+    transition: all 250ms linear;
+}
+
+.loader-done {
+    display: none;
+}
+
 .border-score {
     border-right: 4px solid var(--sd);
 }
