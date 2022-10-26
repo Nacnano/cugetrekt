@@ -6,6 +6,8 @@ import { DocumentDto } from "../types/dto";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function DocumentCard(props: DocumentDto) {
   const { docsType, docsName, day, month, year, course1, course2, course3, id } = props;
 
@@ -17,6 +19,7 @@ export default function DocumentCard(props: DocumentDto) {
     } else {
       const res = await api.delete(`/mydocuments/resignation/${id}`);
     }
+    window.location.reload();
   }
 
   async function editdoc() {

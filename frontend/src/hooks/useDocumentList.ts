@@ -11,7 +11,7 @@ const useDocumentList = () => {
     const fetchContents = async () => {
       try {
         const res = await api.get('/MyDocuments/1');
-        console.log(res)
+        console.log(res.data)
         setDocuments(res.data);
       } catch (err) {
         setError(true);
