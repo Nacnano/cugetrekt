@@ -22,4 +22,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
+  moduleContext: {
+    './node_modules/pdfmake/build/vfs_fonts.js': 'window',
+  },
 };
