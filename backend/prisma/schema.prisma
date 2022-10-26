@@ -78,4 +78,5 @@ model Course {
   courseId    String    @unique
   courseName  String
   courseAbbr  String
+  credit      Float
 }

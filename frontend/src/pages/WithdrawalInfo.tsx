@@ -125,6 +125,7 @@ const WithdrawInfoPage = () => {
   const handlePrint = async function() {
     try {
       await saveDocs();
+      window.open("https://google.com")
       toast.success("Print Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
