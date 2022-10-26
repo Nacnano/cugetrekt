@@ -67,7 +67,7 @@ export default function DocumentCard(props: DocumentDto) {
               <a className="btn btn-danger" onClick={editdoc}>
                 แก้ไข
               </a>
-              <a className="btn ms-auto pe-0 del text-end" onClick={deletedoc}>
+              <a className="btn ms-auto px-auto del text-center" onClick={deletedoc}>
                 ลบเอกสาร
               </a>
             </div>
