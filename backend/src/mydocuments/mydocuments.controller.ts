@@ -23,7 +23,7 @@ export class MydocumentsController {
   @UseGuards(JwtAuthGuard)
   async returnDocuments(@Req() req: AuthGuardRequest) {
 
-    const res = await this.authService.getEmail(req) as {email: string, id: undefined};
+    const res = await this.authService.getEmail(req);
     const email = res.email;
     
     const user = await this.myInfoService.findOnebyEmail(email);

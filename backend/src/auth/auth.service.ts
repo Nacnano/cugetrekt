@@ -61,7 +61,7 @@ export class AuthService {
 
   @UseGuards(JwtAuthGuard)
   async getEmail(req: AuthGuardRequest) {
-    return req.user;
+    return req.user as {email: string, id: undefined};
   }
 }
 
