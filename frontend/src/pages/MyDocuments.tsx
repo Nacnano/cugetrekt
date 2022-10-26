@@ -17,8 +17,8 @@ import {
   createResignationDoc,
 } from "../Providers/DataProvider";
 
-async function getID(doctype: any) {
-  const res = await api.get("/mydocuments", doctype);
+async function getID(docType: any) {
+  const res = await api.get("/mydocuments", docType);
   return res;
   // get id of doc
 }
@@ -59,7 +59,7 @@ const MyDocumentsPage = () => {
   }
 
   //assume id from api
-  let id = (documents = [
+  documents = [
     {
       id: 1,
       docType: 0,
@@ -130,7 +130,7 @@ const MyDocumentsPage = () => {
       subject_1: "Calculus 1",
       subject_2: "Calculus 2",
     },
-  ]);
+  ];
 
   return (
     <div className="container" style={{ marginTop: "5em" }}>
