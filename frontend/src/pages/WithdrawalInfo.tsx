@@ -147,7 +147,7 @@ const WithdrawInfoPage = () => {
                 <FloatingLabel label="ชื่อเอกสาร">
                   <Form.Control
                     placeholder="ชื่อเอกสาร"
-                    defaultValue={(info["docsName"] ? "":"")}
+                    defaultValue={info["docsName"]}
                     ref={docNameRef}
                   />
                 </FloatingLabel>
@@ -160,7 +160,7 @@ const WithdrawInfoPage = () => {
             <Row className="mb-2">
               <Col xs={2}>
                 <FloatingLabel label="คำนำหน้า">
-                  <Form.Select required defaultValue="1" ref={titleRef}>
+                  <Form.Select value={info["title"]} ref={titleRef}>
                     <option>กรุณาเลือกคำนำหน้า</option>
                     <option value="1">นาย</option>
                     <option value="2">นาง</option>
@@ -239,8 +239,8 @@ const WithdrawInfoPage = () => {
               <Col>
                 <FloatingLabel label="ระบบการศึกษา">
                   <Form.Select
-                    required
-                    defaultValue={info["studySystem"]}
+                  
+                    value={info["studySystem"]}
                     ref={studySystemRef}
                   >
                     <option>กรุณาเลือกระบบการศึกษา</option>
@@ -289,8 +289,8 @@ const WithdrawInfoPage = () => {
                 <Form.Group className="mb-3">
                   <FloatingLabel label="ภาคการศึกษา">
                     <Form.Select
-                      required
-                      defaultValue={info["semester"]}
+                    
+                      value={info["semester"]}
                       ref={semesterRef}
                     >
                       <option value="">กรุณาเลือกภาคการศึกษาปัจจุบัน</option>
@@ -322,7 +322,7 @@ const WithdrawInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="GPAX"
-                      required
+                    
                       ref={gpaxRef}
                       defaultValue={info["gpax"]}
                     />
@@ -336,8 +336,8 @@ const WithdrawInfoPage = () => {
               <Col>
                 <FloatingLabel label="สถานภาพการเป็นนิสิต">
                   <Form.Select
-                    required
-                    defaultValue={info["status"]}
+                  
+                    value={info["status"]}
                     ref={statusRef}
                   >
                     <option value="1">ปกติ</option>
@@ -353,7 +353,7 @@ const WithdrawInfoPage = () => {
                   <FloatingLabel label="ปัจจุบันลงเรียนไว้ทั้งหมด">
                     <Form.Control
                       type="number"
-                      required
+                    
                       placeholder="ปัจจุบันลงเรียนไว้ทั้งหมด"
                       ref={creditRef}
                       defaultValue={info["credit"]}
@@ -368,7 +368,7 @@ const WithdrawInfoPage = () => {
                   {/* <FloatingLabel label="รวมทั้งหมด">
                     <Form.Control
                       type="number"
-                      required
+                    
                       placeholder="รวมทั้งหมด"
                       step="0.5"
                     />
@@ -399,7 +399,7 @@ const WithdrawInfoPage = () => {
                       ref={course1Ref}
                       defaultValue={info["course1"]}
                       type="text"
-                      required
+                    
                       placeholder="รหัสวิชา"
                     />
                   </FloatingLabel>
@@ -437,7 +437,7 @@ const WithdrawInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="เหตุผลวิชาที่ 1"
-                      required
+                    
                       ref={reason1Ref}
                       defaultValue={info["reason1"]}
                     />
