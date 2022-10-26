@@ -35,55 +35,55 @@ const ScorePrediction = () => {
           <div className="col-7 d-flex justify-content-center align-items-center text-center">
             <div className="row border-score">
               <h1 className="color-sd display-3 mb-0">คุณมีโอกาสได้ <span className="fw-bold">F</span>...</h1>
-              <h1 className="color-pm fw-bold mb-0" style={{ fontSize: 169 }} id="getting0Probability">99%</h1>
-              <h1 className="color-sd display-3 fw-bold mb-0">ลาออกเลยเหอะ!!</h1>
+              <h1 className="color-pm fw-bold mb-0" style={{ fontSize: 169 }} id="getting0Probability">...%</h1>
+              <h1 className="color-sd display-3 fw-bold mb-0 display" id="motivation">และเกรดที่ออกคือ...</h1>
             </div>
           </div>
           <div className="col justify-content-center text-center my-auto">
-            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray">
+            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray" id="bg-pred4">
               <div className="col-12">
                 <div className="d-flex">
                   <div className='w-100 border-score'>
                     <h1 className="my-1">A</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1" id="getting4Probability">0 %</h1>
+                    <h1 className="my-1" id="getting4Probability">...%</h1>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray">
+            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray" id="bg-pred3">
               <div className="col-12">
                 <div className="d-flex">
                   <div className='w-100 border-score'>
                     <h1 className="my-1">B</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1" id="getting3Probability">0 %</h1>
+                    <h1 className="my-1" id="getting3Probability">...%</h1>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray">
+            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray" id="bg-pred2">
               <div className="col-12">
                 <div className="d-flex">
                   <div className='w-100 border-score'>
                     <h1 className="my-1">C</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1" id="getting2Probability">0 %</h1>
+                    <h1 className="my-1" id="getting2Probability">...%</h1>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-lgreen">
+            <div className="row d-flex mx-auto my-3 w-60 rounded-4 bg-gray" id="bg-pred1">
               <div className="col-12">
                 <div className="d-flex">
                   <div className='w-100 border-score'>
                     <h1 className="my-1">D</h1>
                   </div>
                   <div className='w-100'>
-                    <h1 className="my-1" id="getting1Probability">1 %</h1>
+                    <h1 className="my-1" id="getting1Probability">...%</h1>
                   </div>
                 </div>
               </div>
