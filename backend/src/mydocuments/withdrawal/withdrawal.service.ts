@@ -116,21 +116,21 @@ export class WithdrawalService {
     }
 
     let sumCredit = 0.0;
-    if (data['course1'] !== null) {
+    if (data['course1'] !== null && data['course1'] !== "") {
       const course1 = await this.prisma.course.findUnique({ where: { courseId: data['course1']} });
       doc.text(data['course1'], 45, 359);
       doc.text(course1['courseAbbr'], 100, 359);
       doc.text(data['reason1'], 177, 359);
       sumCredit += course1['credit'];
     }
-    if (data['course2'] !== null) {
+    if (data['course2'] !== null && data['course2'] !== "") {
       const course2 = await this.prisma.course.findUnique({ where: { courseId: data['course2']} });
       doc.text(data['course2'], 45, 375);
       doc.text(course2['courseAbbr'], 100, 375);
       doc.text(data['reason2'], 177, 375);
       sumCredit += course2['credit'];
     }
-    if (data['course3'] !== null) {
+    if (data['course3'] !== null && data['course3'] !== "") {
       const course3 = await this.prisma.course.findUnique({ where: { courseId: data['course3']} });
       doc.text(data['course3'], 45, 392);
       doc.text(course3['courseAbbr'], 100, 392);
