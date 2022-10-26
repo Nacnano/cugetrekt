@@ -12,6 +12,7 @@ export class WithdrawalService {
 
   createWithdrawalData(withdrawalDto: WithdrawalDto) {
     withdrawalDto['userId'] = 1; // Demo
+    withdrawalDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
     return this.prisma.withdrawal.create({ data: withdrawalDto });
   }
 
@@ -20,7 +21,7 @@ export class WithdrawalService {
   }
 
   updateWithdrawalData(id: number, withdrawalDto: WithdrawalDto) {
-    console.log(withdrawalDto)
+    withdrawalDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
     return this.prisma.withdrawal.update({ where: { id: id }, data: withdrawalDto });
   }
 
