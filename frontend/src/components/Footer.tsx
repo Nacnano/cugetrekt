@@ -4,7 +4,7 @@ import { useAuth } from '../Providers/AuthProvider'
 const Footer = () => {
   const { isLoggedIn, logout } = useAuth()
   return (
-    <div className="mt-auto">
+    <div className="mt-auto" style={{zIndex: "2000"}}>
       <div className="container-fluid bg-sd text-white d-flex align-items-center justify-content-center">
         <footer className="py-3 mt-4">
           <h3 className="text-center">Cu Get Rekt</h3>
