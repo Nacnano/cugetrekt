@@ -32,7 +32,7 @@ const MyDocumentsPage = () => {
     try {
       const id = await createWithdrawalDoc();
       setShow(false);
-      navigate(`/mydocuments/withdrawal/${e}`);
+      navigate(`/mydocuments/withdrawal/${id}`);
     } catch (err) {
       toast.error("Something went wrong");
     }
@@ -43,7 +43,7 @@ const MyDocumentsPage = () => {
     try {
       const id = await createResignationDoc();
       setShow(false);
-      navigate(`/mydocuments/resignation/${e}`);
+      navigate(`/mydocuments/resignation/${id}`);
     } catch (err) {
       toast.error("Something went wrong");
     }
