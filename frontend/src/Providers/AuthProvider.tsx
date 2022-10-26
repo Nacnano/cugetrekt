@@ -44,7 +44,7 @@ const AuthProvider = (props: AuthProviderProps) => {
         password,
       })
 
-      localStorage.setItem('token', res.data.accessToken)
+      localStorage.setItem('token', res.data.Authorization)
       localStorage.setItem('email', email)
       setEmail(email)
       setLoggedIn(true)

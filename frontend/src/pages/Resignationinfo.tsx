@@ -32,7 +32,7 @@ const ResignationInfoPage = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const semesterRef = useRef<HTMLSelectElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
-  const reasonRef = useRef<HTMLInputElement>(null);
+  const reasonRef = useRef<HTMLTextAreaElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -222,7 +222,7 @@ const ResignationInfoPage = () => {
                       minLength={10}
                       maxLength={10}
                       ref={studentIDRef}
-                      defaultValue={info["studentID"]}
+                      defaultValue={info["studentId"]}
                       required
                     />
                   </FloatingLabel>
@@ -352,6 +352,8 @@ const ResignationInfoPage = () => {
                   as="textarea"
                   rows={2}
                   type="text"
+                  ref={reasonRef}
+                  defaultValue={info["reason"]}
                 />
               </Form.Group>
             </Row>

@@ -10,8 +10,8 @@ moment().format();
 export class ResignationService {
   constructor(private prisma: PrismaService) {}
 
-  createResignationData(resignationDto: ResignationDto) {
-    resignationDto['userId'] = 1; // Demo
+  createResignationData(resignationDto: ResignationDto, userId: number) {
+    resignationDto['userId'] = userId
     resignationDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
     return this.prisma.resignation.create({ data: resignationDto });
   }

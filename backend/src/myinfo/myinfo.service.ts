@@ -23,12 +23,12 @@ export class MyInfoService {
     return this.prisma.user.create({ data: myinfoDto });
   }
 
-  findAll() {
-    return this.prisma.user.findMany();
-  }
-
   findOne(id: number) {
     return this.prisma.user.findUnique({ where: { id } });
+  }
+
+  findOnebyEmail(email: string) {
+    return this.prisma.user.findFirst({ where: { email: email } });
   }
 
   update(id: number, myinfoDto: MyInfoDto) {
@@ -39,7 +39,22 @@ export class MyInfoService {
     return this.prisma.user.delete({ where: { id } });
   }
 
-  findByLogin({ email }: MyInfoDto) {
+  async findByLogin({ email, password }: MyInfoDto) {
+
+    const user = await this.prisma.user.findFirst({
+        where: {email: email}
+    });
+    if (!user) {
+        throw new HttpException("no_email_found",  
+              HttpStatus.UNAUTHORIZED);
+    }
+
+    const areEqual = await (password === user.password);
+    if (!areEqual) {
+        throw new HttpException("wrong_password",
+            HttpStatus.UNAUTHORIZED);
+    }
+
     return this.prisma.user.findFirst({
       where: { email: email },
     });
