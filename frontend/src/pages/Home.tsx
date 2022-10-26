@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    setTimeout(() => {
+      setLoader(false);
+    }, 1250);
+  }, []);
+
   return (
     <>
       <main>
-        <div id="loader" className="loader-wrapper fixed-top" style={{ zIndex: 2000 }}>
+        <div id="loader" className={`loader-wrapper fixed-top ${loading ? 'loader-show' : 'loader-hidden'} ${loader ? '' : 'd-none'}`} style={{ zIndex: 2000 }}>
           <h1 className="display-5 text-white text-center d-none d-lg-block">วันนี้...
             คุณได้เตรียมตัวถอนหรือยัง&nbsp;&nbsp;</h1>
           <span className="loader"><span className="loader-inner"></span></span>
@@ -18,8 +31,8 @@ const HomePage = () => {
               <p style={{ fontSize: 30, lineHeight: 1.5 }}> ก่อนที่จะหมดสิทธิในการถอน
               </p>
               <div className="d-flex">
-                <Link to="/Withdrawal" className="px-4 btn btn-danger fs-5 fw-bold">
-                  <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกใบถอนเลย!</Link>
+                <Link to="/MyDocuments" className="px-4 btn btn-danger fs-5 fw-bold">
+                  <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกเอกสารเลย!</Link>
                 <a href="#section1"
                   className="text-dark align-self-center text-decoration-none ul-on-hover px-4 fs-5 text-dark muted">ไม่มั่นใจ?</a>
               </div>
@@ -54,8 +67,8 @@ const HomePage = () => {
                 </div>
                 <div className="col text-center">
                   <h4>คือเวลาที่คุณจะใช้ในการกรอกใบถอน</h4>
-                  <p className="fs-5">หากคุณใช้ Cu Get Rekt ดังนั้น<br /><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="fs-5 fw-bold"
-                    style={{ color: "#ffffff" }}>กรอกใบถอนเลย!</a></p>
+                  <p className="fs-5">หากคุณใช้ Cu Get Rekt ดังนั้น<br /><Link to="/MyDocuments" className="fs-5 fw-bold"
+                    style={{ color: "#ffffff" }}>กรอกเอกสารเลย!</Link></p>
                 </div>
               </div>
             </div>

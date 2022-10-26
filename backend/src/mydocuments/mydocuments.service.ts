@@ -18,6 +18,11 @@ export class MydocumentsService {
         lastEdit: true,
       } 
     })
+
+    for (let i = 0; i < result1.length; i++) {
+      result1[i]["docsType"] = 0;
+    }
+
     const result2 = await this.prisma.resignation.findMany({ 
       where: {userId: id}, 
       select: {
@@ -26,6 +31,11 @@ export class MydocumentsService {
         lastEdit: true,
       } 
     });
+
+    for (let i = 0; i < result2.length; i++) {
+      result2[i]["docsType"] = 1;
+    }
+
     return [...result1, ...result2];
   }
 }

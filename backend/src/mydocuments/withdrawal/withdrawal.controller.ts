@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Put, Body, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Body, Post } from '@nestjs/common';
 import { WithdrawalService } from './withdrawal.service';
 import { ApiTags, ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { WithdrawalDto } from './dto/withdrawal.dto';
@@ -21,9 +21,10 @@ export class WithdrawalController {
     return this.withdrawalService.returnWithdrawalData(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @ApiOkResponse({ type: WithdrawalEntity })
   updateWithdrawalData( @Param('id') id: string, @Body('data') data: WithdrawalDto) {
+    console.log(data)
     return this.withdrawalService.updateWithdrawalData(+id, data);
   }
 

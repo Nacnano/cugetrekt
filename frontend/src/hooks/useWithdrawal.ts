@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import { api } from '../utils/axios';
-import { DocumentDto } from '../types/dto';
 
-const useDocumentList = () => {
+const useWithdrawal = (id: string) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [documents, setDocuments] = useState<DocumentDto[]>([]);
+  const [info, setInfo] = useState<{[key: string]: any}>({});
 
   useEffect(() => {
     const fetchContents = async () => {
       try {
-        const res = await api.get('/MyDocuments/1');
-        console.log(res)
-        setDocuments(res.data);
+        const res = await api.get(`/mydocuments/withdrawal/${id}`);
+        setInfo(res.data);
       } catch (err) {
         setError(true);
       } finally {
@@ -22,7 +20,7 @@ const useDocumentList = () => {
     fetchContents();
   }, []);
 
-  return { loading, error, documents };
+  return { loading, error, info };
 };
 
-export default useDocumentList;
+export default useWithdrawal;
