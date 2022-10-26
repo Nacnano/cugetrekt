@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 const ScorePrediction = () => {
   const [show, setShow] = useState(false);
@@ -37,6 +38,13 @@ const ScorePrediction = () => {
               <h1 className="color-sd display-3 mb-0">คุณมีโอกาสได้ <span className="fw-bold">F</span>...</h1>
               <h1 className="color-pm fw-bold mb-0" style={{ fontSize: 169 }} id="getting0Probability">...%</h1>
               <h1 className="color-sd display-3 fw-bold mb-0 display" id="motivation">และเกรดที่ออกคือ...</h1>
+              <div className="row">
+                <div className="col">
+                  <Link to="/MyDocuments" className="mt-4 px-4 btn btn-danger fs-5 fw-bold">
+                    <i className="fa-solid fa-file-pen"></i>&nbsp; กรอกเอกสารเลย!</Link>
+
+                </div>
+              </div>
             </div>
           </div>
           <div className="col justify-content-center text-center my-auto">

@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+.env
+
 # Logs
 logs
 *.log
@@ -23,7 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-=======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -47,4 +47,4 @@ dist-ssr
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
->>>>>>> 9ad56a542a5b7967b2fff2aff651a4451016d42f
+
