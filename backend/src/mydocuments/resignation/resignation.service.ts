@@ -21,7 +21,8 @@ export class ResignationService {
   }
 
   updateResignationData(id: number, resignationDto: ResignationDto) {
-    resignationDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
+    resignationDto['lastEdit'] = moment().
+    format('L') + ' ' + moment().format('LTS');
     return this.prisma.resignation.update({ where: { id: id }, data: resignationDto });
   }
 

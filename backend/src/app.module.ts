@@ -6,6 +6,8 @@ import { UsersModule } from './myinfo/myinfo.module';
 import { MydocumentsModule } from './mydocuments/mydocuments.module';
 import { ConfigModule } from '@nestjs/config';
 import { CourseModule } from './course/course.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -14,6 +16,14 @@ import { CourseModule } from './course/course.module';
     MydocumentsModule,
     ConfigModule.forRoot(),
     CourseModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), '..', 'backend/src/withdrawal'),
+      serveRoot: '/asset/withdrawal'
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), '..', 'backend/src/resignation'),
+      serveRoot: '/asset/resignation'
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
