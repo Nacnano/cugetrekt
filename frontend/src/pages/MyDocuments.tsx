@@ -14,12 +14,6 @@ import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { createWithdrawalDoc, createResignationDoc } from '../Providers/DataProvider';
 
-async function getID(doctype: any) {
-  const res = await api.get("/mydocuments", doctype);
-  return res;
-  // get id of doc
-}
-
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -47,7 +41,7 @@ const MyDocumentsPage = () => {
     // in progress
     let e = 69; //getID(1) //(1 : withdrawal)
     try {
-      const res = api.post(`/mydocuments/resignation/${e}`);
+      const id = await createResignationDoc();
       setShow(false);
       navigate(`/mydocuments/resignation/${e}`);
     } catch (err) {
@@ -137,7 +131,7 @@ const MyDocumentsPage = () => {
         crossOrigin="anonymous"
       ></script>
       {!isLoggedIn ? (
-        <Error message="Please Login First" />
+        `${navigate("/login")}`
       ) : loading ? (
         <Loading />
       ) : error ? (
