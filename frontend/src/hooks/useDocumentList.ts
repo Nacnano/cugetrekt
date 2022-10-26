@@ -6,9 +6,7 @@ const useDocumentList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [documents, setDocuments] = useState<DocumentDto[]>([]);
-
-  useEffect(() => {
-    const fetchContents = async () => {
+const fetchContents = async () => {
       try {
         const res = await api.get('/MyDocuments/1');
         console.log(res.data)
@@ -19,6 +17,8 @@ const useDocumentList = () => {
         setLoading(false);
       }
     };
+  useEffect(() => {
+    
     fetchContents();
   }, []);
 
