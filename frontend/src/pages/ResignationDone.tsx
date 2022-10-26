@@ -50,10 +50,17 @@ const ResignationDone = () => {
             </div>
           </div>
           <hr />
-          <div className="row py-2 mb-2">
+          <div className="row py-2 pb-0 mb-0">
             <div className="col d-flex ps-0 align-items-center justify-content-center">
               <div>
                 <h1 className="color-sd fw-bold mb">แล้วหวังว่าจะได้พบกันใหม่!!</h1>
+              </div>
+            </div>
+          </div>
+          <div className="row mb-3">
+            <div className="col d-flex ps-0 align-items-center justify-content-center">
+              <div>
+                <Link to="/" className="my-auto p-2 btn btn-danger btn-lg">กลับไปหน้าหลัก</Link>
               </div>
             </div>
           </div>
