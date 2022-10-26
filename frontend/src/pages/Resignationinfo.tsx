@@ -12,8 +12,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FormEvent, useRef } from "react";
 import { sendresignationInfo } from "../Providers/DataProvider";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useResignation from "../hooks/useResignation";
+import { api } from "../utils/axios";
 
 const ResignationInfoPage = () => {
   const { id } = useParams();
@@ -85,9 +86,63 @@ const ResignationInfoPage = () => {
     }
   };
 
+  const saveDocs = async function () {
+    const docsName = docNameRef.current?.value;
+
+    let tmp = titleRef.current?.value;
+    const title = tmp ? parseInt(tmp) : tmp;
+
+    const name = nameRef.current?.value;
+    const surname = surnameRef.current?.value;
+    const studentId = studentIDRef.current?.value;
+    const faculty = facultyRef.current?.value;
+    const department = departmentRef.current?.value;
+
+    tmp = studySystemRef.current?.value;
+    const studySystem = tmp ? parseInt(tmp) : tmp;
+
+    const tel = telRef.current?.value;
+    const email = emailRef.current?.value;
+
+    tmp = semesterRef.current?.value;
+    const semester = tmp ? parseInt(tmp) : tmp;
+
+    const year = yearRef.current?.value;
+
+    const reason = reasonRef.current?.value;
+
+    await sendresignationInfo(
+      {
+        docsName,
+        title,
+        name,
+        surname,
+        studentId,
+        faculty,
+        department,
+        studySystem,
+        tel,
+        email,
+        semester,
+        year,
+        reason,
+      },
+
+      id
+    );
+  };
+  let navigate = useNavigate();
+  async function geturl() {
+    const res = await api.get(`/mydocuments/resignation/${id}/print`);
+    return res.data["url"];
+  }
   const handlePrint = async function () {
     try {
-      // await saveDocs();
+      // prep print
+      await saveDocs();
+      const printlink = await geturl();
+      window.open(printlink);
+      navigate("/resigndone");
       toast.success("Print Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
