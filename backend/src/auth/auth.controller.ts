@@ -45,7 +45,7 @@ export class AuthController {
   @ApiOkResponse({ type: MyInfoDto, description: 'OK' })
   @ApiUnauthorizedResponse({ type: ErrorDto, description: 'Unauthorized' })
   async me(@Req() req: AuthGuardRequest) {
-    // return this.authService.getEmail(req)
+    return this.authService.getEmail(req)
     return req.user;
   }
 }

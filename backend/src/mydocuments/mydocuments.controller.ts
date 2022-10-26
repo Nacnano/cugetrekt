@@ -9,6 +9,7 @@ import { MyInfoDto } from 'src/myinfo/dto/myinfo.dto';
 import { AuthController } from 'src/auth/auth.controller';
 import { MyInfoService } from 'src/myinfo/myinfo.service';
 import { AuthService } from 'src/auth/auth.service';
+import { AuthGuard } from '@nestjs/passport';
 @Controller('MyDocuments')
 @ApiTags('MyDocuments')
 export class MydocumentsController {
@@ -18,22 +19,15 @@ export class MydocumentsController {
     private myInfoService: MyInfoService,
     ) {} 
 
-  
-  @UseGuards(JwtAuthGuard)
-  async me(@Req() req: AuthGuardRequest) {
-    return req.user;
-  }
-
-
   @Get()
+  @UseGuards(JwtAuthGuard)
   async returnDocuments(@Req() req: AuthGuardRequest) {
 
-    // const { email } = await this.authService.getEmail(req);
-    const email = 'hi';
+    const res = await this.authService.getEmail(req) as {email: string, id: undefined};
+    const email = res.email;
     
-    const user = this.myInfoService.findOnebyEmail(email);
-    const id = (await user).id;
-    console.log(id)
+    const user = await this.myInfoService.findOnebyEmail(email);
+    const id = user.id;
     return this.mydocumentsService.returnDocuments(+id);
   }
 }
