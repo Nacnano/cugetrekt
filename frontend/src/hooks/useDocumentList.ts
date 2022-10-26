@@ -8,8 +8,7 @@ const useDocumentList = () => {
   const [documents, setDocuments] = useState<DocumentDto[]>([]);
 const fetchContents = async () => {
       try {
-        const res = await api.get('/MyDocuments/1');
-        console.log(res.data)
+        const res = await api.get('/MyDocuments');
         setDocuments(res.data);
       } catch (err) {
         setError(true);
