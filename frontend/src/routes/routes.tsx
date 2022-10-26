@@ -23,7 +23,6 @@ const MyRoutes = () => {
           <Route path="MyInfo" element={<MyInfoPage />} />
           <Route path="Login" element={<LoginPage />} />
           <Route path="Register" element={<RegisterPage />} />
-          {/* <Route path="Withdrawal" element={<WithdrawInfoPage />} /> */}
           <Route
             path="mydocuments/Withdrawal/:id"
             element={<WithdrawInfoPage />}
@@ -37,6 +36,7 @@ const MyRoutes = () => {
           <Route path="ResignationDone" element={<ResignationDone />} />
           <Route path="*" element={<NoPage />} />
           {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -7,6 +7,8 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log', 'debug', 'verbose'],
   });
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Cugetrekt')
     .setDescription('Cugetrekt API description')
