@@ -11,8 +11,11 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast';
-import { createWithdrawalDoc, createResignationDoc } from '../Providers/DataProvider';
+import toast from "react-hot-toast";
+import {
+  createWithdrawalDoc,
+  createResignationDoc,
+} from "../Providers/DataProvider";
 
 async function getID(doctype: any) {
   const res = await api.get("/mydocuments", doctype);
@@ -55,7 +58,6 @@ const MyDocumentsPage = () => {
     }
   }
 
-  
   //assume id from api
   let id = (documents = [
     {
@@ -172,7 +174,7 @@ const MyDocumentsPage = () => {
                         className="card btn-to-sd"
                         style={{ borderColor: "var(--sd)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3 text-center">
                               <i className="display-1 fa-regular fa-circle-down"></i>
@@ -200,7 +202,7 @@ const MyDocumentsPage = () => {
                         className="card btn-to-pm"
                         style={{ borderColor: "var(--pm)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3  text-center">
                               <i className="display-1 fa-solid fa-person-running"></i>
