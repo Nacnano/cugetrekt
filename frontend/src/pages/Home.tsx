@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    setTimeout(() => {
+      setLoader(false);
+    }, 1250);
+  }, []);
+
   return (
     <>
       <main>
-        <div id="loader" className="loader-wrapper fixed-top" style={{ zIndex: 2000 }}>
+        <div id="loader" className={`loader-wrapper fixed-top ${loading ? 'loader-show' : 'loader-hidden'} ${loader ? '' : 'd-none'}`} style={{ zIndex: 2000 }}>
           <h1 className="display-5 text-white text-center d-none d-lg-block">วันนี้...
             คุณได้เตรียมตัวถอนหรือยัง&nbsp;&nbsp;</h1>
           <span className="loader"><span className="loader-inner"></span></span>
