@@ -16,6 +16,7 @@ import {
   createWithdrawalDoc,
   createResignationDoc,
 } from "../Providers/DataProvider";
+import { DocumentDto } from "../types/dto";
 
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);

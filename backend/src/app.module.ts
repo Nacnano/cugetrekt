@@ -1,16 +1,19 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
-import { UsersModule } from './myinfo/myinfo.module';
+import { MyInfoModule } from './myinfo/myinfo.module';
 import { MydocumentsModule } from './mydocuments/mydocuments.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthMiddleware } from './common/middlewares/auth.middleware';
+import { AuthModule } from './auth/auth.module';
 import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
+    AuthModule,
     PrismaModule,
-    UsersModule,
+    MyInfoModule,
     MydocumentsModule,
     ConfigModule.forRoot(),
     CourseModule,
@@ -18,4 +21,8 @@ import { CourseModule } from './course/course.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configuration(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthMiddleware).forRoutes('*');
+  }
+}
