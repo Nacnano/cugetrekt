@@ -43,6 +43,9 @@ setTimeout(() => {
             document.getElementById(`motivation`).innerText = "คะแนนไม่ถูกต้อง!!"
             for (let i = 1; i < 6; i++) {
                 document.getElementById(`getting${i - 1}Probability`).innerText = "ERR"
+                if (i > 1) {
+                    document.getElementById(`bg-pred${i - 1}`).style.backgroundColor = "indianred";
+                }
             }
         }
         else {
