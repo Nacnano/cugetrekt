@@ -1,6 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Req, UseGuards } from '@nestjs/common';
 import { WithdrawalDto } from './dto/withdrawal.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthService } from 'src/auth/auth.service';
+import { AuthGuardRequest } from 'src/common/dto/guard.dto';
+import { JwtAuthGuard } from 'src/common/guards/auth.guard';
+import { MyInfoService } from 'src/myinfo/myinfo.service';
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const moment = require('moment');
@@ -8,10 +12,13 @@ moment().format();
 
 @Injectable()
 export class WithdrawalService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, 
+    private authService: AuthService,
+    private myInfoService: MyInfoService) {}
 
-  createWithdrawalData(withdrawalDto: WithdrawalDto) {
-    withdrawalDto['userId'] = 1; // Demo
+  
+  async createWithdrawalData(withdrawalDto: WithdrawalDto, userId: number) {
+    withdrawalDto['userId'] = userId;
     withdrawalDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
     return this.prisma.withdrawal.create({ data: withdrawalDto });
   }

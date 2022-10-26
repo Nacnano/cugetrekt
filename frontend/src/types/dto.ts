@@ -60,7 +60,7 @@ export interface UserDto {
 }
 
 export interface CredentialDto {
-  accessToken: string;
+  Authorization: string;
 }
 
 export interface ErrorDto {

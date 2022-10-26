@@ -1,18 +1,30 @@
-import { Controller, Get, Param, Post, Patch, Delete, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Patch, Delete, Body, Req, UseGuards } from '@nestjs/common';
 import { ResignationService } from './resignation.service';
 import { ApiTags, ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { ResignationDto } from './dto/resignation.dto';
 import { ResignationEntity } from './entities/resignation.entity';
+import { AuthGuardRequest } from 'src/common/dto/guard.dto';
+import { AuthService } from 'src/auth/auth.service';
+import { MyInfoService } from 'src/myinfo/myinfo.service';
+import { JwtAuthGuard } from 'src/common/guards/auth.guard';
 
 @Controller('MyDocuments/resignation')
 @ApiTags('MyDocuments/resignation')
 export class ResignationController {
-  constructor(private resignationService: ResignationService) {}
+  constructor(private resignationService: ResignationService, 
+    private authService: AuthService, 
+    private myInfoService: MyInfoService) {}
 
   @Post()
   @ApiCreatedResponse({ type: ResignationEntity })
-  createResignationData( @Body() resignationDto: ResignationDto ) {
-    return this.resignationService.createResignationData(resignationDto);
+  @UseGuards(JwtAuthGuard)
+  async createResignationData( @Body() resignationDto: ResignationDto, @Req() req: AuthGuardRequest ) {
+    const res = await this.authService.getEmail(req);
+    const email = res.email;
+    
+    const user = await this.myInfoService.findOnebyEmail(email);
+    const userId = user.id;
+    return this.resignationService.createResignationData(resignationDto, userId);
   }
 
   @Get(':id')
