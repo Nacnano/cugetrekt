@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { MyInfoService } from './myinfo.service';
 import { MyInfoDto } from './dto/myinfo.dto';
 import { ApiTags, ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
@@ -20,6 +28,11 @@ export class MyInfoController {
   findOne(@Param('id') id: string) {
     return this.myinfoService.findOne(+id);
   }
+
+  // @Get('email/:email')
+  // findOneEmail(@Param('email') email: string) {
+  //   return this.myinfoService.findOnebyEmail(email);
+  // }
 
   @Put(':id')
   @ApiOkResponse({ type: MyInfoEntity })

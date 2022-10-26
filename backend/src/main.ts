@@ -5,19 +5,19 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log', 'debug', 'verbose'],
+    cors: true,
   });
-
-  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('Cugetrekt')
     .setDescription('Cugetrekt API description')
-    .setVersion('0.1')
+    .setVersion('0.2')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(parseInt(process.env.PORT) || 3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port, () => console.log('Running on port', port));
 }
 bootstrap();
