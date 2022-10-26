@@ -40,16 +40,14 @@ export class MyInfoService {
     const user = await this.prisma.user.findFirst({
         where: {email: email}
     });
-
     if (!user) {
-        throw new HttpException("invalid_credentials",  
+        throw new HttpException("no_email_found",  
               HttpStatus.UNAUTHORIZED);
     }
 
     const areEqual = await (password === user.password);
-    console.log(password, user.password);
     if (!areEqual) {
-        throw new HttpException("invalid_credentials",
+        throw new HttpException("wrong_password",
             HttpStatus.UNAUTHORIZED);
     }
 
