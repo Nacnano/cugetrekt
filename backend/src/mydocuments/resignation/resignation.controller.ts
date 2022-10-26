@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Put, Delete, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Patch, Delete, Body } from '@nestjs/common';
 import { ResignationService } from './resignation.service';
 import { ApiTags, ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { ResignationDto } from './dto/resignation.dto';
@@ -21,7 +21,7 @@ export class ResignationController {
     return this.resignationService.returnResignationData(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @ApiOkResponse({ type: ResignationEntity })
   updateResignationData( @Param('id') id: string, @Body('data') data: ResignationDto) {
     return this.resignationService.updateResignationData(+id, data);
