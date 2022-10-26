@@ -114,7 +114,7 @@ const MyInfoPage = () => {
               <Row className="mb-2">
                 <Col xs={2}>
                   <FloatingLabel label="คำนำหน้า">
-                    <Form.Select defaultValue={Info["title"]} ref={titleRef}>
+                    <Form.Select value={Info["title"]} ref={titleRef}>
                       <option>กรุณาเลือกคำนำหน้า</option>
                       <option value="1">นาย</option>
                       <option value="2">นาง</option>
@@ -187,7 +187,7 @@ const MyInfoPage = () => {
                 <Col>
                   <FloatingLabel label="ระบบการศึกษา">
                     <Form.Select
-                      defaultValue={Info["studySystem"]}
+                      value={Info["studySystem"]}
                       ref={studySystemRef}
                     >
                       <option>กรุณาเลือกระบบการศึกษา</option>
