@@ -16,6 +16,7 @@ import {
   createWithdrawalDoc,
   createResignationDoc,
 } from "../Providers/DataProvider";
+import { DocumentDto } from "../types/dto";
 
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);
@@ -28,26 +29,8 @@ const MyDocumentsPage = () => {
   error = false;
   let navigate = useNavigate();
 
-  async function postWithdrawal() {
-    try {
-      const id = await createWithdrawalDoc();
-      setShow(false);
-      navigate(`/mydocuments/withdrawal/${id}`);
-    } catch (err) {
-      toast.error("Something went wrong");
-    }
-  }
-  async function postResignation() {
-    try {
-      const id = await createResignationDoc();
-      setShow(false);
-      navigate(`/mydocuments/resignation/${id}`);
-    } catch (err) {
-      toast.error("Something went wrong");
-    }
-  }
-
   //assume id from api
+
   // documents = [
   //   {
   //     id: 1,
@@ -120,6 +103,25 @@ const MyDocumentsPage = () => {
   //     subject_2: "Calculus 2",
   //   },
   // ];
+
+  async function postWithdrawal() {
+    try {
+      const id = await createWithdrawalDoc();
+      setShow(false);
+      navigate(`/mydocuments/withdrawal/${id}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  }
+  async function postResignation() {
+    try {
+      const id = await createResignationDoc();
+      setShow(false);
+      navigate(`/mydocuments/resignation/${id}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  }
 
   return (
     <div className="container" style={{ marginTop: "5em" }}>
