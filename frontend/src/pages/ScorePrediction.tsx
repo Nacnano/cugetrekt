@@ -9,7 +9,7 @@ const ScorePrediction = () => {
       <div className="container-fluid bg-dark shadowdrop" style={{ paddingTop: '4em' }}>
         <div className="row text-white justify-content-center text-center">
           <h1 className="display-1 fw-bold mb-0">ทำนายเกรด</h1>
-          <p style={{ fontSize: 18 }}>เลือกวิชาและกรอกคะแนนเพื่อคำนวณ!...<br /><a className="text-white" href="#" style={{ fontSize: 12 }}>วิธีใช้ระบบคำนวณ</a></p>
+          <p style={{ fontSize: 18 }}>เลือกวิชาและกรอกคะแนนเพื่อคำนวณ!...<br /><span className="text-decoration-underline text-white" style={{ fontSize: 12 }}>*คะแนนปัจจุบันเป็นคะแนนสมมุติ ผลที่ได้ไม่สามารถนำไปเปรียบเทียบจริงได้</span></p>
         </div>
         <div className="row justify-self-center mx-auto" style={{ width: "40%" }} >
           <div className="col mb-4">
