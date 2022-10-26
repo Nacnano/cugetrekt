@@ -10,7 +10,7 @@ const useDocumentList = () => {
     const fetchContents = async () => {
       try {
         const res = await api.get('/MyInfo');
-        setInfo(res.data.data);
+        setInfo(res.data);
       } catch (err) {
         setError(true);
       } finally {

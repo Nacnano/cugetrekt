@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const API_URL = process.env.API_URL;
+// const API_URL = process.env.API_URL;
+const API_URL = "https://cugetrekt-backend-lgnud3ncza-as.a.run.app"
 
 export const api = axios.create({
   baseURL: API_URL,
