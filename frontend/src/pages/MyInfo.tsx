@@ -29,50 +29,27 @@ const MyInfoPage = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
 
-  // const { loading, error, info } = useInfo()
-  // const { name, surname } = info
+  const { loading, error, info } = useInfo()
 
-  // FORDEV
-  let { loading, error, info } = useInfo();
-  loading = false;
-  error = false;
-
-  // let {
-  //   title,
-  //   name,
-  //   surname,
-  //   studentID,
-  //   faculty,
-  //   department,
-  //   studySystem,
-  //   tel,
-  //   email,
-  // } = info;
-
-  // assume this is from api
-  let Info = {
-    title: 1,
-    name: "tempname",
-    surname: "tempsurname",
-    studentID: "6532000021",
-    faculty: "Engineering",
-    department: "ComputerEN",
-    studySystem: 1,
-    tel: "0696969696",
-    email: "temp@gmail.com",
-  };
+  console.log(info);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmitting) return;
     setSubmitting(true);
-    const title = titleRef.current?.value;
+
+    let tmp = titleRef.current?.value;
+    const title = tmp ? parseInt(tmp) : tmp;
+
     const name = nameRef.current?.value;
     const surname = surnameRef.current?.value;
-    const studentID = studentIDRef.current?.value;
+    const studentId = studentIDRef.current?.value;
     const faculty = facultyRef.current?.value;
     const department = departmentRef.current?.value;
-    const studySystem = studySystemRef.current?.value;
+
+    tmp = studySystemRef.current?.value;
+    const studySystem = tmp ? parseInt(tmp) : tmp;
+
     const tel = telRef.current?.value;
     const email = emailRef.current?.value;
 
@@ -81,7 +58,7 @@ const MyInfoPage = () => {
         title,
         name,
         surname,
-        studentID,
+        studentId,
         faculty,
         department,
         studySystem,
@@ -114,7 +91,7 @@ const MyInfoPage = () => {
               <Row className="mb-2">
                 <Col xs={2}>
                   <FloatingLabel label="คำนำหน้า">
-                    <Form.Select value={Info["title"]} ref={titleRef}>
+                    <Form.Select value={info["title"]} ref={titleRef}>
                       <option>กรุณาเลือกคำนำหน้า</option>
                       <option value="1">นาย</option>
                       <option value="2">นาง</option>
@@ -128,7 +105,7 @@ const MyInfoPage = () => {
                       <Form.Control
                         placeholder="ชื่อ"
                         ref={nameRef}
-                        defaultValue={Info["name"]}
+                        defaultValue={info["name"]}
                       />
                     </FloatingLabel>
                   </Form.Group>
@@ -138,7 +115,7 @@ const MyInfoPage = () => {
                     <FloatingLabel label="นามสกุล" className="mb-3">
                       <Form.Control
                         placeholder="นามสกุล"
-                        defaultValue={Info["surname"]}
+                        defaultValue={info["surname"]}
                         ref={surnameRef}
                       />
                     </FloatingLabel>
@@ -156,7 +133,7 @@ const MyInfoPage = () => {
                         placeholder="รหัสนิสิต"
                         minLength={10}
                         maxLength={10}
-                        defaultValue={Info["studentID"]}
+                        defaultValue={info["studentId"]}
                         ref={studentIDRef}
                       />
                     </FloatingLabel>
@@ -165,7 +142,7 @@ const MyInfoPage = () => {
                 <Col>
                   <FloatingLabel label="คณะ">
                     <FormControl
-                      defaultValue={Info["faculty"]}
+                      defaultValue={info["faculty"]}
                       placeholder="คณะ"
                       ref={facultyRef}
                     />
@@ -174,7 +151,7 @@ const MyInfoPage = () => {
                 <Col>
                   <FloatingLabel label="สาขา">
                     <FormControl
-                      defaultValue={Info["department"]}
+                      defaultValue={info["department"]}
                       placeholder="สาขา"
                       ref={departmentRef}
                     />
@@ -187,7 +164,7 @@ const MyInfoPage = () => {
                 <Col>
                   <FloatingLabel label="ระบบการศึกษา">
                     <Form.Select
-                      value={Info["studySystem"]}
+                      value={info["studySystem"]}
                       ref={studySystemRef}
                     >
                       <option>กรุณาเลือกระบบการศึกษา</option>
@@ -205,7 +182,7 @@ const MyInfoPage = () => {
                         minLength={10}
                         maxLength={10}
                         placeholder="เบอร์โทรศัพท์"
-                        defaultValue={Info["tel"]}
+                        defaultValue={info["tel"]}
                         ref={telRef}
                       />
                     </FloatingLabel>
@@ -220,7 +197,7 @@ const MyInfoPage = () => {
                       <Form.Control
                         type="email"
                         placeholder="อีเมล์ (name@example.com)"
-                        defaultValue={Info["email"]}
+                        defaultValue={info["email"]}
                         ref={emailRef}
                       />
                     </FloatingLabel>

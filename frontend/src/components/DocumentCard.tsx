@@ -39,7 +39,7 @@ export default function DocumentCard(props: DocumentDto) {
           <br />
           วิชาที่สอง : {course2}
           <br />
-          วิชาที่สอง : {course3}
+          วิชาที่สาม : {course3}
         </p>
       );
     } else if (docsType === 1) {
@@ -53,10 +53,10 @@ export default function DocumentCard(props: DocumentDto) {
     <Col className="px-4" style={{ height: 250 }}>
       <Card
         className="shadowdrop-l border-0 rounded-0 p-3"
-        style={{ height: 250 }}
+        style={{ height: 275 }}
       >
         <h4 className="card-title fw-bold">{(docsName ? docsName : "Untitled")} </h4>
-        <Card.Text className="text-muted mb-1">{checkType()}</Card.Text>
+        <Card.Text className="text-muted mb-0">{checkType()}</Card.Text>
         <div className="container mt-auto">
           <div className="row">
             <p
