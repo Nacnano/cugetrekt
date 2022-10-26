@@ -10,8 +10,9 @@ const useDocumentList = () => {
   useEffect(() => {
     const fetchContents = async () => {
       try {
-        const res = await api.get('/MyDocuments');
-        setDocuments(res.data.data);
+        const res = await api.get('/MyDocuments/1');
+        console.log(res)
+        setDocuments(res.data);
       } catch (err) {
         setError(true);
       } finally {

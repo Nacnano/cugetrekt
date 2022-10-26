@@ -11,12 +11,11 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
-
-async function getID(doctype: any) {
-  const res = await api.get("/mydocuments", doctype);
-  return res;
-  // get id of doc
-}
+import toast from "react-hot-toast";
+import {
+  createWithdrawalDoc,
+  createResignationDoc,
+} from "../Providers/DataProvider";
 
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);
@@ -28,94 +27,99 @@ const MyDocumentsPage = () => {
   loading = false;
   error = false;
   let navigate = useNavigate();
-  function postwithdrawal() {
-    // in progress
 
-    let e = 8; //getID(1) //(1 : withdrawal)
-    setShow(false);
-    const res = api.post(`/mydocuments/withdrawal/${e}`);
-    navigate(`/mydocuments/withdrawal/${e}`);
+  async function postWithdrawal() {
+    try {
+      const id = await createWithdrawalDoc();
+      setShow(false);
+      navigate(`/mydocuments/withdrawal/${id}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   }
-  function postresignation() {
-    // in progress
-    let e = 69; //getID(1) //(1 : withdrawal)
-    setShow(false);
-    const res = api.post(`/mydocuments/resignation/${e}`);
-    navigate(`/mydocuments/resignation/${e}`);
+  async function postResignation() {
+    try {
+      const id = await createResignationDoc();
+      setShow(false);
+      navigate(`/mydocuments/resignation/${id}`);
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   }
+
   //assume id from api
-  let id = (documents = [
-    {
-      id: 1,
-      docType: 0,
-      name: "Withdraw01",
-      day: 20,
-      month: 10,
-      year: 2022,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 2,
-      docType: 1,
-      name: "Resign01",
-      day: 2,
-      month: 10,
-      year: 2022,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 3,
-      docType: 0,
-      name: "WithWithEz",
-      day: 1,
-      month: 8,
-      year: 2022,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 4,
-      docType: 1,
-      name: "JustGetOut",
-      day: 20,
-      month: 10,
-      year: 1980,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 5,
-      docType: 1,
-      name: "ByeBye",
-      day: 20,
-      month: 10,
-      year: 1999,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 6,
-      docType: 0,
-      name: "GetRekt",
-      day: 20,
-      month: 10,
-      year: 1999,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-    {
-      id: 7,
-      docType: 1,
-      name: "CULater",
-      day: 20,
-      month: 10,
-      year: 1999,
-      subject_1: "Calculus 1",
-      subject_2: "Calculus 2",
-    },
-  ]);
+  // documents = [
+  //   {
+  //     id: 1,
+  //     docType: 0,
+  //     name: "Withdraw01",
+  //     day: 20,
+  //     month: 10,
+  //     year: 2022,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 2,
+  //     docType: 1,
+  //     name: "Resign01",
+  //     day: 2,
+  //     month: 10,
+  //     year: 2022,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 3,
+  //     docType: 0,
+  //     name: "WithWithEz",
+  //     day: 1,
+  //     month: 8,
+  //     year: 2022,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 4,
+  //     docType: 1,
+  //     name: "JustGetOut",
+  //     day: 20,
+  //     month: 10,
+  //     year: 1980,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 5,
+  //     docType: 1,
+  //     name: "ByeBye",
+  //     day: 20,
+  //     month: 10,
+  //     year: 1999,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 6,
+  //     docType: 0,
+  //     name: "GetRekt",
+  //     day: 20,
+  //     month: 10,
+  //     year: 1999,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  //   {
+  //     id: 7,
+  //     docType: 1,
+  //     name: "CULater",
+  //     day: 20,
+  //     month: 10,
+  //     year: 1999,
+  //     subject_1: "Calculus 1",
+  //     subject_2: "Calculus 2",
+  //   },
+  // ];
 
   return (
     <div className="container" style={{ marginTop: "5em" }}>
@@ -124,7 +128,7 @@ const MyDocumentsPage = () => {
         crossOrigin="anonymous"
       ></script>
       {!isLoggedIn ? (
-        <Error message="Please Login First" />
+        `${navigate("/login")}`
       ) : loading ? (
         <Loading />
       ) : error ? (
@@ -153,13 +157,13 @@ const MyDocumentsPage = () => {
                       // to="/mydocuments/Withdrawal/:id"
                       className="text-decoration-none text-dark"
                       // onClick={handleClose}
-                      onClick={postwithdrawal}
+                      onClick={postWithdrawal}
                     >
                       <div
                         className="card btn-to-sd"
                         style={{ borderColor: "var(--sd)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3 text-center">
                               <i className="display-1 fa-regular fa-circle-down"></i>
@@ -181,13 +185,13 @@ const MyDocumentsPage = () => {
                       // to="/mydocuments/Resignation/:id"
                       className="text-decoration-none text-dark"
                       // onClick={handleClose}
-                      onClick={postresignation}
+                      onClick={postResignation}
                     >
                       <div
                         className="card btn-to-pm"
                         style={{ borderColor: "var(--pm)", borderWidth: 2 }}
                       >
-                        <div className="card-body">
+                        <div className="card-body pointer-on-hover">
                           <div className="row d-flex flex-wrap align-items-center">
                             <div className="col-3  text-center">
                               <i className="display-1 fa-solid fa-person-running"></i>

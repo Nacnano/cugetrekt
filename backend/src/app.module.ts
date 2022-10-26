@@ -7,6 +7,7 @@ import { MydocumentsModule } from './mydocuments/mydocuments.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthMiddleware } from './common/middlewares/auth.middleware';
 import { AuthModule } from './auth/auth.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
     MyInfoModule,
     MydocumentsModule,
     ConfigModule.forRoot(),
+    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

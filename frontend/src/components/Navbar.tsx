@@ -1,31 +1,9 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../Providers/AuthProvider";
-import { api } from "../utils/axios";
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { useAuth } from '../Providers/AuthProvider'
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useAuth();
-  let navigate = useNavigate();
-  async function getID(doctype: any) {
-    const res = await api.get("/mydocuments", doctype);
-    return res;
-    // get id of doc
-  }
-  function postwithdrawal() {
-    // in progress
+  const { isLoggedIn, logout } = useAuth()
 
-    let e = 8; //getID(1) //(1 : withdrawal)
-    // setShow(false);
-    const res = api.post(`/mydocuments/withdrawal/${e}`);
-    navigate(`/mydocuments/withdrawal/${e}`);
-  }
-  function postresignation() {
-    // in progress
-    let e = 69; //getID(1) //(1 : withdrawal)
-    // setShow(false);
-    const res = api.post(`/mydocuments/resignation/${e}`);
-    navigate(`/mydocuments/resignation/${e}`);
-  }
   return (
     <div>
       <nav className="shadowdrop navbar navbar-expand-lg bg-sd fixed-top">
@@ -46,49 +24,39 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <div
+              {isLoggedIn ? (<li className="nav-item">
+                <Link
+                  to="/MyDocuments"
                   className="nav-link text-white pointer-on-hover"
                   aria-current="page"
-                  onClick={postwithdrawal}
                 >
-                  ถอน
-                </div>
+                  เอกสาร
+                </Link>
+              </li>) : (<></>)}
+              <li className="nav-item">
+                <a
+                  className="nav-link text-white pointer-on-hover"
+                  href="/ScorePrediction"
+                >
+                  ทำนายคะแนน
+                </a>
               </li>
               <li className="nav-item">
-                <div
+                <a
                   className="nav-link text-white pointer-on-hover"
-                  onClick={postresignation}
+                  href="https://chula.wellness.in.th"
                 >
-                  ลาออก
-                </div>
+                  สายด่วนสุขภาพจิต
+                </a>
               </li>
-              <li className="nav-item text-white dropdown">
-                <Link
-                  className="nav-link dropdown-toggle text-white"
-                  to="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  ข้อมูลประกอบการตัดสินใจ
-                </Link>
-                <ul className="dropdown-menu bg-sd">
-                  <li className="py-1"><a className="bg-dark-on-hover dropdown-item text-white" href="/ScorePrediction">ทำนายคะแนน</a></li>
-                  <li className="py-1"><Link className="bg-dark-on-hover dropdown-item text-white" to="#">Review</Link></li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li><a className="bg-dark-on-hover dropdown-item text-white" href="https://chula.wellness.in.th">สายด่วนสุขภาพจิต</a></li>
-                </ul>
-              </li>
+
             </ul>
             <div className="d-none d-lg-block">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li className="nav-item me-auto">
                   {!isLoggedIn ? (
                     <Link className="nav-link text-white" to="/Login">
-                      {" "}
+                      {' '}
                       <i className="fa-solid fa-user me-2"></i>เข้าสู่ระบบ
                     </Link>
                   ) : (
@@ -104,14 +72,6 @@ const Navbar = () => {
                       </Link>
                       <ul className="dropdown-menu dropdown-menu-end bg-sd">
                         <div>
-                          <li className="py-1">
-                            <Link
-                              className="bg-dark-on-hover dropdown-item text-white"
-                              to="/MyDocuments"
-                            >
-                              <i className="fa-solid fa-file me-2"></i>เอกสาร
-                            </Link>
-                          </li>
                           <li className="py-1">
                             <Link
                               className="bg-dark-on-hover dropdown-item text-white"
@@ -145,7 +105,7 @@ const Navbar = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

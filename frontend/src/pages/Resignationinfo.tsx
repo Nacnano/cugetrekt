@@ -13,66 +13,58 @@ import { FormEvent, useRef } from "react";
 import { sendresignationInfo } from "../Providers/DataProvider";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import useResignation from "../hooks/useResignation";
 
 const ResignationInfoPage = () => {
   const { id } = useParams();
-  console.log(id);
+  const { info } = useResignation(id || '');
+
   const docNameRef = useRef<HTMLInputElement>(null);
-  const titleRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLSelectElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const surnameRef = useRef<HTMLInputElement>(null);
   const studentIDRef = useRef<HTMLInputElement>(null);
   const facultyRef = useRef<HTMLInputElement>(null);
   const departmentRef = useRef<HTMLInputElement>(null);
-  const studySystemRef = useRef<HTMLInputElement>(null);
+  const studySystemRef = useRef<HTMLSelectElement>(null);
   const telRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const semesterRef = useRef<HTMLInputElement>(null);
+  const semesterRef = useRef<HTMLSelectElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
   const reasonRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
-
-  let Info = {
-    docName: "tempdocname",
-    title: 1,
-    name: "tempname",
-    surname: "tempsurname",
-    studentID: "6532000021",
-    faculty: "Engineering",
-    department: "ComputerEN",
-    studySystem: 1,
-    tel: "0696969696",
-    email: "temp@gmail.com",
-    semester: "1",
-    year: "2565",
-    reason: "kuay",
-  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmitting) return;
     setSubmitting(true);
-    const docName = docNameRef.current?.value;
-    const title = titleRef.current?.value;
+    const docsName = docNameRef.current?.value;
+    
+    let tmp = titleRef.current?.value;
+    const title = (tmp ? parseInt(tmp) : tmp);
     const name = nameRef.current?.value;
     const surname = surnameRef.current?.value;
-    const studentID = studentIDRef.current?.value;
+    const studentId = studentIDRef.current?.value;
     const faculty = facultyRef.current?.value;
     const department = departmentRef.current?.value;
-    const studySystem = studySystemRef.current?.value;
+
+    tmp = studySystemRef.current?.value;
+    const studySystem = (tmp ? parseInt(tmp) : tmp);
     const tel = telRef.current?.value;
     const email = emailRef.current?.value;
-    const semester = semesterRef.current?.value;
+    
+    tmp = semesterRef.current?.value;
+    const semester = (tmp ? parseInt(tmp) : tmp);
     const year = yearRef.current?.value;
     const reason = reasonRef.current?.value;
 
     try {
       await sendresignationInfo({
-        docName,
+        docsName,
         title,
         name,
         surname,
-        studentID,
+        studentId,
         faculty,
         department,
         studySystem,
@@ -81,7 +73,7 @@ const ResignationInfoPage = () => {
         semester,
         year,
         reason,
-      });
+      }, id);
       toast.success("Save Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
@@ -90,10 +82,21 @@ const ResignationInfoPage = () => {
     }
   };
 
+  const handlePrint = async function() {
+    try {
+      // await saveDocs();
+      toast.success("Print Succesfully!");
+    } catch (err) {
+      toast.error("Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <main style={{ marginTop: "5em" }}>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1 className="heading d-flex justify-content-center mb-3">
             ข้อมูลในใบลาออก
           </h1>
@@ -103,7 +106,7 @@ const ResignationInfoPage = () => {
                 <FloatingLabel label="ชื่อเอกสาร">
                   <Form.Control
                     placeholder="ชื่อเอกสาร"
-                    defaultValue={Info["docName"]}
+                    defaultValue={info["docName"]}
                     ref={docNameRef}
                   />
                 </FloatingLabel>
@@ -114,8 +117,8 @@ const ResignationInfoPage = () => {
             <h3 className="mb-3">ข้อมูลส่วนตัว</h3>
             <Row className="mb-2">
               <Col xs={2}>
-                <FloatingLabel label="คำนำหน้า" ref={titleRef}>
-                  <Form.Select required defaultValue="1">
+                <FloatingLabel label="คำนำหน้า">
+                  <Form.Select required defaultValue="1" ref={titleRef}>
                     <option>กรุณาเลือกคำนำหน้า</option>
                     <option value="1">นาย</option>
                     <option value="2">นาง</option>
@@ -129,7 +132,7 @@ const ResignationInfoPage = () => {
                     <Form.Control
                       placeholder="ชื่อ"
                       ref={nameRef}
-                      defaultValue={Info["name"]}
+                      defaultValue={info["name"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -140,7 +143,7 @@ const ResignationInfoPage = () => {
                     <Form.Control
                       placeholder="นามสกุล"
                       ref={surnameRef}
-                      defaultValue={Info["surname"]}
+                      defaultValue={info["surname"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -158,7 +161,7 @@ const ResignationInfoPage = () => {
                       minLength={10}
                       maxLength={10}
                       ref={studentIDRef}
-                      defaultValue={Info["studentID"]}
+                      defaultValue={info["studentID"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -169,7 +172,7 @@ const ResignationInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="คณะ"
-                      defaultValue={Info["faculty"]}
+                      defaultValue={info["faculty"]}
                       ref={facultyRef}
                     />
                   </FloatingLabel>
@@ -181,7 +184,7 @@ const ResignationInfoPage = () => {
                     <Form.Control
                       type="text"
                       placeholder="สาขา"
-                      defaultValue={Info["department"]}
+                      defaultValue={info["department"]}
                       ref={departmentRef}
                     />
                   </FloatingLabel>
@@ -192,8 +195,12 @@ const ResignationInfoPage = () => {
           <Container>
             <Row className="mb-2">
               <Col>
-                <FloatingLabel label="ระบบการศึกษา" ref={studySystemRef}>
-                  <Form.Select required defaultValue={Info["studySystem"]}>
+                <FloatingLabel label="ระบบการศึกษา">
+                  <Form.Select
+                    required
+                    defaultValue={info["studySystem"]}
+                    ref={studySystemRef}
+                  >
                     <option>กรุณาเลือกระบบการศึกษา</option>
                     <option value="1">ทวิภาค</option>
                     <option value="2">ทวิภาค-นานาชาติ</option>
@@ -210,7 +217,7 @@ const ResignationInfoPage = () => {
                       maxLength={10}
                       placeholder="เบอร์โทรศัพท์"
                       ref={telRef}
-                      defaultValue={Info["tel"]}
+                      defaultValue={info["tel"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -225,7 +232,7 @@ const ResignationInfoPage = () => {
                       type="email"
                       placeholder="อีเมล์"
                       ref={emailRef}
-                      defaultValue={Info["email"]}
+                      defaultValue={info["email"]}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -238,8 +245,12 @@ const ResignationInfoPage = () => {
             <Row className="mb-2">
               <Col>
                 <Form.Group className="mb-3">
-                  <FloatingLabel label="ภาคการศึกษา" ref={semesterRef}>
-                    <Form.Select required defaultValue={Info["semester"]}>
+                  <FloatingLabel label="ภาคการศึกษา">
+                    <Form.Select
+                      required
+                      defaultValue={info["semester"]}
+                      ref={semesterRef}
+                    >
                       <option value="">กรุณาเลือกภาคการศึกษาปัจจุบัน</option>
                       <option value="1">ต้น</option>
                       <option value="2">ปลาย</option>
@@ -279,9 +290,12 @@ const ResignationInfoPage = () => {
               </Form.Group>
             </Row>
             <div className="d-flex justify-content-end mb-3">
-              <Button type="submit" size="lg">
-                Download PDF
-              </Button>
+            <Button type="submit" size="lg" className="me-3">
+              Save
+            </Button>
+            <Button onClick={handlePrint} size="lg">
+              Download PDF
+            </Button>
             </div>
           </Container>
         </Form>

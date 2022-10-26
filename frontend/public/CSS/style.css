@@ -11,10 +11,14 @@
 }
 
 @font-face {
-    font-family: 'Prompt';
-    src: url('PromptRegular.ttf');
+    font-family: 'Mitr';
+    src: url('Mitr-Regular.ttf');
     font-weight: normal;
     font-style: normal;
+}
+
+body {
+    font-family: Poppins, Mitr, sans-serif !important;
 }
 
 #landing a span {
@@ -31,6 +35,19 @@
     -webkit-animation: scrollDown 1.5s infinite;
     animation: scrollDown 1.5s infinite;
     box-sizing: border-box;
+}
+
+.loader-show {
+    display: block;
+}
+
+.loader-hidden {
+    opacity: 0;
+    transition: all 250ms linear;
+}
+
+.loader-done {
+    display: none;
 }
 
 .border-score {
@@ -89,11 +106,6 @@
     }
 }
 
-/* set default font */
-body {
-    font-family: Poppins, Prompt, sans-serif !important;
-}
-
 .btn-danger {
     color: #fff;
     background-color: var(--pm) !important;
@@ -131,7 +143,8 @@ body {
 }
 
 .card a:hover>p,
-.card a:hover>h4 {
+.card a:hover>h4,
+.text-rgb {
     animation: rgb 5.0s infinite ease !important;
 }
 
