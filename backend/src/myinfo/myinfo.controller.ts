@@ -15,12 +15,6 @@ export class MyInfoController {
     return this.myinfoService.create(myinfoDto);
   }
 
-  @Get()
-  @ApiOkResponse({ type: MyInfoEntity })
-  findAll() {
-    return this.myinfoService.findAll();
-  }
-
   @Get(':id')
   @ApiOkResponse({ type: MyInfoEntity })
   findOne( @Param('id') id: string) {

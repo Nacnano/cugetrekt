@@ -23,10 +23,6 @@ export class MyInfoService {
     return this.prisma.user.create({ data: myinfoDto });
   }
 
-  findAll() {
-    return this.prisma.user.findMany();
-  }
-
   findOne(id: number) {
     return this.prisma.user.findUnique({ where: { id } });
   }
@@ -39,7 +35,24 @@ export class MyInfoService {
     return this.prisma.user.delete({ where: { id } });
   }
 
-  findByLogin({ email }: MyInfoDto) {
+  async findByLogin({ email, password }: MyInfoDto) {
+
+    const user = await this.prisma.user.findFirst({
+        where: {email: email}
+    });
+
+    if (!user) {
+        throw new HttpException("invalid_credentials",  
+              HttpStatus.UNAUTHORIZED);
+    }
+
+    const areEqual = await (password === user.password);
+    console.log(password, user.password);
+    if (!areEqual) {
+        throw new HttpException("invalid_credentials",
+            HttpStatus.UNAUTHORIZED);
+    }
+
     return this.prisma.user.findFirst({
       where: { email: email },
     });
@@ -51,3 +64,7 @@ export class MyInfoService {
     });
   }
 }
+function compare(password: string, password1: any) {
+  throw new Error('Function not implemented.');
+}
+
