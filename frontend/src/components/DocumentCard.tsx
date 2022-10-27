@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function DocumentCard(props: DocumentDto) {
-  const { docsType, docsName, day, month, year, course1, course2, course3, id } = props;
+  const { docsType, docsName, lastEdit, course1, course2, course3, id } = props;
+
+  // console.log(lastEdit)
+  // const day = lastEdit.split("/")[0]
+  // const month = lastEdit.split("/")[1]
+  // const year = lastEdit.split("/")[2].slice(0, 4)
 
   let navigate = useNavigate();
 
@@ -63,7 +68,7 @@ export default function DocumentCard(props: DocumentDto) {
               className="text-muted ps-0 pb-2"
               style={{ fontSize: 13, marginBottom: 0 }}
             >
-              แก้ไขล่าสุด: {day}/{month}/{year}
+              แก้ไขล่าสุด: {lastEdit.slice(0, 10)}
               <br />
             </p>
             <div className="col px-0 d-flex align-text-center text-center">

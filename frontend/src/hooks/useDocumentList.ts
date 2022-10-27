@@ -11,8 +11,8 @@ const useDocumentList = () => {
       try {
         const res = await api.get('/MyDocuments');
         let arr = res.data;
-        arr.sort(function(a: string, b: string) {
-          return comp(a, b);
+        arr.sort(function(a: any, b: any) {
+          return comp(a.lastEdit, b.lastEdit);
         })
         setDocuments(res.data);
       } catch (err) {
