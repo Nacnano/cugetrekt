@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ResignationDto } from './dto/resignation.dto';
 import { PrismaService } from '../../prisma/prisma.service';
+import { MyInfoService } from 'src/myinfo/myinfo.service';
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const moment = require('moment');
@@ -8,11 +9,22 @@ moment().format();
 
 @Injectable()
 export class ResignationService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService,
+    private myInfoService: MyInfoService) {}
 
-  createResignationData(resignationDto: ResignationDto, userId: number) {
-    resignationDto['userId'] = userId
-    resignationDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
+  async createResignationData(resignationDto: ResignationDto, userId: number) {
+    const user = await this.myInfoService.findOne(userId);
+    resignationDto.userId = userId;
+    resignationDto.lastEdit = moment().format('L') + ' ' + moment().format('LTS');
+    resignationDto.name = user.name;
+    resignationDto.surname = user.surname;
+    resignationDto.title = user.title;
+    resignationDto.studentId = user.studentId;
+    resignationDto.department = user.department;
+    resignationDto.faculty = user.faculty;
+    resignationDto.studySystem = user.studySystem;
+    resignationDto.tel = user.tel;
+    resignationDto.email = user.infoEmail;
     return this.prisma.resignation.create({ data: resignationDto });
   }
 
