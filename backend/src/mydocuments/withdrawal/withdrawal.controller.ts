@@ -36,7 +36,6 @@ export class WithdrawalController {
   @Patch(':id')
   @ApiOkResponse({ type: WithdrawalEntity })
   updateWithdrawalData( @Param('id') id: string, @Body('data') data: WithdrawalDto) {
-    console.log(data)
     return this.withdrawalService.updateWithdrawalData(+id, data);
   }
 

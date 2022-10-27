@@ -24,7 +24,7 @@ export class ResignationService {
     resignationDto.faculty = user.faculty;
     resignationDto.studySystem = user.studySystem;
     resignationDto.tel = user.tel;
-    resignationDto.email = user.infoEmail;
+    resignationDto.email = user.email;
     return this.prisma.resignation.create({ data: resignationDto });
   }
 
