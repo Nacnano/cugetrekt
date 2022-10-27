@@ -48,7 +48,8 @@ setTimeout(() => {
             }
         }
         else {
-
+            
+            score = Math.round(score * 100) / 100;
             // F, D, C, B, A
             const grades = [0, 35, 50, 70, 80, 100]
             let sum = computeProbability(0)
