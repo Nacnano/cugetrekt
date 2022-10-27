@@ -22,7 +22,6 @@ export class MydocumentsController {
   @Get()
   @UseGuards(JwtAuthGuard)
   async returnDocuments(@Req() req: AuthGuardRequest) {
-
     const res = await this.authService.getEmail(req);
     const email = res.email;
     
