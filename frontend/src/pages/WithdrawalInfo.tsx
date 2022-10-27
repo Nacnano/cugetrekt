@@ -340,6 +340,8 @@ const WithdrawInfoPage = () => {
                   <FloatingLabel label="GPAX">
                     <Form.Control
                       type="text"
+                      step="0.01"
+                      min="0"
                       placeholder="GPAX"
                       ref={gpaxRef}
                       defaultValue={info["gpax"]}
