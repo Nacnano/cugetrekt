@@ -368,6 +368,8 @@ const WithdrawInfoPage = () => {
                   <FloatingLabel label="ปัจจุบันลงเรียนไว้ทั้งหมด">
                     <Form.Control
                       type="number"
+                      step="0.5"
+                      min="0"
                       placeholder="ปัจจุบันลงเรียนไว้ทั้งหมด"
                       ref={creditRef}
                       defaultValue={info["credit"]}
