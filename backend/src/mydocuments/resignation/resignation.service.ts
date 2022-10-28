@@ -128,8 +128,8 @@ export class ResignationService {
     doc.text(moment().format('L').split('/')[2], 494, 406.5);
 
     doc.end();
-    // const url = 'localhost:3001/asset/resignation/resignation-' + id + '.pdf';
-    const url = 'https://cugetrekt-backend-lgnud3ncza-as.a.run.app/asset/resignation/resignation-' + id + '.pdf';
+    const url = 'localhost:3001/asset/resignation/resignation-' + id + '.pdf';
+    // const url = 'https://cugetrekt-backend-lgnud3ncza-as.a.run.app/asset/resignation/resignation-' + id + '.pdf';
     return { "url": `${url}` };
   }
 }
