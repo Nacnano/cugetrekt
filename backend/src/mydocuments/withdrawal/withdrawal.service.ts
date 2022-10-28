@@ -174,8 +174,8 @@ export class WithdrawalService {
     // doc.text(moment().format('L').split('/')[2], 528, 493.5);
 
     doc.end();
-    // const url = 'localhost:3001/asset/withdrawal/withdrawal-' + id + '.pdf';
-    const url = 'https://cugetrekt-backend-lgnud3ncza-as.a.run.app/asset/withdrawal/withdrawal-' + id + '.pdf';
+    const url = 'localhost:3001/asset/withdrawal/withdrawal-' + id + '.pdf';
+    // const url = 'https://cugetrekt-backend-lgnud3ncza-as.a.run.app/asset/withdrawal/withdrawal-' + id + '.pdf';
     return { "url": `${url}` };
   }
 }
