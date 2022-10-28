@@ -43,7 +43,7 @@ export class ResignationService {
 
   async generateResignation(id: number) {
     let data = await this.prisma.resignation.findUnique({ where: { id: id } });
-    const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew Bold.ttf', fontSize: 10 });
+    const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew_Bold.ttf', fontSize: 10 });
 
     doc.pipe(fs.createWriteStream('src/resignation/resignation-' + id + '.pdf'));
     doc.image('keepimg/resignation.jpg', 0, 0, { width: 595.28 });
