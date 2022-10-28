@@ -74,7 +74,7 @@ const WithdrawInfoPage = () => {
     const status = tmp ? parseInt(tmp) : tmp;
 
     tmp = creditRef.current?.value;
-    const credit = tmp ? parseInt(tmp) : tmp;
+    const credit = tmp ? parseFloat(tmp) : tmp;
 
     const course1 = course1Ref.current?.value;
     const course2 = course2Ref.current?.value;
@@ -135,8 +135,8 @@ const WithdrawInfoPage = () => {
   const handlePrint = async function () {
     try {
       await saveDocs();
-      const printlink = await geturl();
-      window.open('https://' + printlink);
+      // const printlink = await geturl();
+      // window.open('https://' + printlink);
       navigate("/withdrawdone");
       toast.success("Print Succesfully!");
     } catch (err) {
@@ -340,6 +340,8 @@ const WithdrawInfoPage = () => {
                   <FloatingLabel label="GPAX">
                     <Form.Control
                       type="text"
+                      step="0.01"
+                      min="0"
                       placeholder="GPAX"
                       ref={gpaxRef}
                       defaultValue={info["gpax"]}
@@ -368,6 +370,8 @@ const WithdrawInfoPage = () => {
                   <FloatingLabel label="ปัจจุบันลงเรียนไว้ทั้งหมด">
                     <Form.Control
                       type="number"
+                      step="0.5"
+                      min="0"
                       placeholder="ปัจจุบันลงเรียนไว้ทั้งหมด"
                       ref={creditRef}
                       defaultValue={info["credit"]}

@@ -19,6 +19,7 @@ export interface DocumentDto {
   day: number,
   month: number,
   year: number,
+  lastEdit: string,
   course1: string,
   course2: string,
   course3: string,

@@ -26,12 +26,10 @@ const MyInfoPage = () => {
   const departmentRef = useRef<HTMLInputElement>(null);
   const studySystemRef = useRef<HTMLSelectElement>(null);
   const telRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const infoEmailRef = useRef<HTMLInputElement>(null);
   const [isSubmitting, setSubmitting] = useState(false);
 
   const { loading, error, info } = useInfo()
-
-  console.log(info);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -51,7 +49,7 @@ const MyInfoPage = () => {
     const studySystem = tmp ? parseInt(tmp) : tmp;
 
     const tel = telRef.current?.value;
-    const email = emailRef.current?.value;
+    const infoEmail = infoEmailRef.current?.value;
 
     try {
       await sendInfo({
@@ -63,7 +61,7 @@ const MyInfoPage = () => {
         department,
         studySystem,
         tel,
-        email,
+        infoEmail,
       });
       toast.success("Save Succesfully!");
     } catch (err) {
@@ -197,8 +195,8 @@ const MyInfoPage = () => {
                       <Form.Control
                         type="email"
                         placeholder="อีเมล์ (name@example.com)"
-                        defaultValue={info["email"]}
-                        ref={emailRef}
+                        defaultValue={info["infoEmail"]}
+                        ref={infoEmailRef}
                       />
                     </FloatingLabel>
                   </Form.Group>

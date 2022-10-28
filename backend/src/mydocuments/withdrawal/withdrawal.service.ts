@@ -18,8 +18,18 @@ export class WithdrawalService {
 
   
   async createWithdrawalData(withdrawalDto: WithdrawalDto, userId: number) {
-    withdrawalDto['userId'] = userId;
-    withdrawalDto['lastEdit'] = moment().format('L') + ' ' + moment().format('LTS');
+    const user = await this.myInfoService.findOne(userId);
+    withdrawalDto.userId = userId;
+    withdrawalDto.lastEdit = moment().format('L') + ' ' + moment().format('LTS');
+    withdrawalDto.name = user.name;
+    withdrawalDto.surname = user.surname;    
+    withdrawalDto.title = user.title;
+    withdrawalDto.studentId = user.studentId;
+    withdrawalDto.department = user.department;
+    withdrawalDto.faculty = user.faculty;
+    withdrawalDto.studySystem = user.studySystem;
+    withdrawalDto.tel = user.tel;
+    withdrawalDto.email = user.infoEmail;
     return this.prisma.withdrawal.create({ data: withdrawalDto });
   }
 
