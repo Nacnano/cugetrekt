@@ -57,11 +57,10 @@ export class WithdrawalController {
     const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew_Bold.ttf', fontSize: 10 });
     
     const data = await this.prisma.withdrawal.findUnique({ where: { id: +id } });
+    doc.image('keepimg/withdrawal.jpg', 0, 0, { width: 595.28 });
+    doc.fillColor('#000080');
+    doc.text('ศ.ดร.สุพจน์ เตชวรสินสกุล', 108, 178.5);
     if (data !== null) {
-      // doc.pipe(fs.createWriteStream('src/withdrawal/withdrawal-' + id + '.pdf'));
-      doc.image('keepimg/withdrawal.jpg', 0, 0, { width: 595.28 });
-      doc.fillColor('#000080');
-
       if (data['semester'] !== null) {
         doc.text(data['semester'], 270, 127);
       }
@@ -79,7 +78,6 @@ export class WithdrawalController {
         doc.text('/', 396, 147.5);
       }
 
-      doc.text('ศ.ดร.สุพจน์ เตชวรสินสกุล', 108, 178.5);
 
       if (data['title'] === 1) {
         doc.text('___', 111.3, 204.5);
@@ -175,12 +173,11 @@ export class WithdrawalController {
       else {
         doc.text('/', 129, 427);
       }
-
-      const nowDate = Date.now();
-      doc.text(moment().format('L').split('/')[1], 445, 493.5);
-      doc.text(moment().format('L').split('/')[0], 490, 493.5);
-      doc.text(moment().format('L').split('/')[2], 528, 493.5);
     }
+    const nowDate = Date.now();
+    doc.text(moment().format('L').split('/')[1], 445, 493.5);
+    doc.text(moment().format('L').split('/')[0], 490, 493.5);
+    doc.text(moment().format('L').split('/')[2], 528, 493.5);
 
     doc.pipe(res);
     doc.end();
