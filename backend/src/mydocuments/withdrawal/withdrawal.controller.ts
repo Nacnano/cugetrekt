@@ -51,13 +51,13 @@ export class WithdrawalController {
   @Get(':id/print')
   @ApiOkResponse({ type: WithdrawalEntity })
   async generateWithdrawal( @Param('id') id: string, @Res() res: Response) {
-    const data = await this.prisma.withdrawal.findUnique({ where: { id: +id } });
     const PDFDocument = require('pdfkit');
     const moment = require('moment');
     moment().format();
     const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew_Bold.ttf', fontSize: 10 });
-
-    {
+    
+    const data = await this.prisma.withdrawal.findUnique({ where: { id: +id } });
+    if (data !== null) {
       // doc.pipe(fs.createWriteStream('src/withdrawal/withdrawal-' + id + '.pdf'));
       doc.image('keepimg/withdrawal.jpg', 0, 0, { width: 595.28 });
       doc.fillColor('#000080');
