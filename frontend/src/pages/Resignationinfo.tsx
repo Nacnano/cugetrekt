@@ -131,18 +131,24 @@ const ResignationInfoPage = () => {
       id
     );
   };
+
   let navigate = useNavigate();
-  async function geturl() {
-    const res = await api.get(`/mydocuments/resignation/${id}/print`);
-    return res.data["url"];
-  }
+  // async function geturl() {
+  //   const res = await api.get(`/mydocuments/resignation/${id}/print`);
+  //   return res.data["url"];
+  // }
+
   const handlePrint = async function () {
     try {
       // prep print
       await saveDocs();
+      // window.open('http://localhost:3001/mydocuments/resignation/' + id + '/print');
+      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/resignation/' + id + '/print');
+      // navigate("/resigndone");
+      // const printlink = await geturl();
+      // window.open('http://' + printlink)
+      // window.open(printlink);
       navigate("/resigndone");
-      const printlink = await geturl();
-      window.open(printlink);
       toast.success("Print Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
