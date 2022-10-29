@@ -16,6 +16,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { api } from "../utils/axios";
 import useWithdrawal from "../hooks/useWithdrawal";
+import { printWithdrawal } from "./printWithdrawal"
 
 const WithdrawInfoPage = () => {
   const { id } = useParams();
@@ -136,10 +137,10 @@ const WithdrawInfoPage = () => {
     try {
       await saveDocs();
       navigate("/withdrawdone");
+      printWithdrawal()
       const printlink = await geturl();
       window.open(printlink);
       // window.open('http://' + printlink);
-      
       toast.success("Print Succesfully!");
     } catch (err) {
       toast.error("Something went wrong");
