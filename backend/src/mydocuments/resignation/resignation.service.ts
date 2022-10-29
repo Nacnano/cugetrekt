@@ -3,7 +3,6 @@ import { ResignationDto } from './dto/resignation.dto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { MyInfoService } from 'src/myinfo/myinfo.service';
 const PDFDocument = require('pdfkit');
-const fs = require('fs');
 const moment = require('moment');
 moment().format();
 
@@ -45,7 +44,7 @@ export class ResignationService {
     let data = await this.prisma.resignation.findUnique({ where: { id: id } });
     const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew_Bold.ttf', fontSize: 10 });
 
-    doc.pipe(fs.createWriteStream('src/resignation/resignation-' + id + '.pdf'));
+    // doc.pipe(fs.createWriteStream('src/resignation/resignation-' + id + '.pdf'));
     doc.image('keepimg/resignation.jpg', 0, 0, { width: 595.28 });
     doc.fillColor('#000080');
 
@@ -128,8 +127,8 @@ export class ResignationService {
     doc.text(moment().format('L').split('/')[2], 494, 406.5);
 
     doc.end();
-    const url = 'localhost:3001/asset/resignation/resignation-' + id + '.pdf';
-    // const url = 'https://cugetrekt-backend-lgnud3ncza-as.a.run.app/asset/resignation/resignation-' + id + '.pdf';
+    // const url = 'localhost:3001/asset/resignation/resignation-' + id + '.pdf';
+    const url = process.env.BACKEND_URL+'/asset/resignation/resignation-' + id + '.pdf';
     return { "url": `${url}` };
   }
 }

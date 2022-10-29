@@ -127,17 +127,20 @@ const WithdrawInfoPage = () => {
     }
   };
 
-  async function geturl() {
-    const res = await api.get(`/mydocuments/withdrawal/${id}/print`);
-    return res.data["url"];
-  }
+  // async function geturl() {
+  //   const url = api.get(`/mydocuments/withdrawal/${id}/print`);
+  //   return url;
+  // }
 
   const handlePrint = async function () {
     try {
       await saveDocs();
-      const printlink = await geturl();
+      // window.open('http://localhost:3001/mydocuments/withdrawal/' + id + '/print');
+      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/withdrawal/' + id + '/print');
+      // printWithdrawal()
+      // const printlink = await geturl();
       // window.open(printlink);
-      window.open('http://' + printlink);
+      // window.open('http://' + printlink);
       navigate("/withdrawdone");
       toast.success("Print Succesfully!");
     } catch (err) {
