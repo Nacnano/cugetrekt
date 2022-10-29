@@ -57,14 +57,16 @@ export class ResignationController {
     const doc = new PDFDocument({ size: 'A4', font: 'fonts/THSarabunNew_Bold.ttf', fontSize: 10 });
     
     const data = await this.prisma.resignation.findUnique({ where: { id: +id } });
+    doc.image('keepimg/resignation.jpg', 0, 0, { width: 595.28 });
+    doc.fillColor('#000080');
+    doc.text('ศ.ดร.สุพจน์ เตชวรสินสกุล', 108, 217.5);
+    doc.text('/', 425, 206.7);
     if (data !== null) {
-      doc.image('keepimg/resignation.jpg', 0, 0, { width: 595.28 });
-      doc.fillColor('#000080');
       if (data['semester'] !== null) {
         doc.text(data['semester'], 270, 152);
       }
       if (data['year'] !== null) {
-        doc.text(data['year'], 380, 152);
+        doc.text(data['year'], 385, 152);
       }
 
       if (data['studySystem'] === 1) {
@@ -76,9 +78,6 @@ export class ResignationController {
       else if (data['studySystem'] === 3) {
         doc.text('/', 396, 174);
       }
-
-      doc.text('ศ.ดร.สุพจน์ เตชวรสินสกุล', 108, 217.5);
-      doc.text('/', 425, 206.7);
 
       if (data['title'] !== null) {
         if (data['title'] == 1) {
@@ -99,7 +98,7 @@ export class ResignationController {
       if (data['surname'] === null) {
         data['surname'] = "";
       }
-      doc.text(data['name'] + '  ' + data['surname'], 200, 203.5);
+      doc.text(data['name'] + '  ' + data['surname'], 150, 252);
 
       if (data['studentId'] !== null) {
         doc.text(data['studentId'][0], 389, 240);
@@ -132,12 +131,11 @@ export class ResignationController {
       if (data['reason'] !== null) {
         doc.text(data['reason'], 216, 312.5);
       }
-
-      const nowDate = Date.now();
-      doc.text(moment().format('L').split('/')[1], 425, 406.5);
-      doc.text(moment().format('L').split('/')[0], 463, 406.5);
-      doc.text(moment().format('L').split('/')[2], 494, 406.5);
     }
+    const nowDate = Date.now();
+    doc.text(moment().format('L').split('/')[1], 425, 406.5);
+    doc.text(moment().format('L').split('/')[0], 463, 406.5);
+    doc.text(moment().format('L').split('/')[2], 494, 406.5);
 
     doc.pipe(res);
     doc.end();
