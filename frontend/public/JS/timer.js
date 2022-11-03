@@ -24,7 +24,8 @@ var x = setInterval(function () {
 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("timer1").innerHTML = "EXPIRED";
+        document.getElementById("timer1").innerHTML = "หมดเวลาถอนแล้ว";
+        document.getElementById("timerText").innerHTML = "แต่คุณมีเวลาสำหรับการลาออกเสมอ!";
     }
     else {
         document.getElementById("timer1").innerHTML = days + " วัน " + hours + " ชั่วโมง"
