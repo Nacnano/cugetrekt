@@ -28,7 +28,7 @@ const HomePage = () => {
               <p className="display-3" style={{ fontWeight: "bold" }}>วันนี้...<br />คุณได้เตรียมตัวถอนหรือยัง</p>
               <p className="display-1 color-pm" id="timer1"></p>
               <p className="display-5 color-pm" id="timer2"></p>
-              <p style={{ fontSize: 30, lineHeight: 1.5 }}> ก่อนที่จะหมดสิทธิในการถอน
+              <p id="timerText" style={{ fontSize: 30, lineHeight: 1.5 }}> ก่อนที่จะหมดสิทธิในการถอน
               </p>
               <div className="d-flex">
                 <Link to="/MyDocuments" className="px-4 btn btn-danger fs-5 fw-bold">
