@@ -49,7 +49,7 @@ const Navbar = () => {
                   สายด่วนสุขภาพจิต
                 </a>
               </li>
-
+              <li className="nav-item"><Link to="/AboutUs" className="text-white nav-link px-2">เกี่ยวกับเรา</Link></li>
             </ul>
             <div className="d-none d-lg-block">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
