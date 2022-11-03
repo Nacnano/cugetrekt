@@ -33,7 +33,7 @@ const MyRoutes = () => {
           />
           <Route path="ScorePrediction" element={<ScorePrediction />} />
           <Route path="WithdrawDone" element={<WithdrawDone />} />
-          <Route path="ResignationDone" element={<ResignationDone />} />
+          <Route path="ResignDone" element={<ResignationDone />} />
           <Route path="*" element={<NoPage />} />
           {/* <Route path="*" element={<NoPage />} /> */}
           <Route path="*" element={<NoPage />} />

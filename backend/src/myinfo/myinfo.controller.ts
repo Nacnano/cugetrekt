@@ -39,13 +39,12 @@ export class MyInfoController {
   @Patch()
   @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: MyInfoEntity })
-  async update( @Req() req: AuthGuardRequest, @Body() MyInfoDto: MyInfoDto) {
+  async update( @Req() req: AuthGuardRequest, @Body() myInfoDto: MyInfoDto) {
     const res = await this.authService.getEmail(req);
     const email = res.email;
-    
     const user = await this.myInfoService.findOnebyEmail(email);
     const id = user.id;
-    return this.myinfoService.update(+id, MyInfoDto);
+    return this.myinfoService.update(+id, myInfoDto);
   }
   
   @Delete()

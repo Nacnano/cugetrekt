@@ -135,8 +135,8 @@ const WithdrawInfoPage = () => {
   const handlePrint = async function () {
     try {
       await saveDocs();
-      const printlink = await geturl();
-      window.open('https://' + printlink);
+      // const printlink = await geturl();
+      // window.open('https://' + printlink);
       navigate("/withdrawdone");
       toast.success("Print Succesfully!");
     } catch (err) {

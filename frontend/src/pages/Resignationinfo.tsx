@@ -140,8 +140,8 @@ const ResignationInfoPage = () => {
     try {
       // prep print
       await saveDocs();
-      const printlink = await geturl();
-      window.open(printlink);
+      // const printlink = await geturl();
+      // window.open(printlink);
       navigate("/resigndone");
       toast.success("Print Succesfully!");
     } catch (err) {
