@@ -6,8 +6,6 @@ import { DocumentDto } from "../types/dto";
 import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function DocumentCard(props: DocumentDto) {
   const { docsType, docsName, lastEdit, course1, course2, course3, id } = props;
 
@@ -60,7 +58,9 @@ export default function DocumentCard(props: DocumentDto) {
         className="shadowdrop-l border-0 rounded-0 p-3"
         style={{ height: 275 }}
       >
-        <h4 className="card-title fw-bold">{(docsName ? docsName : "Untitled")} </h4>
+        <h4 className="card-title fw-bold">
+          {docsName ? docsName : "Untitled"}{" "}
+        </h4>
         <Card.Text className="text-muted mb-0">{checkType()}</Card.Text>
         <div className="container mt-auto">
           <div className="row">
@@ -75,7 +75,10 @@ export default function DocumentCard(props: DocumentDto) {
               <a className="btn btn-danger" onClick={editdoc}>
                 แก้ไข
               </a>
-              <a className="btn ms-auto px-auto del text-center" onClick={deletedoc}>
+              <a
+                className="btn ms-auto px-auto del text-center"
+                onClick={deletedoc}
+              >
                 ลบเอกสาร
               </a>
             </div>
