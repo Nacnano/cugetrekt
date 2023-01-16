@@ -19,9 +19,8 @@ const HomePage = () => {
       <main>
         <div
           id="loader"
-          className={`loader-wrapper fixed-top ${
-            loading ? "loader-show" : "loader-hidden"
-          } ${loader ? "" : "d-none"}`}
+          className={`loader-wrapper fixed-top ${loading ? "loader-show" : "loader-hidden"
+            } ${loader ? "" : "d-none"}`}
           style={{ zIndex: 2000 }}
         >
           <h1 className="display-5 text-white text-center d-none d-lg-block">
@@ -39,8 +38,8 @@ const HomePage = () => {
                 <br />
                 คุณได้เตรียมตัวถอนหรือยัง
               </p>
-              <p className="display-1 color-pm" id="timer1"></p>
-              <p className="display-5 color-pm" id="timer2"></p>
+              <p className="display-1" id="timer1"></p>
+              <p className="display-5" id="timer2"></p>
               <p id="timerText" style={{ fontSize: 30, lineHeight: 1.5 }}>
                 {" "}
                 ก่อนที่จะหมดสิทธิในการถอน
