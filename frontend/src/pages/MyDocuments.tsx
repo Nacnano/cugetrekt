@@ -23,7 +23,7 @@ const MyDocumentsPage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { isLoggedIn } = useAuth();
-  const { loading, error, documents } = useDocumentList()
+  const { loading, error, documents } = useDocumentList();
   let navigate = useNavigate();
 
   async function postWithdrawal() {
