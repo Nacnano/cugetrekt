@@ -1,63 +1,63 @@
-import { FormEvent, useRef, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import axios, { AxiosError } from 'axios'
-import toast from 'react-hot-toast'
-import { useAuth } from '../Providers/AuthProvider'
-import { ErrorDto } from '../types/dto'
-import { api } from '../utils/axios'
+import { FormEvent, useRef, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import axios, { AxiosError } from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../Providers/AuthProvider";
+import { ErrorDto } from "../types/dto";
+import { api } from "../utils/axios";
 
 const Register: React.FC = () => {
-  const navigate = useNavigate()
-  const { isLoggedIn } = useAuth()
-  const emailRef = useRef<HTMLInputElement>(null)
-  const passwordRef = useRef<HTMLInputElement>(null)
-  const passwordConfirmRef = useRef<HTMLInputElement>(null)
-  const [isSubmitting, setSubmitting] = useState(false)
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfirmRef = useRef<HTMLInputElement>(null);
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (isSubmitting) return
-    setSubmitting(true)
+    event.preventDefault();
+    if (isSubmitting) return;
+    setSubmitting(true);
 
-    const email = emailRef.current?.value
-    const password = passwordRef.current?.value
-    const passwordConfirm = passwordConfirmRef.current?.value
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    const passwordConfirm = passwordConfirmRef.current?.value;
 
     if (!email || !password || !passwordConfirm) {
-      toast.error('Please complete the form')
-      setSubmitting(false)
-      return
+      toast.error("Please complete the form");
+      setSubmitting(false);
+      return;
     }
 
     if (password !== passwordConfirm) {
-      toast.error('Passwords do not match')
-      setSubmitting(false)
-      return
+      toast.error("Passwords do not match");
+      setSubmitting(false);
+      return;
     }
 
     try {
       await api.post(`/myinfo`, {
         email,
         password,
-      })
-      toast.success('Account created!')
-      navigate('/login')
+      });
+      toast.success("Account created!");
+      navigate("/login");
     } catch (err) {
       if (err instanceof AxiosError) {
-        const { response } = err as AxiosError<ErrorDto>
-        const message = response?.data.message
-        toast.error(message || 'Something went wrong')
-        return
+        const { response } = err as AxiosError<ErrorDto>;
+        const message = response?.data.message;
+        toast.error(message || "Something went wrong");
+        return;
       }
-      toast.error('Something went wrong')
+      toast.error("Something went wrong");
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
-  if (isLoggedIn) return <Navigate to="/" />
+  if (isLoggedIn) return <Navigate to="/" />;
   return (
-    <main style={{ marginTop: '5em' }}>
+    <main style={{ marginTop: "5em" }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-3">
@@ -118,7 +118,7 @@ const Register: React.FC = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

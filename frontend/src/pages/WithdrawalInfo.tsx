@@ -135,8 +135,8 @@ const WithdrawInfoPage = () => {
   const handlePrint = async function () {
     try {
       await saveDocs();
-      // window.open('http://localhost:3001/mydocuments/withdrawal/' + id + '/print');
-      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/withdrawal/' + id + '/print');
+      window.open('http://localhost:3001/mydocuments/withdrawal/' + id + '/print');
+      // window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/withdrawal/' + id + '/print');
       // printWithdrawal()
       // const printlink = await geturl();
       // window.open(printlink);

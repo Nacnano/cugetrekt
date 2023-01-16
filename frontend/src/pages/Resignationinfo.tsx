@@ -142,9 +142,9 @@ const ResignationInfoPage = () => {
     try {
       // prep print
       await saveDocs();
-      // window.open('http://localhost:3001/mydocuments/resignation/' + id + '/print');
-      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/resignation/' + id + '/print');
-      // navigate("/resigndone");
+      window.open('http://localhost:3001/mydocuments/resignation/' + id + '/print');
+      // window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/resignation/' + id + '/print');
+      navigate("/resigndone");
       // const printlink = await geturl();
       // window.open('http://' + printlink)
       // window.open(printlink);
