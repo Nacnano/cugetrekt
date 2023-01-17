@@ -5,6 +5,12 @@
   "homepage": ".",
   "dependencies": {
     "-": "^0.0.1",
+    "@babel/compat-data": "7.19.4",
+    "@babel/core": "7.19.6",
+    "@babel/generator": "7.19.6",
+    "@babel/helper-compilation-targets": "7.19.3",
+    "@babel/helper-create-class-features-plugin": "7.19.0",
+    "@babel/helper-module-transforms": "7.19.6",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -35,7 +41,7 @@
     "react-hook-form": "^7.38.0",
     "react-hot-toast": "^2.4.0",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "^2.1.3",
+    "react-scripts": "^5.0.1",
     "react-widgets": "^5.8.4",
     "save-dev": "^0.0.1-security",
     "stream": "^0.0.2",
@@ -45,6 +51,14 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
     "zlib": "^1.0.5"
+  },
+  "resolutions": {
+    "@babel/core": "7.19.6",
+    "@babel/generator": "7.19.6",
+    "@babel/compat-data": "7.19.4",
+    "@babel/helper-compilation-targets": "7.19.3",
+    "@babel/helper-create-class-features-plugin": "7.19.0",
+    "@babel/helper-module-transforms": "7.19.6"
   },
   "scripts": {
     "start": "react-scripts start",
