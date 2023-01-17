@@ -64,6 +64,7 @@ const HomePage = () => {
               <img
                 className="float-end overflow-visible"
                 src="./GetRekt.png"
+                alt="get-rekt"
                 style={{ height: 550, opacity: "100%" }}
               ></img>
             </div>

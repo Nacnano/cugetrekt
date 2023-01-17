@@ -7,8 +7,8 @@ interface MyAxiosRequestConfig extends Omit<AxiosRequestConfig, "headers"> {
 }
 
 // const API_URL = process.env.API_URL;
-// const API_URL = "https://cugetrekt-backend-lgnud3ncza-as.a.run.app"
-const API_URL = "http://localhost:3001";
+const API_URL = "https://cugetrekt-backend-lgnud3ncza-as.a.run.app";
+// const API_URL = "http://localhost:3001";
 
 export const api = axios.create({
   baseURL: API_URL,

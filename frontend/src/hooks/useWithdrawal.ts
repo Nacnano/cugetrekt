@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { api } from '../utils/axios';
+import { useEffect, useState } from "react";
+import { api } from "../utils/axios";
 
 const useWithdrawal = (id: string) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [info, setInfo] = useState<{[key: string]: any}>({});
+  const [info, setInfo] = useState<{ [key: string]: any }>({});
 
   useEffect(() => {
     const fetchContents = async () => {
@@ -18,7 +18,7 @@ const useWithdrawal = (id: string) => {
       }
     };
     fetchContents();
-  }, []);
+  });
 
   return { loading, error, info };
 };

@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useContext, useRef, useState } from "react";
-import axios, { AxiosError } from "axios";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { AxiosError } from "axios";
 import { api } from "../utils/axios";
 
 import toast from "react-hot-toast";
 
-import { CredentialDto, ErrorDto } from "../types/dto";
+import { ErrorDto } from "../types/dto";
 
 interface IAuthContext {
   isLoggedIn: boolean;

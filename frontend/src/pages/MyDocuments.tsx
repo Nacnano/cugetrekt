@@ -1,22 +1,20 @@
-import { Link, Navigate } from "react-router-dom";
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Modal } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../Providers/AuthProvider";
 import useDocumentList from "../hooks/useDocumentList";
 import DocumentCard from "../components/DocumentCard";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { api } from "../utils/axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
   createWithdrawalDoc,
   createResignationDoc,
 } from "../Providers/DataProvider";
-import { DocumentDto } from "../types/dto";
 
 const MyDocumentsPage = () => {
   const [show, setShow] = useState(false);
@@ -68,6 +66,7 @@ const MyDocumentsPage = () => {
             <div className="modal-content">
               <Modal.Header className="mb-3">
                 <button
+                  title="btn-close"
                   type="button"
                   className="btn-close"
                   onClick={handleClose}

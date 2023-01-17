@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../Providers/AuthProvider";
 import { ErrorDto } from "../types/dto";
