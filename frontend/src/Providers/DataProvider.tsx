@@ -19,7 +19,9 @@ export async function getWithdrawalInfo(id: any) {
 export async function sendWithdrawalInfo(data: any, id: any) {
   try {
     // console.log(e)
-    const res = await api.patch(`/mydocuments/withdrawal/${id}`, {data: data});
+    const res = await api.patch(`/mydocuments/withdrawal/${id}`, {
+      data: data,
+    });
   } catch (err) {
     throw new Error("Unknown error");
   }
@@ -27,7 +29,7 @@ export async function sendWithdrawalInfo(data: any, id: any) {
 
 export async function sendresignationInfo(data: any, id: any) {
   try {
-    const res = await api.patch(`/mydocuments/resignation/${id}`, {data});
+    const res = await api.patch(`/mydocuments/resignation/${id}`, { data });
   } catch (err) {
     throw new Error("Unknown error");
   }

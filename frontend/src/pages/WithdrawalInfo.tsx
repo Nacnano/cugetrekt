@@ -1,20 +1,17 @@
-import { useForm } from "react-hook-form";
-import DropdownList from "react-widgets/DropdownList";
 import "react-widgets/styles.css";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FormEvent, useRef } from "react";
 import { sendWithdrawalInfo } from "../Providers/DataProvider";
 import toast from "react-hot-toast";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { api } from "../utils/axios";
 import useWithdrawal from "../hooks/useWithdrawal";
 
 const WithdrawInfoPage = () => {
@@ -135,8 +132,10 @@ const WithdrawInfoPage = () => {
   const handlePrint = async function () {
     try {
       await saveDocs();
-      // window.open('http://localhost:3001/mydocuments/withdrawal/' + id + '/print');
-      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/withdrawal/' + id + '/print');
+      // window.open(
+      //   "http://localhost:3000/mydocuments/withdrawal/" + id + "/print"
+      // );
+      // window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/withdrawal/' + id + '/print');
       // printWithdrawal()
       // const printlink = await geturl();
       // window.open(printlink);

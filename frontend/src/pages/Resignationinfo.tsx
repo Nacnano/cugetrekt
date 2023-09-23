@@ -1,5 +1,3 @@
-import { useForm } from "react-hook-form";
-import DropdownList from "react-widgets/DropdownList";
 import "react-widgets/styles.css";
 import Form from "react-bootstrap/Form";
 import { Button, FloatingLabel } from "react-bootstrap";
@@ -7,14 +5,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import React, { useState } from "react";
-import { FormControl, FormGroup } from "@mui/material";
-import InputGroup from "react-bootstrap/InputGroup";
 import { FormEvent, useRef } from "react";
 import { sendresignationInfo } from "../Providers/DataProvider";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useResignation from "../hooks/useResignation";
-import { api } from "../utils/axios";
 
 const ResignationInfoPage = () => {
   const { id } = useParams();
@@ -142,9 +137,11 @@ const ResignationInfoPage = () => {
     try {
       // prep print
       await saveDocs();
-      // window.open('http://localhost:3001/mydocuments/resignation/' + id + '/print');
-      window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/resignation/' + id + '/print');
-      // navigate("/resigndone");
+      // window.open(
+      //   "http://localhost:3000/mydocuments/resignation/" + id + "/print"
+      // );
+      // window.open('https://cugetrekt-backend-lgnud3ncza-as.a.run.app/mydocuments/resignation/' + id + '/print');
+      navigate("/resigndone");
       // const printlink = await geturl();
       // window.open('http://' + printlink)
       // window.open(printlink);
