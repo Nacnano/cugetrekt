@@ -43,7 +43,7 @@
     "iconv-lite": "^0.6.3",
     "jspdf": "^2.5.1",
     "moment": "^2.29.4",
-    "mysql2": "^2.3.3",
+    "mysql2": "^3.9.7",
     "nestjs-pdf": "^1.0.4",
     "node-fpdf": "^1.0.41",
     "passport": "^0.6.0",
