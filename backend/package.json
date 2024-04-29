@@ -55,7 +55,7 @@
     "swagger-ui-express": "^4.5.0",
     "typeorm": "^0.3.10",
     "utf8": "^3.0.0",
-    "webpack": "^5.74.0"
+    "webpack": "^5.76.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
