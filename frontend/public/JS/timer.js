@@ -1,4 +1,4 @@
-var countDownDate = new Date("Nov 23, 2023 16:00:00").getTime();
+var countDownDate = new Date("Oct 25, 2024 23:59:59").getTime();
 
 var x = setInterval(function () {
     function pickHex(days) {
